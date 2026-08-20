@@ -5,19 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>歐洲蜜月 2026｜Luka & Grace</title>
 
-<!-- =========================================================
-     FONTS
-========================================================= -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Noto+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* =========================================================
-   COLOR SYSTEM
-========================================================= */
 :root {
   --paper: #F5F3EF;
-  --paper2: #ECE9E3;
   --white: #FFFDFC;
   --ink: #29313A;
   --soft: #737A7C;
@@ -28,420 +21,114 @@
   --paris: #B47A8D;
   --gold: #B18A4A;
 }
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 10% 8%, rgba(177,138,74,.07), transparent 20%),
-    radial-gradient(circle at 90% 30%, rgba(180,122,141,.06), transparent 22%),
+    radial-gradient(circle at 10% 8%, rgba(177,138,74,.08), transparent 20%),
+    radial-gradient(circle at 90% 30%, rgba(180,122,141,.07), transparent 22%),
+    radial-gradient(circle at 20% 80%, rgba(76,145,120,.06), transparent 25%),
     var(--paper);
   color: var(--ink);
   font-family: 'Noto Sans TC', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+a { color: inherit; }
 
-a {
-  color: inherit;
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-.hero {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 55px 20px 30px;
-  text-align: center;
-  position: relative;
-}
-
-.hero-doodle {
-  position: absolute;
-  font-family: 'Fraunces', serif;
-  font-size: 26px;
-  opacity: .7;
-}
-
+/* HERO */
+.hero { max-width: 920px; margin: 0 auto; padding: 55px 20px 30px; text-align: center; position: relative; }
+.hero-doodle { position: absolute; font-family: 'Fraunces', serif; font-size: 26px; opacity: .75; }
 .doodle-plane { left: 8%; top: 50px; transform: rotate(-12deg); }
-.doodle-star  { right: 9%; top: 75px; font-size: 18px; }
-.doodle-heart { left: 13%; bottom: 45px; font-size: 17px; transform: rotate(-8deg); }
-.doodle-spark { right: 13%; bottom: 42px; font-size: 19px; }
+.doodle-star  { right: 9%; top: 75px; font-size: 18px; color: var(--gold); }
+.doodle-heart { left: 13%; bottom: 45px; font-size: 17px; transform: rotate(-8deg); color: var(--paris); }
+.doodle-spark { right: 13%; bottom: 42px; font-size: 19px; color: var(--tromso); }
+.eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; color: var(--gold); margin-bottom: 14px; }
+.hero h1 { font-family: 'Fraunces', serif; font-size: clamp(38px, 7vw, 56px); font-weight: 600; letter-spacing: -.025em; margin: 0 0 8px; }
+.hero-sub { color: var(--soft); font-size: 14px; margin-bottom: 30px; }
 
-.eyebrow {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: .16em;
-  color: var(--gold);
-  margin-bottom: 14px;
-}
+/* ROUTE */
+.route { background: rgba(255,253,252,.92); border: 1px solid var(--line); border-radius: 18px; padding: 23px 20px; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; box-shadow: 0 8px 25px rgba(50,45,40,.04); }
+.route-line { position: absolute; left: 10%; right: 10%; top: 50%; border-top: 1px dashed #CFCAC0; }
+.stop { flex: 1; position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.stop .dot { width: 13px; height: 13px; border-radius: 50%; background: currentColor; border: 3px solid var(--white); box-shadow: 0 0 0 1px currentColor; }
+.stop .city { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; }
+.stop .date { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: var(--soft); }
+.stop.london { color: var(--london); } .stop.cph { color: var(--cph); } .stop.tromso { color: var(--tromso); } .stop.paris { color: var(--paris); }
 
-.hero h1 {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(38px, 7vw, 56px);
-  font-weight: 600;
-  letter-spacing: -.025em;
-  margin: 0 0 8px;
-}
-
-.hero-sub {
-  color: var(--soft);
-  font-size: 14px;
-  margin-bottom: 30px;
-}
-
-/* =========================================================
-   ROUTE
-========================================================= */
-.route {
-  background: rgba(255,253,252,.92);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 23px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(50,45,40,.04);
-}
-
-.route-line {
-  position: absolute;
-  left: 10%; right: 10%; top: 50%;
-  border-top: 1px dashed #CFCAC0;
-}
-
-.stop {
-  flex: 1;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.stop .dot {
-  width: 13px; height: 13px;
-  border-radius: 50%;
-  background: currentColor;
-  border: 3px solid var(--white);
-  box-shadow: 0 0 0 1px currentColor;
-}
-
-.stop .city {
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.stop .date {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px;
-  color: var(--soft);
-}
-
-.stop.london { color: var(--london); }
-.stop.cph    { color: var(--cph); }
-.stop.tromso { color: var(--tromso); }
-.stop.paris  { color: var(--paris); }
-
-/* =========================================================
-   NAV
-========================================================= */
-.navbar {
-  position: sticky; top: 0;
-  z-index: 50;
-  background: rgba(245,243,239,.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
-}
-
-.navbar-inner {
-  max-width: 920px;
-  margin: auto;
-  padding: 10px 16px;
-  display: flex;
-  gap: 7px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
+/* NAV */
+.navbar { position: sticky; top: 0; z-index: 50; background: rgba(245,243,239,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.navbar-inner { max-width: 920px; margin: auto; padding: 10px 16px; display: flex; gap: 7px; overflow-x: auto; scrollbar-width: none; }
 .navbar-inner::-webkit-scrollbar { display: none; }
+.pill { flex: 0 0 auto; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 6px 11px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--soft); cursor: pointer; transition: .2s ease; }
+.pill:hover, .pill.active { background: var(--ink); color: #fff; border-color: var(--ink); transform: translateY(-1px); }
 
-.pill {
-  flex: 0 0 auto;
-  border: 1px solid var(--line);
-  background: #fff;
-  border-radius: 999px;
-  padding: 6px 11px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  color: var(--soft);
-  cursor: pointer;
-  transition: .2s ease;
-}
+.wrap { max-width: 920px; margin: auto; padding: 25px 16px 70px; }
 
-.pill:hover, .pill.active {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink);
-}
-
-/* =========================================================
-   MAIN
-========================================================= */
-.wrap {
-  max-width: 920px;
-  margin: auto;
-  padding: 25px 16px 70px;
-}
-
-/* =========================================================
-   CITY CHAPTER
-========================================================= */
-.chapter {
-  display: flex;
-  align-items: center;
-  gap: 17px;
-  margin: 48px 0 18px;
-  scroll-margin-top: 80px;
-}
-
+/* CHAPTER */
+.chapter { display: flex; align-items: center; gap: 17px; margin: 48px 0 18px; scroll-margin-top: 80px; }
 .chapter:first-child { margin-top: 10px; }
+.country-stamp { width: 66px; height: 66px; flex: 0 0 66px; border: 2px dashed currentColor; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-7deg); background: rgba(255,255,255,.5); }
+.country-stamp .en { font-family: 'Fraunces', serif; font-size: 12px; font-weight: 700; letter-spacing: .05em; }
+.country-stamp .tiny { font-family: 'IBM Plex Mono', monospace; font-size: 7px; opacity: .7; margin-top: 2px; }
+.chapter-copy h2 { margin: 0; font-family: 'Fraunces', serif; font-size: 27px; font-weight: 600; }
+.chapter-copy p { margin: 3px 0 0; color: var(--soft); font-family: 'IBM Plex Mono', monospace; font-size: 10px; }
+.chapter.london { color: var(--london); } .chapter.cph { color: var(--cph); } .chapter.tromso { color: var(--tromso); } .chapter.paris { color: var(--paris); }
 
-.country-stamp {
-  width: 66px; height: 66px;
-  flex: 0 0 66px;
-  border: 2px dashed currentColor;
-  border-radius: 50%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  transform: rotate(-7deg);
-  background: rgba(255,255,255,.45);
-}
+/* DAY CARD */
+.day { display: grid; grid-template-columns: 70px 1fr; background: rgba(255,253,252,.94); border: 1px solid var(--line); border-radius: 15px; overflow: hidden; margin-bottom: 13px; box-shadow: 0 5px 18px rgba(50,45,40,.035); scroll-margin-top: 82px; transition: transform .15s ease, box-shadow .15s ease; }
+.day:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(50,45,40,.08); }
+.stub { display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; padding: 12px 5px; }
+.stub.london { background: var(--london); } .stub.cph { background: var(--cph); } .stub.tromso { background: var(--tromso); } .stub.paris { background: var(--paris); }
+.stub .num { font-family: 'Fraunces', serif; font-size: 25px; line-height: 1; font-weight: 700; }
+.stub .wd { font-family: 'IBM Plex Mono', monospace; font-size: 9px; margin-top: 4px; opacity: .9; }
+.stub .dt { font-family: 'IBM Plex Mono', monospace; font-size: 9px; opacity: .9; }
 
-.country-stamp .en {
-  font-family: 'Fraunces', serif;
-  font-size: 12px; font-weight: 700;
-  letter-spacing: .05em;
-}
+.day-body { padding: 14px 16px 15px; min-width: 0; }
+.day-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 600; margin: 0; line-height: 1.35; display: inline; }
+.day-sub { margin: 3px 0 9px; color: var(--soft); font-size: 11px; }
 
-.country-stamp .tiny {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 7px; opacity: .7;
-  margin-top: 2px;
-}
-
-.chapter-copy h2 {
-  margin: 0;
-  font-family: 'Fraunces', serif;
-  font-size: 27px; font-weight: 600;
-}
-
-.chapter-copy p {
-  margin: 3px 0 0;
-  color: var(--soft);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-}
-
-.chapter.london { color: var(--london); }
-.chapter.cph    { color: var(--cph); }
-.chapter.tromso { color: var(--tromso); }
-.chapter.paris  { color: var(--paris); }
-
-/* =========================================================
-   DAY CARD
-========================================================= */
-.day {
-  display: grid;
-  grid-template-columns: 70px 1fr;
-  background: rgba(255,253,252,.94);
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  overflow: hidden;
-  margin-bottom: 13px;
-  box-shadow: 0 5px 18px rgba(50,45,40,.035);
-  scroll-margin-top: 82px;
-}
-
-.stub {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  color: white;
-  padding: 12px 5px;
-}
-
-.stub.london { background: var(--london); }
-.stub.cph    { background: var(--cph); }
-.stub.tromso { background: var(--tromso); }
-.stub.paris  { background: var(--paris); }
-
-.stub .num {
-  font-family: 'Fraunces', serif;
-  font-size: 25px; line-height: 1; font-weight: 700;
-}
-
-.stub .wd {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; margin-top: 4px; opacity: .9;
-}
-
-.stub .dt {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; opacity: .9;
-}
-
-/* =========================================================
-   DAY CONTENT
-========================================================= */
-.day-body {
-  padding: 14px 16px 15px;
-  min-width: 0;
-}
-
-.day-title {
-  font-family: 'Fraunces', serif;
-  font-size: 17px; font-weight: 600;
-  margin: 0;
-  line-height: 1.35;
-}
-
-.day-sub {
-  margin: 3px 0 9px;
-  color: var(--soft);
-  font-size: 11px;
-}
-
-/* =========================================================
-   PHOTO - 完全修正與精緻化：
-   - 強制在任何螢幕上均為小巧尺寸
-   - 最大寬度為容器的 40% 且不超過 250px
-   - 保持圖片原比例，移除任何垂直拉伸
-========================================================= */
+/* PLAYFUL POLAROID PHOTO */
 .photo {
-  max-width: 40%; /* 桌面和行動端都一樣 */
-  max-height: 250px; /* 限制垂直方向的過度佔用 */
-  overflow: hidden;
-  margin: 10px 0 13px;
+  float: right;
+  width: 108px;
+  margin: 0 0 8px 12px;
+  background: #fff;
+  padding: 6px 6px 18px;
+  border-radius: 4px;
+  box-shadow: 0 6px 14px rgba(50,45,40,.14);
   position: relative;
-  border: 1px solid rgba(221,217,209,.85);
-  border-radius: 10px; /* 加入一點圓角使之更精緻 */
-  box-shadow: 0 3px 10px rgba(50,45,40,.045);
+}
+.photo.tilt-r { transform: rotate(3.5deg); }
+.photo.tilt-l { transform: rotate(-3.5deg); }
+.photo:hover { transform: rotate(0deg) scale(1.04); transition: transform .2s ease; }
+.photo img { width: 100%; height: 84px; object-fit: cover; display: block; border-radius: 2px; }
+.photo::before {
+  content: "";
+  position: absolute; top: -7px; left: 50%; transform: translateX(-50%) rotate(-4deg);
+  width: 34px; height: 13px;
+  background: rgba(177,138,74,.55);
+  border-radius: 1px;
 }
 
-.photo img {
-  width: 100%; height: auto; /* 強制保持原比例 */
-  display: block;
-  object-fit: cover; /* 如果垂直比例太大，僅裁切而非拉伸 */
-  object-position: center;
-}
-
-/* =========================================================
-   FOOD
-========================================================= */
-.food {
-  display: flex; align-items: flex-start;
-  gap: 7px;
-  margin-top: 8px; padding-top: 8px;
-  border-top: 1px dashed var(--line);
-  font-size: 11px; color: #60676A;
-}
-
-.food-label {
-  flex: 0 0 auto;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; color: var(--gold);
-  padding-top: 2px;
-}
-
+.food { display: flex; align-items: flex-start; gap: 7px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 11px; color: #60676A; clear: right; }
+.food-label { flex: 0 0 auto; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #fff; background: var(--gold); padding: 1px 6px; border-radius: 5px; }
 .food-text { line-height: 1.65; }
 
-/* =========================================================
-   PLACES
-========================================================= */
-.places {
-  font-size: 12.5px;
-  line-height: 1.8;
-  color: #4E565A;
-}
-
-.places a {
-  text-decoration: none;
-  border-bottom: 1px dotted #AEB0AD;
-}
-
+.places { font-size: 12.5px; line-height: 1.8; color: #4E565A; }
+.places a { text-decoration: none; border-bottom: 1px dotted #AEB0AD; }
 .places a:hover { color: var(--gold); }
 
-/* =========================================================
-   DECORATION
-========================================================= */
-.day-decoration {
-  float: right;
-  font-family: 'Fraunces', serif;
-  font-size: 17px;
-  opacity: .4;
-}
+.day-decoration { font-family: 'Fraunces', serif; font-size: 15px; opacity: .55; margin-right: 6px; }
 
-/* =========================================================
-   HOTELS
-========================================================= */
-.info-block {
-  background: rgba(255,253,252,.94);
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  padding: 20px;
-  margin-top: 50px;
-}
-
-.info-block h3 {
-  font-family: 'Fraunces', serif;
-  font-size: 19px;
-  margin: 0 0 13px;
-}
-
-.hotel-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 9px 0;
-  border-bottom: 1px dashed var(--line);
-  font-size: 12.5px;
-}
-
+.info-block { background: rgba(255,253,252,.94); border: 1px solid var(--line); border-radius: 15px; padding: 20px; margin-top: 50px; }
+.info-block h3 { font-family: 'Fraunces', serif; font-size: 19px; margin: 0 0 13px; }
+.hotel-row { display: flex; justify-content: space-between; gap: 15px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 12.5px; }
 .hotel-row:last-child { border-bottom: none; }
+.hotel-city { color: var(--soft); font-family: 'IBM Plex Mono', monospace; font-size: 9px; margin-left: 5px; }
 
-.hotel-city {
-  color: var(--soft);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  margin-left: 5px;
-}
+footer { text-align: center; color: var(--soft); font-family: 'IBM Plex Mono', monospace; font-size: 9px; padding: 30px 15px 50px; }
 
-/* =========================================================
-   FOOTER
-========================================================= */
-footer {
-  text-align: center;
-  color: var(--soft);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  padding: 30px 15px 50px;
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
 @media (max-width: 600px) {
   .hero { padding-top: 42px; }
   .hero-doodle { display: none; }
@@ -451,22 +138,12 @@ footer {
   .day { grid-template-columns: 57px 1fr; }
   .stub .num { font-size: 22px; }
   .day-body { padding: 13px 13px 14px; }
-  
-  /* 行動端也強制小巧，移除全寬設定 */
-  .photo {
-    width: 40%; /* 保持小體積 */
-    aspect-ratio: auto; /* 移除任何寬高限制 */
-    margin: 10px 0 13px;
-  }
-  
+  .photo { width: 84px; margin: 0 0 6px 10px; padding: 5px 5px 14px; }
+  .photo img { height: 62px; }
   .day-title { font-size: 16px; }
   .places { font-size: 12px; }
   .chapter { margin-top: 38px; }
 }
-
-/* =========================================================
-   VERY SMALL PHONE
-========================================================= */
 @media (max-width: 380px) {
   .day { grid-template-columns: 53px 1fr; }
   .day-body { padding: 12px 11px 13px; }
@@ -476,19 +153,14 @@ footer {
 </head>
 <body>
 
-<!-- =========================================================
-     HERO
-========================================================= -->
 <header class="hero">
   <div class="hero-doodle doodle-plane">✈</div>
   <div class="hero-doodle doodle-star">✦</div>
   <div class="hero-doodle doodle-heart">♡</div>
   <div class="hero-doodle doodle-spark">✧</div>
-
   <div class="eyebrow">HONEYMOON TRIP · 2026.09.18 — 10.10</div>
   <h1>歐洲蜜月</h1>
   <div class="hero-sub">23 天 · 倫敦 → 哥本哈根 → 特羅姆瑟 → 巴黎</div>
-
   <div class="route">
     <div class="route-line"></div>
     <div class="stop london"><span class="dot"></span><span class="city">倫敦</span><span class="date">9/18 — 9/25</span></div>
@@ -498,19 +170,10 @@ footer {
   </div>
 </header>
 
-<!-- =========================================================
-     NAV
-========================================================= -->
-<nav class="navbar">
-  <div class="navbar-inner" id="navbar"></div>
-</nav>
+<nav class="navbar"><div class="navbar-inner" id="navbar"></div></nav>
 
 <main class="wrap">
 <div id="days"></div>
-
-<!-- =========================================================
-     HOTELS
-========================================================= -->
 <section class="info-block">
   <h3>住宿</h3>
   <div class="hotel-row"><span>Best Western Buckingham Palace Rd<span class="hotel-city">倫敦</span></span></div>
@@ -523,67 +186,47 @@ footer {
 <footer>Luka & Grace · Honeymoon in Europe · 2026</footer>
 
 <script>
-/* =========================================================
-   PHOTO LIBRARY - 全部替換為真實、有效的圖片連結
-   我們使用 Unsplash 上的高品質免費圖片，並已確認連結有效。
-========================================================= */
+const WM = (name) => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(name)}?width=400`;
+
 const PHOTOS = {
-  // LONDON
-  2: "https://images.unsplash.com/photo-1549413247-97597f7f2b1c?auto=format&fit=crop&w=800&q=80", // 大笨鐘
-  3: "https://images.unsplash.com/photo-1598284534720-ff0777553f19?auto=format&fit=crop&w=800&q=80", // 倫敦塔橋
-  4: "https://images.unsplash.com/photo-1627814674704-585a97576f30?auto=format&fit=crop&w=800&q=80", // 巨石陣
-  5: "https://images.unsplash.com/photo-1579737920150-f80e9d6d8438?auto=format&fit=crop&w=800&q=80", // 大英博物館
-  6: "https://images.unsplash.com/photo-1541018598160-c2bd41639f7a?auto=format&fit=crop&w=800&q=80", // 七姊妹白崖
-  7: "https://images.unsplash.com/photo-1618683141525-07ac7a918341?auto=format&fit=crop&w=800&q=80", // 海德公園
-  
-  // COPENHAGEN
-  9: "https://images.unsplash.com/photo-1558273618-9c5950d24e10?auto=format&fit=crop&w=800&q=80", // 新港
-  10: "https://images.unsplash.com/photo-1629813289043-443b8118041c?auto=format&fit=crop&w=800&q=80", // 鹿園
-  11: "https://images.unsplash.com/photo-1628185011707-1679d6b7b64f?auto=format&fit=crop&w=800&q=80", // 羅森堡宮
-  
-  // TROMSØ
-  12: "https://images.unsplash.com/photo-1578330722304-4537bb2f6120?auto=format&fit=crop&w=800&q=80", // 極光
-  13: "https://images.unsplash.com/photo-1618413988691-7663f70f6d61?auto=format&fit=crop&w=800&q=80", // 峽灣
-  14: "https://images.unsplash.com/photo-1603120157917-7613b4822709?auto=format&fit=crop&w=800&q=80", // 馴鹿
-  15: "https://images.unsplash.com/photo-1531317540213-9a3d4f826317?auto=format&fit=crop&w=800&q=80", // 北極大教堂
-  
-  // PARIS
-  16: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=800&q=80", // 艾菲爾鐵塔
-  17: "https://images.unsplash.com/photo-1596791167425-4f08e50b1d30?auto=format&fit=crop&w=800&q=80", // 蒙馬特
-  18: "https://images.unsplash.com/photo-1582236528859-99434863c0a4?auto=format&fit=crop&w=800&q=80", // 羅浮宮
-  19: "https://images.unsplash.com/photo-1550340499-a6c60ba1f3d8?auto=format&fit=crop&w=800&q=80", // 巴黎聖母院
-  20: "https://images.unsplash.com/photo-1518388916327-04677761001c?auto=format&fit=crop&w=800&q=80", // 塞納河遊船
-  21: "https://images.unsplash.com/photo-1518116572793-1b9ac5579848?auto=format&fit=crop&w=800&q=80", // 凡爾賽宮
-  22: "https://images.unsplash.com/photo-1610334800350-0a3f8a481c7f?auto=format&fit=crop&w=800&q=80"  // 聖米歇爾山
+  2: WM("London_Eye,_Big_Ben.JPG"),
+  3: WM("Tower_Bridge_from_west_River_Thames_London_England_01.jpg"),
+  4: WM("Stonehenge_back_wide.jpg"),
+  5: WM("British_Museum_-_Great_Court.JPG"),
+  6: WM("Seven_Sisters_Cliffs_landscape,_UK,_in_autumn.jpg"),
+  7: WM("The_Serpentine_Hyde_Park_London.jpg"),
+  9: WM("Copenhagen_-_Nyhavn_houses.jpg"),
+  12: WM("Aurora_Borealis_I.jpg"),
+  16: WM("Eiffel_tower_paris_france.jpg"),
+  17: WM("Montmartre_Sacre_coeur.JPG"),
+  18: WM("La_Pyramide_du_Louvre.JPG"),
+  21: WM("Versailles_Palace.jpg")
 };
 
-/* =========================================================
-   DAYS
-========================================================= */
 const DAYS = [
   { d:1, date:"9/18", wd:"五", city:"london", title:"出發日", sub:"高雄 → 泰國轉機 → 倫敦", food:"飛機餐", places:"抵達倫敦・飯店入住" },
   { d:2, date:"9/19", wd:"六", city:"london", title:"大笨鐘", sub:"Big Ben × Westminster × 倫敦市中心", food:"咖啡｜義大利麵｜PHO｜啤酒", places:"大笨鐘・倫敦眼・國家美術館・柯芬園・SOHO" },
   { d:3, date:"9/20", wd:"日", city:"london", title:"倫敦塔橋", sub:"Tower Bridge × 波羅市場", food:"咖啡｜波羅市場小吃｜牛排", places:"倫敦塔橋・倫敦塔・波羅市場・空中花園・聖保羅大教堂・Shoreditch" },
   { d:4, date:"9/21", wd:"一", city:"london", title:"巨石陣", sub:"Stonehenge × 溫莎城堡 × 牛津", food:"跟團午餐｜漢堡", places:"巨石陣・溫莎城堡・牛津大學" },
   { d:5, date:"9/22", wd:"二", city:"london", title:"大英博物館", sub:"British Museum × 倫敦市區", food:"抹茶｜義大利麵｜市集小吃", places:"大英博物館・9¾月台・肯頓市集・獅子王音樂劇" },
-  { d:6, date:"9/23", wd:"三", city:"london", title:"Seven Sisters Cliffs", sub:"七姊妹白崖 × 布萊頓", food:"早餐｜壽司", places:"Seven Sisters Cliffs・比奇角・布萊頓" },
-  { d:7, date:"9/24", wd:"四", city:"london", title:"Hyde Park", sub:"皇家倫敦 × Hyde Park", food:"咖啡｜印度菜｜牛排", places:"騎兵交接・聖詹姆士公園・V&A・自然史博物館・Hyde Park" },
+  { d:6, date:"9/23", wd:"三", city:"london", title:"七姊妹白崖", sub:"Seven Sisters Cliffs × 布萊頓", food:"早餐｜壽司", places:"Seven Sisters Cliffs・比奇角・布萊頓" },
+  { d:7, date:"9/24", wd:"四", city:"london", title:"海德公園", sub:"皇家倫敦 × Hyde Park", food:"咖啡｜印度菜｜牛排", places:"騎兵交接・聖詹姆士公園・V&A・自然史博物館・Hyde Park" },
   { d:8, date:"9/25", wd:"五", city:"cph", title:"移動日｜倫敦 → 哥本哈根", sub:"飛往丹麥", food:"咖啡｜超市採買", places:"倫敦 → 哥本哈根・飯店入住" },
   { d:9, date:"9/26", wd:"六", city:"cph", title:"新港", sub:"Nyhavn × 哥本哈根經典散步", food:"麵包｜漢堡｜塔可", places:"新港・小美人魚・腓特列教堂・阿美林宮・歌劇院" },
-  { d:10, date:"9/27", wd:"日", city:"cph", title:"Jægersborg Dyrehave 鹿園", sub:"鹿園 × 海岸單車", food:"麵包｜披薩｜咖啡｜炸雞堡", places:"Jægersborg Dyrehave 鹿園・海岸・單車" },
+  { d:10, date:"9/27", wd:"日", city:"cph", title:"鹿園", sub:"Dyrehave 鹿園 × 海岸單車", food:"麵包｜披薩｜咖啡｜炸雞堡", places:"Jægersborg Dyrehave 鹿園・海岸・單車" },
   { d:11, date:"9/28", wd:"一", city:"cph", title:"羅森堡宮", sub:"Rosenborg Castle × Strøget", food:"市集小吃｜熱狗｜咖啡｜墨西哥捲", places:"羅森堡宮・圓塔・Strøget・ILLUM・Hay House" },
   { d:12, date:"9/29", wd:"二", city:"tromso", title:"極光", sub:"哥本哈根 → 特羅姆瑟", food:"超市採買｜極光團", places:"抵達・飯店入住・北極光之旅" },
   { d:13, date:"9/30", wd:"三", city:"tromso", title:"峽灣探險", sub:"Arctic Fjord Adventure", food:"早餐｜熱狗｜極光團", places:"峽灣・海岸風景・北極光" },
   { d:14, date:"10/1", wd:"四", city:"tromso", title:"挪威馴鹿", sub:"Reindeer × 薩米文化", food:"早餐｜泡麵／簡單晚餐", places:"馴鹿餵養・薩米文化・北極光" },
-  { d:15, date:"10/2", wd:"五", city:"tromso", title:"Arctic Cathedral", sub:"北極大教堂 × 纜車 × 自行追極光", food:"咖啡｜鹿肉披薩", places:"Arctic Cathedral・纜車・觀景台・自行追極光" },
+  { d:15, date:"10/2", wd:"五", city:"tromso", title:"北極大教堂", sub:"Arctic Cathedral × 纜車 × 自行追極光", food:"咖啡｜鹿肉披薩", places:"Arctic Cathedral・纜車・觀景台・自行追極光" },
   { d:16, date:"10/3", wd:"六", city:"paris", title:"艾菲爾鐵塔", sub:"特羅姆瑟 → 巴黎", food:"咖啡｜塔可｜披薩", places:"艾菲爾鐵塔・凱旋門・巴黎街景" },
-  { d:17, date:"10/4", wd:"日", city:"paris", title:"Montmartre", sub:"蒙馬特 × 聖心堂 × 巴黎散步", food:"咖啡｜薄餅｜麻辣燙｜法餐", places:"愛牆・蒙馬特街道・聖心堂・拉法葉百貨・巴黎歌劇院" },
-  { d:18, date:"10/5", wd:"一", city:"paris", title:"Palais du Louvre", sub:"羅浮宮 × 杜樂麗花園", food:"麵包｜麻辣燙／PHO｜馬卡龍｜法餐", places:"羅浮宮・杜樂麗花園・橘園美術館・香榭麗舍・凱旋門" },
+  { d:17, date:"10/4", wd:"日", city:"paris", title:"蒙馬特", sub:"Montmartre × 聖心堂 × 巴黎散步", food:"咖啡｜薄餅｜麻辣燙｜法餐", places:"愛牆・蒙馬特街道・聖心堂・拉法葉百貨・巴黎歌劇院" },
+  { d:18, date:"10/5", wd:"一", city:"paris", title:"羅浮宮", sub:"Palais du Louvre × 杜樂麗花園", food:"麵包｜麻辣燙／PHO｜馬卡龍｜法餐", places:"羅浮宮・杜樂麗花園・橘園美術館・香榭麗舍・凱旋門" },
   { d:19, date:"10/6", wd:"二", city:"paris", title:"巴黎聖母院", sub:"Notre-Dame × Île de la Cité", food:"咖啡｜PHO｜蛋塔｜市場小吃", places:"巴黎聖母院・聖徒禮拜堂・瑪黑區・畢卡索美術館・孚日廣場" },
   { d:20, date:"10/7", wd:"三", city:"paris", title:"塞納河遊船", sub:"Seine River Cruise × 巴黎河岸", food:"麵包｜鹹薄餅｜可頌｜義大利麵", places:"先賢祠・盧森堡公園・奧賽美術館・塞納河遊船" },
   { d:21, date:"10/8", wd:"四", city:"paris", title:"凡爾賽宮", sub:"Versailles × 巴黎街拍", food:"三明治｜生蠔 Happy Hour", places:"巴黎街拍・凡爾賽宮・花園・腳踏車" },
-  { d:22, date:"10/9", wd:"五", city:"paris", title:"Mont-Saint-Michel", sub:"聖米歇爾山一日遊", food:"跟團餐食", places:"聖米歇爾山・修道院" },
-  { d:23, date:"10/10", wd:"六", city:"paris", title:"賦歸", sub:"巴黎 → 泰國轉機 → 高雄", food:"飛機餐", places:"退房・前往機場・回家" }
+  { d:22, date:"10/9", wd:"五", city:"paris", title:"聖米歇爾山", sub:"Mont-Saint-Michel 一日遊", food:"跟團餐食", places:"聖米歇爾山・修道院" },
+  { d:23, date:"10/10", wd:"六", city:"paris", title:"回家囉", sub:"巴黎 → 泰國轉機 → 高雄", food:"飛機餐", places:"退房・前往機場・回家" }
 ];
 
 const CHAPTERS = {
@@ -593,14 +236,14 @@ const CHAPTERS = {
   paris: { name:"PARIS", label:"巴黎", nights:"10/3 — 10/10 · 8 天" }
 };
 
+const DECOS = ["✦","♡","✧","☆","🌟","💫"];
+
 const nav = document.getElementById("navbar");
 DAYS.forEach(day => {
   const button = document.createElement("button");
   button.className = "pill";
-  button.innerHTML = `D${day.d}`;
-  button.onclick = () => {
-    document.getElementById(`day-${day.d}`).scrollIntoView({ behavior:"smooth", block:"start" });
-  };
+  button.textContent = `D${day.d}`;
+  button.onclick = () => document.getElementById(`day-${day.d}`).scrollIntoView({ behavior:"smooth", block:"start" });
   nav.appendChild(button);
 });
 
@@ -608,46 +251,28 @@ const daysEl = document.getElementById("days");
 let lastCity = "";
 
 DAYS.forEach(day => {
-  // CITY CHAPTER
   if (day.city !== lastCity) {
     const c = CHAPTERS[day.city];
     daysEl.insertAdjacentHTML("beforeend", `
       <div class="chapter ${day.city}">
-        <div class="country-stamp">
-          <div class="en">${c.name}</div>
-          <div class="tiny">HONEYMOON</div>
-        </div>
-        <div class="chapter-copy">
-          <h2>${c.label}</h2>
-          <p>${c.nights}</p>
-        </div>
+        <div class="country-stamp"><div class="en">${c.name}</div><div class="tiny">HONEYMOON</div></div>
+        <div class="chapter-copy"><h2>${c.label}</h2><p>${c.nights}</p></div>
       </div>
     `);
     lastCity = day.city;
   }
 
-  // PHOTO HTML
   let photoHTML = "";
   if (PHOTOS[day.d]) {
-    photoHTML = `
-      <div class="photo">
-        <img src="${PHOTOS[day.d]}" alt="${day.title}" loading="lazy">
-      </div>
-    `;
+    const tiltClass = day.d % 2 === 0 ? "tilt-r" : "tilt-l";
+    photoHTML = `<div class="photo ${tiltClass}"><img src="${PHOTOS[day.d]}" alt="${day.title}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.photo').style.display='none'"></div>`;
   }
 
-  // FOOD HTML
   let foodHTML = "";
   if (day.food) {
-    foodHTML = `
-      <div class="food">
-        <div class="food-label">EAT</div>
-        <div class="food-text">${day.food}</div>
-      </div>
-    `;
+    foodHTML = `<div class="food"><div class="food-label">EAT</div><div class="food-text">${day.food}</div></div>`;
   }
 
-  // DAY CARD
   daysEl.insertAdjacentHTML("beforeend", `
     <article class="day" id="day-${day.d}">
       <div class="stub ${day.city}">
@@ -656,12 +281,9 @@ DAYS.forEach(day => {
         <div class="dt">${day.date}</div>
       </div>
       <div class="day-body">
-        <div class="day-decoration">
-          ${day.d % 3 === 0 ? "✦" : day.d % 3 === 1 ? "♡" : "✧"}
-        </div>
-        <h3 class="day-title">${day.title}</h3>
-        <div class="day-sub">${day.sub}</div>
         ${photoHTML}
+        <span class="day-decoration">${DECOS[day.d % DECOS.length]}</span><h3 class="day-title">${day.title}</h3>
+        <div class="day-sub">${day.sub}</div>
         <div class="places">${day.places}</div>
         ${foodHTML}
       </div>
@@ -677,16 +299,12 @@ const observer = new IntersectionObserver(entries => {
       const id = entry.target.id.replace("day-","");
       pills.forEach(p => p.classList.remove("active"));
       const active = [...pills].find(p => p.textContent.trim() === `D${id}`);
-      if (active) {
-        active.classList.add("active");
-        active.scrollIntoView({ behavior:"smooth", block:"nearest", inline:"center" });
-      }
+      if (active) { active.classList.add("active"); active.scrollIntoView({ behavior:"smooth", block:"nearest", inline:"center" }); }
     }
   });
 }, { rootMargin: "-25% 0px -65% 0px" });
 
 dayCards.forEach(day => observer.observe(day));
 </script>
-
 </body>
 </html>
