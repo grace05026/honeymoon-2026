@@ -221,6 +221,32 @@
   .body-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
   .headline{font-family:'Fraunces',serif;font-weight:600;font-size:16px;margin:0 0 2px;}
   .subline{font-size:12px;color:var(--ink-soft);margin:0 0 10px;}
+  
+  /* 新增：圖片展示畫廊區 */
+  .gallery-grid{
+    display:flex;
+    gap:8px;
+    margin:10px 0 14px;
+    overflow-x:auto;
+    padding-bottom:4px;
+  }
+  .gallery-grid::-webkit-scrollbar{height:4px;}
+  .gallery-grid::-webkit-scrollbar-thumb{background:var(--rule);border-radius:4px;}
+  .thumb-box{
+    flex:0 0 110px;
+    height:75px;
+    border-radius:8px;
+    overflow:hidden;
+    position:relative;
+    border:1px solid var(--rule);
+    background:var(--paper-2);
+  }
+  .thumb-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
   .check{
     flex:0 0 auto;
     width:26px;height:26px;border-radius:50%;
@@ -356,166 +382,167 @@ const CHAPTERS = {
 // helper to build a linked item
 const L=(text,url)=>({text,url});
 
+// 於 DAYS 中加入 images 欄位（放置預設展示縮圖，您可替換為實際圖片網址）
 const DAYS = [
-{d:1,date:'9/18',wd:'五',city:'london',title:'出發日',subline:'高雄 → 泰國轉機 → 倫敦',sections:[]},
+{d:1,date:'9/18',wd:'五',city:'london',title:'✈️ 出發日',subline:'高雄 → 泰國轉機 → 倫敦',images:['https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=300'],sections:[]},
 
-{d:2,date:'9/19',wd:'六',city:'london',title:'倫敦市中心｜倫敦眼＆柯芬園',subline:'早上抵達，飯店放行李',sections:[
-  {label:'早餐',items:[L('咖啡','https://maps.app.goo.gl/jDhffTjvz4cFLtZf6')]},
-  {label:'景點',items:[L('倫敦眼','https://maps.app.goo.gl/uW324wKSeT1j1fs19'),L('大本鐘','https://maps.app.goo.gl/sFh3T6sPbKq4Muiv5'),L('國家美術館','https://maps.app.goo.gl/VdnP8BYkcvXaAJdY6')]},
-  {label:'午餐 · 已訂 12:00',items:[L('義大利麵','https://maps.app.goo.gl/2wtj7vTjzUdYgF1T9')]},
-  {label:'下午',items:[L('柯芬園市集','https://maps.app.goo.gl/n2VQBJXGkgPE2AFF7'),L('蜂蜜吐司','https://maps.app.goo.gl/ktcHwgkwRcTBWqW7A'),L('咖啡','https://maps.app.goo.gl/tQnebqUaSAcSr4xR7'),'SOHO 逛街',L('冰淇淋','https://maps.app.goo.gl/Rh34tt9svfJs5dVGA'),L('咖啡','https://maps.app.goo.gl/BVAY4BcVq9s7KP2QA')]},
-  {label:'晚餐 · 已訂 6:30（7折）',items:[L('PHO','https://maps.app.goo.gl/6WofFmc46uK39VDV8'),L('啤酒','https://maps.app.goo.gl/97g3A3eENoF9dgKo7')]},
-  {label:'其他',items:[L('超市採買','https://maps.app.goo.gl/sThwBEUhhPPv4vsw7')]}
+{d:2,date:'9/19',wd:'六',city:'london',title:'倫敦市中心｜倫敦眼＆柯芬園',subline:'早上抵達，飯店放行李',images:['https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=300','https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=300'],sections:[
+  {label:'☕ 早餐',items:[L('咖啡','https://maps.app.goo.gl/jDhffTjvz4cFLtZf6')]},
+  {label:'📍 景點',items:[L('倫敦眼','https://maps.app.goo.gl/uW324wKSeT1j1fs19'),L('大本鐘','https://maps.app.goo.gl/sFh3T6sPbKq4Muiv5'),L('國家美術館','https://maps.app.goo.gl/VdnP8BYkcvXaAJdY6')]},
+  {label:'🍝 午餐 · 已訂 12:00',items:[L('義大利麵','https://maps.app.goo.gl/2wtj7vTjzUdYgF1T9')]},
+  {label:'🛍️ 下午',items:[L('柯芬園市集','https://maps.app.goo.gl/n2VQBJXGkgPE2AFF7'),L('蜂蜜吐司','https://maps.app.goo.gl/ktcHwgkwRcTBWqW7A'),L('咖啡','https://maps.app.goo.gl/tQnebqUaSAcSr4xR7'),'SOHO 逛街',L('冰淇淋','https://maps.app.goo.gl/Rh34tt9svfJs5dVGA'),L('咖啡','https://maps.app.goo.gl/BVAY4BcVq9s7KP2QA')]},
+  {label:'🍷 晚餐 · 已訂 6:30（7折）',items:[L('PHO','https://maps.app.goo.gl/6WofFmc46uK39VDV8'),L('啤酒','https://maps.app.goo.gl/97g3A3eENoF9dgKo7')]},
+  {label:'🛒 其他',items:[L('超市採買','https://maps.app.goo.gl/sThwBEUhhPPv4vsw7')]}
 ]},
 
-{d:3,date:'9/20',wd:'日',city:'london',title:'倫敦塔橋＆波羅市場',subline:'9:00 出門',sections:[
-  {label:'上午',items:[L('倫敦塔橋','https://maps.app.goo.gl/v3JTdPefb6QkB6Vy8'),L('倫敦塔','https://maps.app.goo.gl/qmFKV4rrs3HA7jHp8'),L('咖啡','https://maps.app.goo.gl/o9p951SgEBM1iVqAA')]},
-  {label:'午餐',items:[L('波羅市場','https://maps.app.goo.gl/W9k3Xdvm1sWqutJ99'),'（',L('甜甜圈','https://maps.app.goo.gl/A8U419SWtn1z2E6K9'),'、',L('肉捲','https://maps.app.goo.gl/fJLi3jXxRZ9RG8Yw5'),'、燉飯）']},
-  {label:'下午',items:[L('空中花園','https://maps.app.goo.gl/aMvDrXjzMMGmXanS8'),L('（預約）','https://tickets.skygarden.london/WebStore/shop/viewitems.aspx?cg=SkyGarden&c=Tickets'),L('咖啡','https://maps.app.goo.gl/EBuifxJCopE46y25A'),L('聖保羅教堂','https://maps.app.goo.gl/XTNc94L5wFZqhHte7')]},
-  {label:'逛街',items:[L('市集','https://maps.app.goo.gl/K5i5c8UotFbp5vvQ8'),L('選物店','https://maps.app.goo.gl/kUqbBnYXFmswSEaC6'),L('古著','https://maps.app.goo.gl/fjA3t3kDFfsMrAvm6'),'、Shoreditch（買早餐',L('可頌','https://maps.app.goo.gl/rCUnDP1K8xVvnoTw8'),'、',L('貝果','https://maps.app.goo.gl/aCV6p1Kfark7jEYh7'),'、A.P.C）']},
-  {label:'晚餐 · 已訂 6:30',items:[L('牛排','https://maps.app.goo.gl/bsWqodzpK6phttew7')]}
+{d:3,date:'9/20',wd:'日',city:'london',title:'倫敦塔橋＆波羅市場',subline:'9:00 出門',images:['https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=300'],sections:[
+  {label:'📍 上午',items:[L('倫敦塔橋','https://maps.app.goo.gl/v3JTdPefb6QkB6Vy8'),L('倫敦塔','https://maps.app.goo.gl/qmFKV4rrs3HA7jHp8'),L('咖啡','https://maps.app.goo.gl/o9p951SgEBM1iVqAA')]},
+  {label:'🍔 午餐',items:[L('波羅市場','https://maps.app.goo.gl/W9k3Xdvm1sWqutJ99'),'（',L('甜甜圈','https://maps.app.goo.gl/A8U419SWtn1z2E6K9'),'、',L('肉捲','https://maps.app.goo.gl/fJLi3jXxRZ9RG8Yw5'),'、燉飯）']},
+  {label:'🌿 下午',items:[L('空中花園','https://maps.app.goo.gl/aMvDrXjzMMGmXanS8'),L('（預約）','https://tickets.skygarden.london/WebStore/shop/viewitems.aspx?cg=SkyGarden&c=Tickets'),L('咖啡','https://maps.app.goo.gl/EBuifxJCopE46y25A'),L('聖保羅教堂','https://maps.app.goo.gl/XTNc94L5wFZqhHte7')]},
+  {label:'🛍️ 逛街',items:[L('市集','https://maps.app.goo.gl/K5i5c8UotFbp5vvQ8'),L('選物店','https://maps.app.goo.gl/kUqbBnYXFmswSEaC6'),L('古著','https://maps.app.goo.gl/fjA3t3kDFfsMrAvm6'),'、Shoreditch（買早餐',L('可頌','https://maps.app.goo.gl/rCUnDP1K8xVvnoTw8'),'、',L('貝果','https://maps.app.goo.gl/aCV6p1Kfark7jEYh7'),'、A.P.C）']},
+  {label:'🥩 晚餐 · 已訂 6:30',items:[L('牛排','https://maps.app.goo.gl/bsWqodzpK6phttew7')]}
 ]},
 
-{d:4,date:'9/21',wd:'一',city:'london',title:'巨石陣＋溫莎城堡＋牛津大學一日遊',subline:'7:15 出門｜跟團（贈午餐中文導遊）',sections:[
-  {label:'行程',items:[L('英國巨石陣＋溫莎城堡＋牛津大學一日遊（含牛津精講）','https://www.kkday.com/zh-tw/product/181304')]},
-  {label:'集合 7:30',items:[L('集合地點','https://maps.app.goo.gl/agKrt39aAUm4sryn7')]},
-  {label:'晚餐',items:[L('漢堡','https://maps.app.goo.gl/4tcD7XkydLbN29RNA')]}
+{d:4,date:'9/21',wd:'一',city:'london',title:'巨石陣＋溫莎城堡＋牛津大學一日遊',subline:'7:15 出門｜跟團（贈午餐中文導遊）',images:['https://images.unsplash.com/photo-1599833975787-5c143f373c30?w=300'],sections:[
+  {label:'🚌 行程',items:[L('英國巨石陣＋溫莎城堡＋牛津大學一日遊（含牛津精講）','https://www.kkday.com/zh-tw/product/181304')]},
+  {label:'📍 集合 7:30',items:[L('集合地點','https://maps.app.goo.gl/agKrt39aAUm4sryn7')]},
+  {label:'🍔 晚餐',items:[L('漢堡','https://maps.app.goo.gl/4tcD7XkydLbN29RNA')]}
 ],note:'跟團一日跑三個景點，行程較趕，心理上先有預期。'},
 
-{d:5,date:'9/22',wd:'二',city:'london',title:'大英博物館＆獅子王音樂劇',subline:'9:00 出門',sections:[
-  {label:'早餐',items:['TGTG、',L('抹茶','https://maps.app.goo.gl/a9iBfsRWM8VkGh3w5')]},
-  {label:'上午 · 已預約 10:00',items:[L('大英博物館','https://maps.app.goo.gl/X7i2bTtPrSCkCXqz9')]},
-  {label:'午餐 · 已訂 13:00（5折）',items:[L('義大利麵','https://maps.app.goo.gl/FBXvj5PTscBA8FVA8')]},
-  {label:'下午',items:[L('9¾月台','https://maps.app.goo.gl/3thqix5F1gjaT2k8A'),L('肯頓市集','https://maps.app.goo.gl/LgCTroQ8M55Zqy2d9'),'（',L('牛肉捲','https://maps.app.goo.gl/YcMX5hSRd2kiFLon8'),'、',L('炸魚薯條','https://maps.app.goo.gl/TR3GUkEX2groRH9FA'),'、買早餐）5 點離開去搭車']},
-  {label:'晚上 · 已預約 7:30',items:[L('獅子王音樂劇','https://maps.app.goo.gl/og7R4JufNbQ6ZRXt7?g_st=ic')]}
+{d:5,date:'9/22',wd:'二',city:'london',title:'大英博物館＆獅子王音樂劇',subline:'9:00 出門',images:['https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=300'],sections:[
+  {label:'☕ 早餐',items:['TGTG、',L('抹茶','https://maps.app.goo.gl/a9iBfsRWM8VkGh3w5')]},
+  {label:'🏛️ 上午 · 已預約 10:00',items:[L('大英博物館','https://maps.app.goo.gl/X7i2bTtPrSCkCXqz9')]},
+  {label:'🍝 午餐 · 已訂 13:00（5折）',items:[L('義大利麵','https://maps.app.goo.gl/FBXvj5PTscBA8FVA8')]},
+  {label:'🛍️ 下午',items:[L('9¾月台','https://maps.app.goo.gl/3thqix5F1gjaT2k8A'),L('肯頓市集','https://maps.app.goo.gl/LgCTroQ8M55Zqy2d9'),'（',L('牛肉捲','https://maps.app.goo.gl/YcMX5hSRd2kiFLon8'),'、',L('炸魚薯條','https://maps.app.goo.gl/TR3GUkEX2groRH9FA'),'、買早餐）5 點離開去搭車']},
+  {label:'🎭 晚上 · 已預約 7:30',items:[L('獅子王音樂劇','https://maps.app.goo.gl/og7R4JufNbQ6ZRXt7?g_st=ic')]}
 ]},
 
-{d:6,date:'9/23',wd:'三',city:'london',title:'七姊妹白崖＆布萊頓',subline:'7:50 出門｜跟團（中文陪爬陪拍）',sections:[
-  {label:'行程',items:[L('倫敦七姊妹白崖＋布萊頓中文一日遊（陪爬陪拍登頂比奇角）','https://hk.trip.com/things-to-do/detail/88974473?language=HK&locale=zh_hk')]},
-  {label:'集合 8:10',items:[L('集合地點','https://maps.app.goo.gl/agKrt39aAUm4sryn7')]},
-  {label:'晚餐',items:[L('壽司','https://maps.app.goo.gl/fm4KZSv5dV9ic4hS9'),'／TGTG']}
+{d:6,date:'9/23',wd:'三',city:'london',title:'七姊妹白崖＆布萊頓',subline:'7:50 出門｜跟團（中文陪爬陪拍）',images:['https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300'],sections:[
+  {label:'🚌 行程',items:[L('倫敦七姊妹白崖＋布萊頓中文一日遊（陪爬陪拍登頂比奇角）','https://hk.trip.com/things-to-do/detail/88974473?language=HK&locale=zh_hk')]},
+  {label:'📍 集合 8:10',items:[L('集合地點','https://maps.app.goo.gl/agKrt39aAUm4sryn7')]},
+  {label:'🍣 晚餐',items:[L('壽司','https://maps.app.goo.gl/fm4KZSv5dV9ic4hS9'),'／TGTG']}
 ]},
 
 {d:7,date:'9/24',wd:'四',city:'london',title:'騎兵交接＆南肯辛頓博物館群',subline:'9:00 出門',sections:[
-  {label:'早餐',items:[L('咖啡','https://maps.app.goo.gl/xjRdnyeicMKXSe8h7')]},
-  {label:'上午',items:[L('騎兵交接（11:00）','https://maps.app.goo.gl/GrK7Cz6qC1xiuAd67'),L('聖詹姆士公園','https://maps.app.goo.gl/nY7HpdKX7ZTjU1gF6')]},
-  {label:'午餐 · 已訂 13:00（5折）',items:[L('印度菜','https://maps.app.goo.gl/Qrff767pVBnKve2m9')]},
-  {label:'下午',items:[L('咖啡','https://maps.app.goo.gl/GxUV7YU86oRZhWpQ8'),L('V&A博物館','https://maps.app.goo.gl/f7sSbU1uHXedgwiE6'),L('自然史博物館','https://maps.app.goo.gl/ZA4P4R5s6asLKVgn8'),L('海德公園','https://maps.app.goo.gl/mTGqFcChc4QDVdhj6')]},
-  {label:'晚餐',items:[L('牛排','https://maps.app.goo.gl/CQyxTfmoR5g5p2rk8')]}
+  {label:'☕ 早餐',items:[L('咖啡','https://maps.app.goo.gl/xjRdnyeicMKXSe8h7')]},
+  {label:'👑 上午',items:[L('騎兵交接（11:00）','https://maps.app.goo.gl/GrK7Cz6qC1xiuAd67'),L('聖詹姆士公園','https://maps.app.goo.gl/nY7HpdKX7ZTjU1gF6')]},
+  {label:'咖喱 午餐 · 已訂 13:00（5折）',items:[L('印度菜','https://maps.app.goo.gl/Qrff767pVBnKve2m9')]},
+  {label:'🏛️ 下午',items:[L('咖啡','https://maps.app.goo.gl/GxUV7YU86oRZhWpQ8'),L('V&A博物館','https://maps.app.goo.gl/f7sSbU1uHXedgwiE6'),L('自然史博物館','https://maps.app.goo.gl/ZA4P4R5s6asLKVgn8'),L('海德公園','https://maps.app.goo.gl/mTGqFcChc4QDVdhj6')]},
+  {label:'🥩 晚餐',items:[L('牛排','https://maps.app.goo.gl/CQyxTfmoR5g5p2rk8')]}
 ]},
 
-{d:8,date:'9/25',wd:'五',city:'cph',title:'移動日｜倫敦 → 哥本哈根',subline:'9:00 出門，9:30 搭巴士',sections:[
-  {label:'交通',items:[L('機場巴士','https://maps.app.goo.gl/G3nzn71w5gWuuSZJ8'),'（',L('National Express','https://www.nationalexpress.com/en'),'）倫敦→哥本哈根直飛，線上 Check-in',L('（出發準備）','https://www.dcard.tw/f/travel/p/256435224')]},
-  {label:'抵達',items:['飯店 check-in']},
-  {label:'晚餐',items:[L('超市採買','https://maps.app.goo.gl/o6ERi4KkkJuSGoHw5')]}
+{d:8,date:'9/25',wd:'五',city:'cph',title:'✈️ 移動日｜倫敦 → 哥本哈根',subline:'9:00 出門，9:30 搭巴士',sections:[
+  {label:'🚌 交通',items:[L('機場巴士','https://maps.app.goo.gl/G3nzn71w5gWuuSZJ8'),'（',L('National Express','https://www.nationalexpress.com/en'),'）倫敦→哥本哈根直飛，線上 Check-in',L('（出發準備）','https://www.dcard.tw/f/travel/p/256435224')]},
+  {label:'🏨 抵達',items:['飯店 check-in']},
+  {label:'🛒 晚餐',items:[L('超市採買','https://maps.app.goo.gl/o6ERi4KkkJuSGoHw5')]}
 ]},
 
-{d:9,date:'9/26',wd:'六',city:'cph',title:'新港＆小美人魚雕像',subline:'9:00 出門',sections:[
-  {label:'早餐',items:[L('Hart 麵包','https://maps.app.goo.gl/5kxFRP8c9ysTc6JW9'),'、',L('Atelier September','https://maps.app.goo.gl/bF9zep1NhsproLjE9?g_st=ipc')]},
-  {label:'上午',items:[L('噴泉','https://maps.app.goo.gl/mcenXtA2hLHTgniD6'),L('小美人魚雕像','https://maps.app.goo.gl/rEx5orKNDMpQHJvd7?g_st=ipc'),L('腓特列教堂','https://maps.app.goo.gl/GZ9GuoQ3iPfsXxjC8'),L('阿美林宮堡（衛兵交接 12:00）','https://maps.app.goo.gl/QrHnwPS3S5B4XLg56?g_st=ipc')]},
-  {label:'午餐',items:[L('漢堡','https://maps.app.goo.gl/wxwrUwehHRxLyTHw9')]},
-  {label:'下午',items:[L('新港拍照','https://maps.app.goo.gl/VC6V75485yDbKa9g6'),L('咖啡','https://maps.app.goo.gl/uvHD7nAoMviYFd9u9'),L('哥本哈根歌劇院','https://maps.app.goo.gl/YYCkqxsRUDej5UMQ9'),L('國家圖書館','https://maps.app.goo.gl/qWG9sSn434o7DZWS8'),'、逛街']},
-  {label:'晚餐',items:[L('塔可','https://maps.app.goo.gl/7Ehnb92q9gEwJbVu8')]},
-  {label:'夜間',items:[L('安徒生','https://maps.app.goo.gl/LfNTGwtrL1kuK97E7'),L('超市','https://maps.app.goo.gl/qmrVLiYeBRfCSVQb8')]}
+{d:9,date:'9/26',wd:'六',city:'cph',title:'新港＆小美人魚雕像',subline:'9:00 出門',images:['https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=300'],sections:[
+  {label:'🥐 早餐',items:[L('Hart 麵包','https://maps.app.goo.gl/5kxFRP8c9ysTc6JW9'),'、',L('Atelier September','https://maps.app.goo.gl/bF9zep1NhsproLjE9?g_st=ipc')]},
+  {label:'📍 上午',items:[L('噴泉','https://maps.app.goo.gl/mcenXtA2hLHTgniD6'),L('小美人魚雕像','https://maps.app.goo.gl/rEx5orKNDMpQHJvd7?g_st=ipc'),L('腓特列教堂','https://maps.app.goo.gl/GZ9GuoQ3iPfsXxjC8'),L('阿美林宮堡（衛兵交接 12:00）','https://maps.app.goo.gl/QrHnwPS3S5B4XLg56?g_st=ipc')]},
+  {label:'🍔 午餐',items:[L('漢堡','https://maps.app.goo.gl/wxwrUwehHRxLyTHw9')]},
+  {label:'📸 下午',items:[L('新港拍照','https://maps.app.goo.gl/VC6V75485yDbKa9g6'),L('咖啡','https://maps.app.goo.gl/uvHD7nAoMviYFd9u9'),L('哥本哈根歌劇院','https://maps.app.goo.gl/YYCkqxsRUDej5UMQ9'),L('國家圖書館','https://maps.app.goo.gl/qWG9sSn434o7DZWS8'),'、逛街']},
+  {label:'🌮 晚餐',items:[L('塔可','https://maps.app.goo.gl/7Ehnb92q9gEwJbVu8')]},
+  {label:'🌙 夜間',items:[L('安徒生','https://maps.app.goo.gl/LfNTGwtrL1kuK97E7'),L('超市','https://maps.app.goo.gl/qmrVLiYeBRfCSVQb8')]}
 ]},
 
-{d:10,date:'9/27',wd:'日',city:'cph',title:'鹿園＆海岸單車',subline:'9:00 出門｜租腳踏車、搭 C 線火車',sections:[
-  {label:'早餐',items:['TGTG']},
-  {label:'上午',items:[L('鹿園','https://maps.app.goo.gl/AcsGjfVJj8njRinu6'),L('海灘','https://maps.app.goo.gl/KBy9mb2YW1Q1GhAg9')]},
-  {label:'午餐（騎海岸路）',items:[L('披薩','https://maps.app.goo.gl/FXJSQNQb61SYY4wA9'),'、',L('Atelier September','https://maps.app.goo.gl/2viQ1mGgYkqgJQFW7')]},
-  {label:'下午',items:[L('管風琴教堂','https://maps.app.goo.gl/GKb7VTUYFujd1mGT7'),L('線形公園','https://maps.app.goo.gl/AmC6Ge5EaD1vikZD8')]},
-  {label:'晚餐',items:[L('炸雞堡','https://maps.app.goo.gl/zV2mkEJdkPMFV7vS7')]}
+{d:10,date:'9/27',wd:'日',city:'cph',title:'鹿園＆海岸單車',subline:'9:00 出門｜租腳踏車、搭 C 線火車',images:['https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=300'],sections:[
+  {label:'🥐 早餐',items:['TGTG']},
+  {label:'🚲 上午',items:[L('鹿園','https://maps.app.goo.gl/AcsGjfVJj8njRinu6'),L('海灘','https://maps.app.goo.gl/KBy9mb2YW1Q1GhAg9')]},
+  {label:'🍕 午餐（騎海岸路）',items:[L('披薩','https://maps.app.goo.gl/FXJSQNQb61SYY4wA9'),'、',L('Atelier September','https://maps.app.goo.gl/2viQ1mGgYkqgJQFW7')]},
+  {label:'⛪ 下午',items:[L('管風琴教堂','https://maps.app.goo.gl/GKb7VTUYFujd1mGT7'),L('線形公園','https://maps.app.goo.gl/AmC6Ge5EaD1vikZD8')]},
+  {label:'🍗 晚餐',items:[L('炸雞堡','https://maps.app.goo.gl/zV2mkEJdkPMFV7vS7')]}
 ]},
 
 {d:11,date:'9/28',wd:'一',city:'cph',title:'羅森堡宮＆Stroget 逛街',subline:'9:00 出門',sections:[
-  {label:'早餐',items:['TGTG']},
-  {label:'上午',items:[L('羅森堡宮','https://maps.app.goo.gl/asgu98CN7u62XgYX7?g_st=ipc'),'、花園、',L('圓塔','https://maps.app.goo.gl/8mz4ZdoVzYu4mu546?g_st=ipc')]},
-  {label:'午餐',items:[L('市集','https://maps.app.goo.gl/XcZZmE3pDHivi7hX7'),'（',L('脆皮豬','https://maps.app.goo.gl/2RBQB3YUCREjd7b88'),'、',L('啤酒','https://maps.app.goo.gl/KUyogZHPkyd5R6rq8'),'）、',L('熱狗','https://maps.app.goo.gl/RF5NSW3j1xK8vJm26'),'、',L('April coffee','https://maps.app.goo.gl/VNgpatZyBckHfQQT7?g_st=ipc')]},
-  {label:'下午',items:[L('Strøget 逛街','https://maps.app.goo.gl/AxnBzKhT7DUwcJ2VA?g_st=ipc'),'（Hay House, ILLUM, Illums Bolighus, Studio Arhøj）']},
-  {label:'晚餐',items:[L('墨西哥捲','https://maps.app.goo.gl/4L9AMTUzJvziKSrT8')]}
+  {label:'🥐 早餐',items:['TGTG']},
+  {label:'🏰 上午',items:[L('羅森堡宮','https://maps.app.goo.gl/asgu98CN7u62XgYX7?g_st=ipc'),'、花園、',L('圓塔','https://maps.app.goo.gl/8mz4ZdoVzYu4mu546?g_st=ipc')]},
+  {label:'🌭 午餐',items:[L('市集','https://maps.app.goo.gl/XcZZmE3pDHivi7hX7'),'（',L('脆皮豬','https://maps.app.goo.gl/2RBQB3YUCREjd7b88'),'、',L('啤酒','https://maps.app.goo.gl/KUyogZHPkyd5R6rq8'),'）、',L('熱狗','https://maps.app.goo.gl/RF5NSW3j1xK8vJm26'),'、',L('April coffee','https://maps.app.goo.gl/VNgpatZyBckHfQQT7?g_st=ipc')]},
+  {label:'🛍️ 下午',items:[L('Strøget 逛街','https://maps.app.goo.gl/AxnBzKhT7DUwcJ2VA?g_st=ipc'),'（Hay House, ILLUM, Illums Bolighus, Studio Arhøj）']},
+  {label:'🌯 晚餐',items:[L('墨西哥捲','https://maps.app.goo.gl/4L9AMTUzJvziKSrT8')]}
 ]},
 
-{d:12,date:'9/29',wd:'二',city:'tromso',title:'移動日｜哥本哈根 → 特羅姆瑟',subline:'8:00 出門，直飛',sections:[
-  {label:'抵達',items:['買公車票、飯店 check-in、租',L('外套','https://maps.app.goo.gl/gcPtnVtz5ptWfFSS6')]},
-  {label:'晚餐',items:[L('超市','https://maps.app.goo.gl/fiZzaRiWwWrFMBai6'),'（買隔天早餐）']},
-  {label:'夜間 · 集合 6:30',items:[L('集合地點','https://maps.app.goo.gl/jD8g9iR5Vqx92Tbf7'),'　',L('北極光之旅','https://gyg.me/AeKeCKbg')]}
+{d:12,date:'9/29',wd:'二',city:'tromso',title:'✈️ 移動日｜哥本哈根 → 特羅姆瑟',subline:'8:00 出門，直飛',images:['https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=300'],sections:[
+  {label:'🏨 抵達',items:['買公車票、飯店 check-in、租',L('外套','https://maps.app.goo.gl/gcPtnVtz5ptWfFSS6')]},
+  {label:'🛒 晚餐',items:[L('超市','https://maps.app.goo.gl/fiZzaRiWwWrFMBai6'),'（買隔天早餐）']},
+  {label:'🌌 夜間 · 集合 6:30',items:[L('集合地點','https://maps.app.goo.gl/jD8g9iR5Vqx92Tbf7'),' ',L('北極光之旅','https://gyg.me/AeKeCKbg')]}
 ],note:'當天要飛抵、辦入住、換裝，緊接著 6:30 出發極光團 — 建議先確認航班實際落地時間是否充裕。'},
 
-{d:13,date:'9/30',wd:'三',city:'tromso',title:'峽灣探險',subline:'9:30 出門',sections:[
-  {label:'行程 · 集合 9:40',items:[L('峽灣探險（含午餐和照片）','https://gyg.me/iOykOMCU'),'　',L('集合地點','https://maps.app.goo.gl/BwUyZMR4eGqe4LYg6')]},
-  {label:'晚餐',items:[L('熱狗','https://maps.app.goo.gl/kyNrZrHLZVqHs4H18'),'（買隔天早餐）']},
-  {label:'夜間 · 集合 6:30',items:[L('集合地點','https://maps.app.goo.gl/jD8g9iR5Vqx92Tbf7'),'　',L('北極光之旅','https://gyg.me/AeKeCKbg')]}
+{d:13,date:'9/30',wd:'三',city:'tromso',title:'峽灣探險＆極光',subline:'9:30 出門',images:['https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?w=300'],sections:[
+  {label:'🏔️ 行程 · 集合 9:40',items:[L('峽灣探險（含午餐和照片）','https://gyg.me/iOykOMCU'),' ',L('集合地點','https://maps.app.goo.gl/BwUyZMR4eGqe4LYg6')]},
+  {label:'🌭 晚餐',items:[L('熱狗','https://maps.app.goo.gl/kyNrZrHLZVqHs4H18'),'（買隔天早餐）']},
+  {label:'🌌 夜間 · 集合 6:30',items:[L('集合地點','https://maps.app.goo.gl/jD8g9iR5Vqx92Tbf7'),' ',L('北極光之旅','https://gyg.me/AeKeCKbg')]}
 ]},
 
-{d:14,date:'10/1',wd:'四',city:'tromso',title:'馴鹿餵養＆薩米文化',subline:'9:30 出門',sections:[
-  {label:'行程 · 集合 9:40',items:[L('馴鹿餵養和薩米文化體驗','https://gyg.me/rglTpths'),'　',L('集合地點','https://maps.app.goo.gl/1AiZwP4xsdHWvFDL7')]},
-  {label:'晚餐',items:['TGTG／泡麵']},
-  {label:'夜間 · 集合 7:30',items:[L('集合地點','https://maps.app.goo.gl/zWPZXguyfPSakUWy7'),'　',L('北極光探險之旅（巴士接駁＋專業攝影）','https://gyg.me/gBTvvKuF')]}
+{d:14,date:'10/1',wd:'四',city:'tromso',title:'馴鹿餵養＆薩米文化',subline:'9:30 出門',images:['https://images.unsplash.com/photo-1543632943-34e80a06dfa0?w=300'],sections:[
+  {label:'🦌 行程 · 集合 9:40',items:[L('馴鹿餵養和薩米文化體驗','https://gyg.me/rglTpths'),' ',L('集合地點','https://maps.app.goo.gl/1AiZwP4xsdHWvFDL7')]},
+  {label:'🍜 晚餐',items:['TGTG／泡麵']},
+  {label:'🌌 夜間 · 集合 7:30',items:[L('集合地點','https://maps.app.goo.gl/zWPZXguyfPSakUWy7'),' ',L('北極光探險之旅（巴士接駁＋專業攝影）','https://gyg.me/gBTvvKuF')]}
 ]},
 
 {d:15,date:'10/2',wd:'五',city:'tromso',title:'北極門＆自行追極光',subline:'9:00 出門',sections:[
-  {label:'早餐',items:[L('咖啡','https://maps.app.goo.gl/yo5XpohKciNdSyTh8'),'、',L('麥當勞（買明信片）','https://maps.app.goo.gl/yqs6Rvf3sn2fnsTy8')]},
-  {label:'白天',items:[L('北極門','https://maps.app.goo.gl/Tnxb6JzxYiYC6KBs6'),L('教堂','https://maps.app.goo.gl/A5DYeAqQSn3nQDcX7'),L('纜車','https://maps.app.goo.gl/Yzz9KmR581iLC51q8'),'（淘寶訂）／',L('觀景台','https://maps.app.goo.gl/xJG9Fewic8hKD5F87')]},
-  {label:'晚餐',items:[L('鹿肉披薩','https://maps.app.goo.gl/sH1phZAUG1HwWGqN6'),'、還外套（16:00）']},
-  {label:'夜間',items:['自行追極光（',L('地標','https://maps.app.goo.gl/FadbzJW2nT6jap6V8'),'、',L('觀景台','https://maps.app.goo.gl/WJqRQF4REUwRWFaAA'),'）']}
+  {label:'☕ 早餐',items:[L('咖啡','https://maps.app.goo.gl/yo5XpohKciNdSyTh8'),'、',L('麥當勞（買明信片）','https://maps.app.goo.gl/yqs6Rvf3sn2fnsTy8')]},
+  {label:'🚠 白天',items:[L('北極門','https://maps.app.goo.gl/Tnxb6JzxYiYC6KBs6'),L('教堂','https://maps.app.goo.gl/A5DYeAqQSn3nQDcX7'),L('纜車','https://maps.app.goo.gl/Yzz9KmR581iLC51q8'),'（淘寶訂）／',L('觀景台','https://maps.app.goo.gl/xJG9Fewic8hKD5F87')]},
+  {label:'🍕 晚餐',items:[L('鹿肉披薩','https://maps.app.goo.gl/sH1phZAUG1HwWGqN6'),'、還外套（16:00）']},
+  {label:'🌌 夜間',items:['自行追極光（',L('地標','https://maps.app.goo.gl/FadbzJW2nT6jap6V8'),'、',L('觀景台','https://maps.app.goo.gl/WJqRQF4REUwRWFaAA'),'）']}
 ],note:'隔天凌晨 3:25 就要出門飛巴黎 — 建議幫這晚設一個「幾點前一定回飯店」的底線，別熬到太晚。'},
 
-{d:16,date:'10/3',wd:'六',city:'paris',title:'移動日｜特羅姆瑟 → 巴黎',subline:'凌晨 3:25 出門，預約計程車',sections:[
-  {label:'機場',items:['到機場',L('辦理退稅','https://www.facebook.com/share/p/1BXKsfPRTV/')]},
-  {label:'抵達',items:['飯店 check-in']},
-  {label:'午餐',items:[L('咖啡','https://maps.app.goo.gl/MAzNKVVcFM2VAtbG8'),'、',L('塔可','https://maps.app.goo.gl/tk689rhYUjFo6TZM7')]},
-  {label:'下午',items:['艾菲爾鐵塔（',L('機位','https://maps.app.goo.gl/7FM1rGbS3S2ABCvN7'),'　',L('機位·上樓梯','https://maps.app.goo.gl/BQMsk5p7ef7XEUAj7'),'　',L('廣場','https://maps.app.goo.gl/An8Lvv2aJF3Z8Sgu7'),'　',L('全面啟動機位','https://maps.app.goo.gl/JbNQqq75kCMH5FBS6'),'）、凱旋門（',L('機位','https://maps.app.goo.gl/XuPzEizkuT6D4bSD7'),'，通過地下道到後面）']},
-  {label:'晚餐',items:[L('Pink Mamma 披薩','https://maps.app.goo.gl/L9sn6CSrXnRUoRUPA'),'、',L('超市採買','https://maps.app.goo.gl/QSaAKtyUzBhQpMFS6')]}
+{d:16,date:'10/3',wd:'六',city:'paris',title:'✈️ 移動日｜特羅姆瑟 → 巴黎',subline:'凌晨 3:25 出門，預約計程車',images:['https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300'],sections:[
+  {label:'🛫 機場',items:['到機場',L('辦理退稅','https://www.facebook.com/share/p/1BXKsfPRTV/')]},
+  {label:'🏨 抵達',items:['飯店 check-in']},
+  {label:'🌮 午餐',items:[L('咖啡','https://maps.app.goo.gl/MAzNKVVcFM2VAtbG8'),'、',L('塔可','https://maps.app.goo.gl/tk689rhYUjFo6TZM7')]},
+  {label:'🗼 下午',items:['艾菲爾鐵塔（',L('機位','https://maps.app.goo.gl/7FM1rGbS3S2ABCvN7'),' ',L('機位·上樓梯','https://maps.app.goo.gl/BQMsk5p7ef7XEUAj7'),' ',L('廣場','https://maps.app.goo.gl/An8Lvv2aJF3Z8Sgu7'),' ',L('全面啟動機位','https://maps.app.goo.gl/JbNQqq75kCMH5FBS6'),'）、凱旋門（',L('機位','https://maps.app.goo.gl/XuPzEizkuT6D4bSD7'),'，通過地下道到後面）']},
+  {label:'🍕 晚餐',items:[L('Pink Mamma 披薩','https://maps.app.goo.gl/L9sn6CSrXnRUoRUPA'),'、',L('超市採買','https://maps.app.goo.gl/QSaAKtyUzBhQpMFS6')]}
 ],note:'凌晨出發、飛一整天，抵達當天下午立刻排了鐵塔＋凱旋門，體力上會很緊繃，可視狀況彈性調整。'},
 
-{d:17,date:'10/4',wd:'日',city:'paris',title:'蒙馬特＆聖心堂',subline:'9:00 出門',sections:[
-  {label:'早餐',items:[L('咖啡','https://maps.app.goo.gl/w6shX6CDsDdjotzZA')]},
-  {label:'蒙馬特',items:[L('愛牆','https://maps.app.goo.gl/DvnPdMu3C6gLma3m7'),L('街道','https://maps.app.goo.gl/KpKhPcKEZuAuCd3s6'),L('聖心堂','https://maps.app.goo.gl/DAWQdmDnHNUV8d7D8'),L('咖啡','https://maps.app.goo.gl/5VCTJpm1K5t6as9W6'),L('薄餅（鹹甜）','https://maps.app.goo.gl/ims3Kx73rTX4jjxL7'),L('冰淇淋','https://maps.app.goo.gl/N9Mc9qVqfuiBvVxN7')]},
-  {label:'午餐',items:[L('麻辣燙','https://maps.app.goo.gl/E8P1t8ZQcmYnWwLfA'),'／',L('Chipotle','https://maps.app.goo.gl/W62EBFA2CWVz5hC98')]},
-  {label:'下午',items:[L('拉法葉百貨（頂樓拍照）','https://maps.app.goo.gl/vvGTYLnHBjP6Va4u8'),L('巴黎歌劇院','https://maps.app.goo.gl/BhJnf2bdyL919fJn6'),L('春天百貨（95折）','https://maps.app.goo.gl/H3j7o3dUmjJstT9X9')]},
-  {label:'晚餐 · 已訂 7:00（5折）',items:[L('法餐','https://maps.app.goo.gl/LmGhvbqc4jKAsSkL8')]}
+{d:17,date:'10/4',wd:'日',city:'paris',title:'蒙馬特＆聖心堂',subline:'9:00 出門',images:['https://images.unsplash.com/photo-1509299349698-dd22323b5963?w=300'],sections:[
+  {label:'☕ 早餐',items:[L('咖啡','https://maps.app.goo.gl/w6shX6CDsDdjotzZA')]},
+  {label:'🎨 蒙馬特',items:[L('愛牆','https://maps.app.goo.gl/DvnPdMu3C6gLma3m7'),L('街道','https://maps.app.goo.gl/KpKhPcKEZuAuCd3s6'),L('聖心堂','https://maps.app.goo.gl/DAWQdmDnHNUV8d7D8'),L('咖啡','https://maps.app.goo.gl/5VCTJpm1K5t6as9W6'),L('薄餅（鹹甜）','https://maps.app.goo.gl/ims3Kx73rTX4jjxL7'),L('冰淇淋','https://maps.app.goo.gl/N9Mc9qVqfuiBvVxN7')]},
+  {label:'🍲 午餐',items:[L('麻辣燙','https://maps.app.goo.gl/E8P1t8ZQcmYnWwLfA'),'／',L('Chipotle','https://maps.app.goo.gl/W62EBFA2CWVz5hC98')]},
+  {label:'🛍️ 下午',items:[L('拉法葉百貨（頂樓拍照）','https://maps.app.goo.gl/vvGTYLnHBjP6Va4u8'),L('巴黎歌劇院','https://maps.app.goo.gl/BhJnf2bdyL919fJn6'),L('春天百貨（95折）','https://maps.app.goo.gl/H3j7o3dUmjJstT9X9')]},
+  {label:'🍷 晚餐 · 已訂 7:00（5折）',items:[L('法餐','https://maps.app.goo.gl/LmGhvbqc4jKAsSkL8')]}
 ],note:'聖心堂周邊是知名觀光陷阱，會有人塞「幸運繩」上前搭訕討錢，也要留意扒手，禮貌拒絕、保持距離即可。'},
 
-{d:18,date:'10/5',wd:'一',city:'paris',title:'羅浮宮＆橘園美術館',subline:'8:00 出門',sections:[
-  {label:'行前',items:['買交通卡',L('Navigo 週票','https://www.threads.com/@jhejhe_ming/post/DMmAx0FC5UM?xmt=AQF0tQzafnOm-xifie9JxsnPIwfQvsMm_0kZRR8K7MDV1Q'),'（需一寸照片＋筆）、買',L('博物館通行證','https://vocus.cc/article/68fca22bfd89780001952907'),'（',L('預訂','https://www.parismuseumpass.fr/en'),'）']},
-  {label:'早餐',items:[L('麵包','https://maps.app.goo.gl/ceZp6HDoE4S2JSUGA')]},
-  {label:'上午 · 已預約 9:00',items:[L('羅浮宮','https://maps.app.goo.gl/KyhwvDKb3YobUBw77'),'（',L('卡魯賽爾購物中心入口','https://maps.app.goo.gl/9gqNt3onih7gd13z6'),'）']},
-  {label:'午餐',items:[L('麻辣燙','https://maps.app.goo.gl/okmT37beE327vgQY9'),'／',L('PHO','https://maps.app.goo.gl/uYVzEoG6mQ1aZzfMA'),'、',L('飯糰','https://maps.app.goo.gl/okCDvz41wyijAKM96')]},
-  {label:'下午 · 已預約 14:00',items:[L('橘園美術館','https://maps.app.goo.gl/2XhzyQBi8xE9TZt99'),L('杜樂麗花園','https://maps.app.goo.gl/BVbfuBQqinifSqw66'),L('香榭麗舍大道','https://maps.app.goo.gl/CLWaPBBs17RtPnxU9'),'（',L('馬卡龍','https://maps.app.goo.gl/EPCM3S1LUWpJd8F9A'),'）、',L('凱旋門（景觀塔）','https://maps.app.goo.gl/hVAQUE6tbskRDM9T9')]},
-  {label:'晚餐 · 已訂 7:00（5折）',items:[L('法餐','https://maps.app.goo.gl/eyybp3wGAMUFyfbN7')]}
+{d:18,date:'10/5',wd:'一',city:'paris',title:'羅浮宮＆橘園美術館',subline:'8:00 出門',images:['https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=300'],sections:[
+  {label:'🎫 行前',items:['買交通卡',L('Navigo 週票','https://www.threads.com/@jhejhe_ming/post/DMmAx0FC5UM?xmt=AQF0tQzafnOm-xifie9JxsnPIwfQvsMm_0kZRR8K7MDV1Q'),'（需一寸照片＋筆）、買',L('博物館通行證','https://vocus.cc/article/68fca22bfd89780001952907'),'（',L('預訂','https://www.parismuseumpass.fr/en'),'）']},
+  {label:'🥐 早餐',items:[L('麵包','https://maps.app.goo.gl/ceZp6HDoE4S2JSUGA')]},
+  {label:'🖼️ 上午 · 已預約 9:00',items:[L('羅浮宮','https://maps.app.goo.gl/KyhwvDKb3YobUBw77'),'（',L('卡魯賽爾購物中心入口','https://maps.app.goo.gl/9gqNt3onih7gd13z6'),'）']},
+  {label:'🍜 午餐',items:[L('麻辣燙','https://maps.app.goo.gl/okmT37beE327vgQY9'),'／',L('PHO','https://maps.app.goo.gl/uYVzEoG6mQ1aZzfMA'),'、',L('飯糰','https://maps.app.goo.gl/okCDvz41wyijAKM96')]},
+  {label:'🎨 下午 · 已預約 14:00',items:[L('橘園美術館','https://maps.app.goo.gl/2XhzyQBi8xE9TZt99'),L('杜樂麗花園','https://maps.app.goo.gl/BVbfuBQqinifSqw66'),L('香榭麗舍大道','https://maps.app.goo.gl/CLWaPBBs17RtPnxU9'),'（',L('馬卡龍','https://maps.app.goo.gl/EPCM3S1LUWpJd8F9A'),'）、',L('凱旋門（景觀塔）','https://maps.app.goo.gl/hVAQUE6tbskRDM9T9')]},
+  {label:'🍷 晚餐 · 已訂 7:00（5折）',items:[L('法餐','https://maps.app.goo.gl/eyybp3wGAMUFyfbN7')]}
 ],note:'第 16 天晚上也去過一次凱旋門（外觀＋地下道），今天下午是另外上景觀塔 — 若不打算兩次都去，可以拿掉一個。'},
 
 {d:19,date:'10/6',wd:'二',city:'paris',title:'聖母院＆瑪黑區',subline:'9:00 出門',sections:[
-  {label:'早餐',items:[L('咖啡','https://maps.app.goo.gl/PQ4foVrukF9Vwji9A')]},
-  {label:'上午',items:[L('聖母院','https://maps.app.goo.gl/srZEC8PhwCzW4DY79'),L('聖徒禮拜堂','https://maps.app.goo.gl/LygMu7DinnMYWp1w9'),L('巴黎古監獄','https://maps.app.goo.gl/gTo3y8nBcAhauePx8'),L('冰淇淋','https://maps.app.goo.gl/FwwBKJpd1gKqJsLcA')]},
-  {label:'午餐 · 已訂 12:30',items:[L('PHO','https://maps.app.goo.gl/PsJq7vXbfFX9MDPs5'),'、',L('蛋塔','https://maps.app.goo.gl/odYtV3hWx9fjLRKG9'),'、',L('咖啡','https://maps.app.goo.gl/Us7AHVetzicQF5Km8')]},
-  {label:'下午',items:['瑪黑區逛街（',L('Merci','https://maps.app.goo.gl/ifRZ9rdFWFTH71wB6'),'、',L('LEMAIRE','https://maps.app.goo.gl/46YCz1khRjxk26216'),'、',L('選物','https://maps.app.goo.gl/AfodgKGcEEvTBje2A'),'）、',L('畢卡索美術館','https://maps.app.goo.gl/nH6L5SXGmRnp74FD9'),L('孚日廣場','https://maps.app.goo.gl/iPixBatfteDyyLk18'),L('雨果故居','https://maps.app.goo.gl/9Yta6nLcktQvt2mC6')]},
-  {label:'晚餐',items:['市場（',L('淡菜','https://maps.app.goo.gl/FiBz8w5winPdeBC18'),'）、',L('捲餅','https://maps.app.goo.gl/ay1BPjKRFXvUMFhS7')]}
+  {label:'☕ 早餐',items:[L('咖啡','https://maps.app.goo.gl/PQ4foVrukF9Vwji9A')]},
+  {label:'⛪ 上午',items:[L('聖母院','https://maps.app.goo.gl/srZEC8PhwCzW4DY79'),L('聖徒禮拜堂','https://maps.app.goo.gl/LygMu7DinnMYWp1w9'),L('巴黎古監獄','https://maps.app.goo.gl/gTo3y8nBcAhauePx8'),L('冰淇淋','https://maps.app.goo.gl/FwwBKJpd1gKqJsLcA')]},
+  {label:'🍜 午餐 · 已訂 12:30',items:[L('PHO','https://maps.app.goo.gl/PsJq7vXbfFX9MDPs5'),'、',L('蛋塔','https://maps.app.goo.gl/odYtV3hWx9fjLRKG9'),'、',L('咖啡','https://maps.app.goo.gl/Us7AHVetzicQF5Km8')]},
+  {label:'🛍️ 下午',items:['瑪黑區逛街（',L('Merci','https://maps.app.goo.gl/ifRZ9rdFWFTH71wB6'),'、',L('LEMAIRE','https://maps.app.goo.gl/46YCz1khRjxk26216'),'、',L('選物','https://maps.app.goo.gl/AfodgKGcEEvTBje2A'),'）、',L('畢卡索美術館','https://maps.app.goo.gl/nH6L5SXGmRnp74FD9'),L('孚日廣場','https://maps.app.goo.gl/iPixBatfteDyyLk18'),L('雨果故居','https://maps.app.goo.gl/9Yta6nLcktQvt2mC6')]},
+  {label:'🦪 晚餐',items:['市場（',L('淡菜','https://maps.app.goo.gl/FiBz8w5winPdeBC18'),'）、',L('捲餅','https://maps.app.goo.gl/ay1BPjKRFXvUMFhS7')]}
 ]},
 
 {d:20,date:'10/7',wd:'三',city:'paris',title:'先賢祠＆奧賽美術館＆塞納河遊船',subline:'8:30 出門',sections:[
-  {label:'早餐',items:[L('麵包','https://maps.app.goo.gl/CYv8aY4AzFbCP7Qd9'),'、',L('艾蜜莉家','https://maps.app.goo.gl/DtTr7VofsrMcL2u5A')]},
-  {label:'上午',items:[L('先賢祠','https://maps.app.goo.gl/JFX4MJSuEZN9LH8E9'),L('盧森堡公園','https://maps.app.goo.gl/5isXkcXFJcu1pAvP8')]},
-  {label:'午餐',items:[L('鹹薄餅','https://maps.app.goo.gl/1R5sW3uaNvPZA39q8'),'、',L('冰淇淋','https://maps.app.goo.gl/FCNoa8rjDa3Ny7eJ6'),'、',L('冠軍可頌','https://maps.app.goo.gl/Afhesyh4YHBerguN9'),'、',L('花神咖啡館','https://maps.app.goo.gl/eKPVowAqHjRqF3W9A')]},
-  {label:'下午 · 已預約 14:00',items:[L('奧賽博物館（5樓）','https://maps.app.goo.gl/VoxYP9nSR76TVBP26'),L('樂蓬馬歇百貨','https://maps.app.goo.gl/jjvxNVUEXAV7xHUY9?g_st=ic')]},
-  {label:'晚餐 · 已訂 5:45（5折）',items:[L('義大利麵','https://maps.app.goo.gl/z5mkEdzAHmBqq1ji6')]},
-  {label:'夜間',items:['日落前',L('塞納河遊船','https://maps.app.goo.gl/rUDVNCVe68MStmeV6'),'（淘寶訂）、看鐵塔點燈（整點）']}
+  {label:'☕ 早餐',items:[L('麵包','https://maps.app.goo.gl/CYv8aY4AzFbCP7Qd9'),'、',L('艾蜜莉家','https://maps.app.goo.gl/DtTr7VofsrMcL2u5A')]},
+  {label:'🏛️ 上午',items:[L('先賢祠','https://maps.app.goo.gl/JFX4MJSuEZN9LH8E9'),L('盧森堡公園','https://maps.app.goo.gl/5isXkcXFJcu1pAvP8')]},
+  {label:'🥐 午餐',items:[L('鹹薄餅','https://maps.app.goo.gl/1R5sW3uaNvPZA39q8'),'、',L('冰淇淋','https://maps.app.goo.gl/FCNoa8rjDa3Ny7eJ6'),'、',L('冠軍可頌','https://maps.app.goo.gl/Afhesyh4YHBerguN9'),'、',L('花神咖啡館','https://maps.app.goo.gl/eKPVowAqHjRqF3W9A')]},
+  {label:'🖼️ 下午 · 已預約 14:00',items:[L('奧賽博物館（5樓）','https://maps.app.goo.gl/VoxYP9nSR76TVBP26'),L('樂蓬馬歇百貨','https://maps.app.goo.gl/jjvxNVUEXAV7xHUY9?g_st=ic')]},
+  {label:'🍝 晚餐 · 已訂 5:45（5折）',items:[L('義大利麵','https://maps.app.goo.gl/z5mkEdzAHmBqq1ji6')]},
+  {label:'🚢 夜間',items:['日落前',L('塞納河遊船','https://maps.app.goo.gl/rUDVNCVe68MStmeV6'),'（淘寶訂）、看鐵塔點燈（整點）']}
 ]},
 
-{d:21,date:'10/8',wd:'四',city:'paris',title:'街拍＆凡爾賽宮',subline:'8:00 出門｜街拍（70歐/1小時，鐵塔3機位，餘款40歐後付）',sections:[
-  {label:'午餐',items:[L('三明治','https://maps.app.goo.gl/pQAjhumjps4WnpG38'),'／TGTG']},
-  {label:'下午 · 已預約 13:00',items:[L('凡爾賽宮','https://maps.app.goo.gl/owkFgAVZcNbYptZm9'),'、租',L('腳踏車','https://maps.app.goo.gl/RWtkHAFm6U2hYjkF7')]},
-  {label:'晚餐',items:[L('Perlouse','https://maps.app.goo.gl/VcPtSc4kXm5tHPF17'),' 生蠔 Happy Hour 6–8pm €10／TGTG']},
-  {label:'其他',items:['買隔天早餐']}
+{d:21,date:'10/8',wd:'四',city:'paris',title:'街拍＆凡爾賽宮',subline:'8:00 出門｜街拍（70歐/1小時，鐵塔3機位，餘款40歐後付）',images:['https://images.unsplash.com/photo-1528659117300-843818e692a7?w=300'],sections:[
+  {label:'🥪 午餐',items:[L('三明治','https://maps.app.goo.gl/pQAjhumjps4WnpG38'),'／TGTG']},
+  {label:'🏰 下午 · 已預約 13:00',items:[L('凡爾賽宮','https://maps.app.goo.gl/owkFgAVZcNbYptZm9'),'、租',L('腳踏車','https://maps.app.goo.gl/RWtkHAFm6U2hYjkF7')]},
+  {label:'🦪 晚餐',items:[L('Perlouse','https://maps.app.goo.gl/VcPtSc4kXm5tHPF17'),' 生蠔 Happy Hour 6–8pm €10／TGTG']},
+  {label:'🛒 其他',items:['買隔天早餐']}
 ]},
 
-{d:22,date:'10/9',wd:'五',city:'paris',title:'聖米歇爾山一日遊',subline:'6:15 出門｜跟團（贈晚餐＋中文團）',sections:[
-  {label:'行程',items:[L('法國巴黎往返聖米歇爾山一日遊（修道院深度講解）','https://www.kkday.com/zh-tw/product/181250')]},
-  {label:'集合 7:15',items:[L('集合地點','https://maps.app.goo.gl/nHXMXZCXLPnd6yG56')]}
+{d:22,date:'10/9',wd:'五',city:'paris',title:'聖米歇爾山一日遊',subline:'6:15 出門｜跟團（贈晚餐＋中文團）',images:['https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=300'],sections:[
+  {label:'🚌 行程',items:[L('法國巴黎往返聖米歇爾山一日遊（修道院深度講解）','https://www.kkday.com/zh-tw/product/181250')]},
+  {label:'📍 集合 7:15',items:[L('集合地點','https://maps.app.goo.gl/nHXMXZCXLPnd6yG56')]}
 ]},
 
-{d:23,date:'10/10',wd:'六',city:'paris',title:'賦歸',subline:'7:30 出門，退房',sections:[
-  {label:'行程',items:['巴黎 → 泰國轉機 → 高雄']}
+{d:23,date:'10/10',wd:'六',city:'paris',title:'✈️ 賦歸',subline:'7:30 出門，退房',sections:[
+  {label:'🛫 行程',items:['巴黎 → 泰國轉機 → 高雄']}
 ]}
 ];
 
@@ -560,11 +587,21 @@ function buildDays(){
       html+=`<div class="chapter ${c.key}"><div class="stamp">${c.name}</div><div class="chapter-text"><h2>${c.label}</h2><p>${c.nights}</p></div></div>`;
       lastCity=d.city;
     }
+    
+    // 渲染圖片縮圖區塊
+    let imagesHtml = '';
+    if(d.images && d.images.length > 0){
+      imagesHtml = `<div class="gallery-grid">
+        ${d.images.map(imgUrl => `<div class="thumb-box"><img src="${imgUrl}" alt="${d.title}" loading="lazy"></div>`).join('')}
+      </div>`;
+    }
+
     const sectionsHtml = d.sections.map(s=>`
       <div class="section">
         <div class="label">${s.label}</div>
         <div class="items">${s.items.map(renderItem).join(' ')}</div>
       </div>`).join('');
+      
     html+=`
     <div class="day" id="day-${d.d}" data-day="${d.d}">
       <div class="stub ${d.city}">
@@ -580,6 +617,7 @@ function buildDays(){
           </div>
           <div class="check" data-day="${d.d}">✓</div>
         </div>
+        ${imagesHtml}
         ${sectionsHtml}
         ${d.note?`<div class="note">💡 ${d.note}</div>`:''}
       </div>
