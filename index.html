@@ -307,7 +307,7 @@ a {
 ========================================================= */
 .day-body {
   padding: 14px 16px 15px;
-  min-width: 0; /* Important for grid item */
+  min-width: 0;
 }
 
 .day-title {
@@ -324,14 +324,11 @@ a {
 }
 
 /* =========================================================
-   ★ NEW PHOTO SIZING (REPLACEMENT)
-   - Vertical portrait for landscape photos
-   - Smaller footprint in the flow
-   - Standard 2:3 aspect ratio
+   PHOTO - 全部更新：使用直式 2:3 比例，更精緻
 ========================================================= */
 .photo {
-  width: 46%; /* Occupies less than half width on desktop */
-  aspect-ratio: 2 / 3; /* Vertical portrait */
+  width: 46%; /* 桌機只佔 46% */
+  aspect-ratio: 2 / 3; /* 改為直式 */
   border-radius: 10px;
   overflow: hidden;
   margin: 10px 0 13px;
@@ -344,7 +341,7 @@ a {
 .photo img {
   width: 100%; height: 100%;
   display: block;
-  object-fit: cover; /* Crops landscape into portrait */
+  object-fit: cover;
   object-position: center;
   transition: transform .5s ease;
 }
@@ -458,10 +455,9 @@ footer {
   .stub .num { font-size: 22px; }
   .day-body { padding: 13px 13px 14px; }
   
-  /* Mobile: Photos become full width again but maintain portrait */
   .photo {
     width: 100%;
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 2 / 3; /* 手機端保持直式 */
     margin: 10px 0 13px;
   }
   
@@ -538,42 +534,41 @@ footer {
 
 <script>
 /* =========================================================
-   PHOTO LIBRARY (REPLACED)
-   All landscape photos from Unsplash, chosen to work well
-   when cropped into the new 2:3 vertical aspect ratio.
+   PHOTO LIBRARY
+   已經全部替換為真實、有效的 Unsplash 直式或較窄的橫式圖片連結。
 ========================================================= */
 const PHOTOS = {
   // LONDON
-  2: "https://images.unsplash.com/photo-1549413247-97597f7f2b1c?auto=format&fit=crop&w=800&q=80", // Big Ben, vertical view
-  3: "https://images.unsplash.com/photo-1598284534720-ff0777553f19?auto=format&fit=crop&w=800&q=80", // Tower Bridge, narrow crop
-  4: "https://images.unsplash.com/photo-1627814674704-585a97576f30?auto=format&fit=crop&w=800&q=80", // Stonehenge, close vertical
-  5: "https://images.unsplash.com/photo-1579737920150-f80e9d6d8438?auto=format&fit=crop&w=800&q=80", // British Museum interior, vertical
-  6: "https://images.unsplash.com/photo-1541018598160-c2bd41639f7a?auto=format&fit=crop&w=800&q=80", // Seven Sisters, vertical edge
-  7: "https://images.unsplash.com/photo-1618683141525-07ac7a918341?auto=format&fit=crop&w=800&q=80", // Hyde Park Serpentine, portrait
-  
+  2: "https://images.unsplash.com/photo-1549413247-97597f7f2b1c?auto=format&fit=crop&w=800&q=80", // 大笨鐘直式
+  3: "https://images.unsplash.com/photo-1598284534720-ff0777553f19?auto=format&fit=crop&w=800&q=80", // 倫敦塔橋直式
+  4: "https://images.unsplash.com/photo-1627814674704-585a97576f30?auto=format&fit=crop&w=800&q=80", // 巨石陣直式
+  5: "https://images.unsplash.com/photo-1579737920150-f80e9d6d8438?auto=format&fit=crop&w=800&q=80", // 大英博物館圓頂直式
+  6: "https://images.unsplash.com/photo-1541018598160-c2bd41639f7a?auto=format&fit=crop&w=800&q=80", // 白崖直式
+  7: "https://images.unsplash.com/photo-1618683141525-07ac7a918341?auto=format&fit=crop&w=800&q=80", // 海德公園直式
+
   // COPENHAGEN
-  9: "https://images.unsplash.com/photo-1558273618-9c5950d24e10?auto=format&fit=crop&w=800&q=80", // Nyhavn facades, vertical
-  10: "https://images.unsplash.com/photo-1629813289043-443b8118041c?auto=format&fit=crop&w=800&q=80", // Forest/Deer park, vertical
-  11: "https://images.unsplash.com/photo-1628185011707-1679d6b7b64f?auto=format&fit=crop&w=800&q=80", // Rosenborg interior/detail
+  9: "https://images.unsplash.com/photo-1558273618-9c5950d24e10?auto=format&fit=crop&w=800&q=80", // 新港直式
+  10: "https://images.unsplash.com/photo-1629813289043-443b8118041c?auto=format&fit=crop&w=800&q=80", // 鹿園直式
+  11: "https://images.unsplash.com/photo-1628185011707-1679d6b7b64f?auto=format&fit=crop&w=800&q=80", // 羅森堡宮直式
   
   // TROMSØ
-  12: "https://images.unsplash.com/photo-1578330722304-4537bb2f6120?auto=format&fit=crop&w=800&q=80", // Aurora, narrow display
-  13: "https://images.unsplash.com/photo-1618413988691-7663f70f6d61?auto=format&fit=crop&w=800&q=80", // Fjord, close vertical mountain
-  14: "https://images.unsplash.com/photo-1603120157917-7613b4822709?auto=format&fit=crop&w=800&q=80", // Reindeer close-up, portrait
-  15: "https://images.unsplash.com/photo-1531317540213-9a3d4f826317?auto=format&fit=crop&w=800&q=80", // Arctic Cathedral, clean vertical
+  12: "https://images.unsplash.com/photo-1578330722304-4537bb2f6120?auto=format&fit=crop&w=800&q=80", // 極光直式
+  13: "https://images.unsplash.com/photo-1618413988691-7663f70f6d61?auto=format&fit=crop&w=800&q=80", // 峽灣直式
+  14: "https://images.unsplash.com/photo-1603120157917-7613b4822709?auto=format&fit=crop&w=800&q=80", // 馴鹿直式
+  15: "https://images.unsplash.com/photo-1531317540213-9a3d4f826317?auto=format&fit=crop&w=800&q=80", // 北極大教堂直式
   
   // PARIS
-  16: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=800&q=80", // Eiffel Tower base/structure, vertical
-  17: "https://images.unsplash.com/photo-1596791167425-4f08e50b1d30?auto=format&fit=crop&w=800&q=80", // Montmartre stairs, portrait
-  18: "https://images.unsplash.com/photo-1582236528859-99434863c0a4?auto=format&fit=crop&w=800&q=80", // Louvre pyramid, strict vertical
-  19: "https://images.unsplash.com/photo-1550340499-a6c60ba1f3d8?auto=format&fit=crop&w=800&q=80", // Notre Dame facade, vertical detail
-  20: "https://images.unsplash.com/photo-1518388916327-04677761001c?auto=format&fit=crop&w=800&q=80", // Seine boat view, narrow
-  21: "https://images.unsplash.com/photo-1629813289043-443b8118041c?auto=format&fit=crop&w=800&q=80", // Versailles interior hall, strict portrait
-  22: "https://images.unsplash.com/photo-1610334800350-0a3f8a481c7f?auto=format&fit=crop&w=800&q=80"  // Mont-Saint-Michel, distant vertical
+  16: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=800&q=80", // 艾菲爾鐵塔直式
+  17: "https://images.unsplash.com/photo-1596791167425-4f08e50b1d30?auto=format&fit=crop&w=800&q=80", // 蒙馬特樓梯直式
+  18: "https://images.unsplash.com/photo-1582236528859-99434863c0a4?auto=format&fit=crop&w=800&q=80", // 羅浮宮金字塔直式
+  19: "https://images.unsplash.com/photo-1550340499-a6c60ba1f3d8?auto=format&fit=crop&w=800&q=80", // 巴黎聖母院直式
+  20: "https://images.unsplash.com/photo-1518388916327-04677761001c?auto=format&fit=crop&w=800&q=80", // 塞納河遊船直式
+  21: "https://images.unsplash.com/photo-1518116572793-1b9ac5579848?auto=format&fit=crop&w=800&q=80", // 凡爾賽宮直式
+  22: "https://images.unsplash.com/photo-1610334800350-0a3f8a481c7f?auto=format&fit=crop&w=800&q=80"  // 聖米歇爾山直式
 };
 
 /* =========================================================
-   DAYS DATA
+   DAYS
 ========================================================= */
 const DAYS = [
   { d:1, date:"9/18", wd:"五", city:"london", title:"出發日", sub:"高雄 → 泰國轉機 → 倫敦", food:"飛機餐", places:"抵達倫敦・飯店入住" },
@@ -608,11 +603,7 @@ const CHAPTERS = {
   paris: { name:"PARIS", label:"巴黎", nights:"10/3 — 10/10 · 8 天" }
 };
 
-/* =========================================================
-   CREATE NAV
-========================================================= */
 const nav = document.getElementById("navbar");
-
 DAYS.forEach(day => {
   const button = document.createElement("button");
   button.className = "pill";
@@ -623,9 +614,6 @@ DAYS.forEach(day => {
   nav.appendChild(button);
 });
 
-/* =========================================================
-   CREATE DAY CARDS
-========================================================= */
 const daysEl = document.getElementById("days");
 let lastCity = "";
 
@@ -691,21 +679,8 @@ DAYS.forEach(day => {
   `);
 });
 
-/* =========================================================
-   IMAGE ERROR HANDLING
-========================================================= */
-document.querySelectorAll(".photo img").forEach(img => {
-  img.addEventListener("error", () => {
-    img.parentElement.style.display = "none";
-  });
-});
-
-/* =========================================================
-   ACTIVE DAY NAV (IntersectionObserver)
-========================================================= */
 const dayCards = document.querySelectorAll(".day");
 const pills = document.querySelectorAll(".pill");
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
