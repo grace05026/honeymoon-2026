@@ -4,42 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Europe Honeymoon 2026</title>
+<title>歐洲蜜月 2026 · Luka & Grace</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* =====================================================
-   COLOR
-===================================================== */
-
 :root{
-  --bg:#F5F1EA;
-  --paper:#FFFDF9;
-  --ink:#25272B;
-  --soft:#77736C;
-  --line:#E4DED4;
+  --paper:#F5F4F0;
+  --paper2:#ECEBE6;
+  --white:#FFFFFF;
+  --ink:#252A2D;
+  --soft:#737979;
+  --line:#DCDDD8;
 
-  --london:#617B96;
-  --london-light:#E8EEF3;
+  --london:#58728B;
+  --london-light:#E8EEF2;
 
-  --cph:#C16A55;
-  --cph-light:#F4E7E2;
+  --cph:#B96B58;
+  --cph-light:#F3E8E3;
 
-  --tromso:#4D8D7B;
-  --tromso-light:#E6F0EC;
+  --tromso:#5D8E7B;
+  --tromso-light:#E7F0EB;
 
-  --paris:#B8798E;
-  --paris-light:#F4E7EC;
+  --paris:#A87586;
+  --paris-light:#F1E8EC;
 
-  --yellow:#D7A94B;
+  --gold:#A8874D;
 }
-
-/* =====================================================
-   BASIC
-===================================================== */
 
 *{
   box-sizing:border-box;
@@ -51,11 +43,9 @@ html{
 
 body{
   margin:0;
-  background:
-    radial-gradient(circle at 10% 5%,rgba(255,255,255,.8),transparent 25%),
-    var(--bg);
+  background:var(--paper);
   color:var(--ink);
-  font-family:'DM Sans','Noto Sans TC',sans-serif;
+  font-family:'Inter',sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -77,112 +67,131 @@ a{
 ===================================================== */
 
 .hero{
-  max-width:1050px;
-  margin:auto;
-  padding:70px 20px 42px;
+  max-width:940px;
+  margin:0 auto;
+  padding:58px 20px 30px;
   text-align:center;
-  position:relative;
-}
-
-.hero::before{
-  content:"✈";
-  position:absolute;
-  top:28px;
-  left:8%;
-  font-size:32px;
-  transform:rotate(-15deg);
-  opacity:.22;
-}
-
-.hero::after{
-  content:"♡";
-  position:absolute;
-  top:52px;
-  right:10%;
-  font-size:35px;
-  transform:rotate(12deg);
-  opacity:.25;
 }
 
 .eyebrow{
   font-family:'IBM Plex Mono',monospace;
-  font-size:11px;
-  letter-spacing:.18em;
-  color:#A9843F;
-  margin-bottom:14px;
+  font-size:10px;
+  letter-spacing:.22em;
+  color:var(--gold);
+  margin-bottom:15px;
 }
 
 .hero h1{
-  font-family:'Fraunces',serif;
-  font-size:clamp(42px,8vw,76px);
-  line-height:1;
   margin:0;
+  font-family:'Fraunces',serif;
   font-weight:600;
-  letter-spacing:-.04em;
+  font-size:clamp(38px,7vw,58px);
+  letter-spacing:-.025em;
 }
 
 .hero-sub{
-  margin:14px 0 28px;
+  margin:10px 0 34px;
   color:var(--soft);
-  font-size:14px;
+  font-size:13px;
+  letter-spacing:.02em;
 }
 
-/* =====================================================
-   ROUTE
-===================================================== */
+
+/* route */
 
 .route{
-  max-width:800px;
-  margin:auto;
+  position:relative;
   display:flex;
   align-items:center;
-  gap:8px;
+  justify-content:space-between;
+  padding:25px 25px 22px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.route:before,
+.route:after{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  border-radius:50%;
   background:var(--paper);
   border:1px solid var(--line);
-  border-radius:22px;
-  padding:18px 16px;
-  box-shadow:0 10px 30px rgba(55,45,30,.05);
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.route:before{
+  left:-12px;
+}
+
+.route:after{
+  right:-12px;
 }
 
 .route-line{
+  position:absolute;
+  left:9%;
+  right:9%;
+  top:44%;
   height:1px;
-  flex:1;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #D9D2C8 0 6px,
-      transparent 6px 12px
-    );
+  background:repeating-linear-gradient(
+    90deg,
+    var(--line) 0 6px,
+    transparent 6px 12px
+  );
 }
 
 .stop{
-  min-width:105px;
-  text-align:center;
+  position:relative;
+  z-index:2;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
 }
 
-.stop-icon{
-  font-size:20px;
-  margin-bottom:4px;
+.stop-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:currentColor;
+  box-shadow:0 0 0 3px var(--white),
+             0 0 0 4px currentColor;
+  margin-bottom:7px;
 }
 
 .stop-city{
   font-family:'Fraunces',serif;
+  font-size:16px;
   font-weight:600;
-  font-size:17px;
 }
 
 .stop-date{
-  display:block;
-  margin-top:3px;
   font-family:'IBM Plex Mono',monospace;
   font-size:9px;
   color:var(--soft);
 }
 
-.london{color:var(--london);}
-.cph{color:var(--cph);}
-.tromso{color:var(--tromso);}
-.paris{color:var(--paris);}
+.stop.london{
+  color:var(--london);
+}
+
+.stop.cph{
+  color:var(--cph);
+}
+
+.stop.tromso{
+  color:var(--tromso);
+}
+
+.stop.paris{
+  color:var(--paris);
+}
 
 
 /* =====================================================
@@ -192,17 +201,17 @@ a{
 .navbar{
   position:sticky;
   top:0;
-  z-index:50;
+  z-index:100;
   padding:9px 0;
-  background:rgba(245,241,234,.9);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(220,214,205,.8);
+  background:rgba(245,244,240,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
 }
 
 .nav-inner{
-  max-width:1050px;
+  max-width:940px;
   margin:auto;
-  padding:0 15px;
+  padding:0 16px;
   display:flex;
   gap:7px;
   overflow-x:auto;
@@ -214,20 +223,21 @@ a{
 }
 
 .nav-btn{
-  flex:0 0 auto;
+  flex:none;
   border:1px solid var(--line);
-  background:#fff;
+  background:var(--white);
+  color:var(--soft);
   border-radius:999px;
-  padding:7px 12px;
+  padding:7px 11px;
   font-family:'IBM Plex Mono',monospace;
   font-size:10px;
-  color:var(--soft);
   cursor:pointer;
 }
 
-.nav-btn:hover{
+.nav-btn.active{
   background:var(--ink);
-  color:#fff;
+  color:white;
+  border-color:var(--ink);
 }
 
 
@@ -236,303 +246,362 @@ a{
 ===================================================== */
 
 .wrap{
-  max-width:1050px;
-  margin:auto;
-  padding:25px 18px 80px;
+  max-width:940px;
+  margin:0 auto;
+  padding:35px 16px 70px;
 }
 
 
 /* =====================================================
-   CITY INTRO
+   STAY
 ===================================================== */
 
-.city-intro{
+.stay{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px 22px 20px;
+  margin-bottom:42px;
+}
+
+.section-title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:13px;
+}
+
+.section-title h2{
+  font-family:'Fraunces',serif;
+  font-size:21px;
+  margin:0;
+}
+
+.section-title span{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  color:var(--soft);
+  letter-spacing:.12em;
+}
+
+.hotel{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:10px 0;
+  border-bottom:1px dashed var(--line);
+}
+
+.hotel:last-child{
+  border-bottom:none;
+}
+
+.hotel-city{
+  width:95px;
+  flex:none;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:.1em;
+  color:var(--soft);
+}
+
+.hotel-name{
+  flex:1;
+  font-family:'Fraunces',serif;
+  font-size:14px;
+}
+
+.hotel-link{
+  flex:none;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  color:var(--soft);
+  text-decoration:underline;
+}
+
+
+/* =====================================================
+   CITY CHAPTER
+===================================================== */
+
+.chapter{
+  margin:45px 0 17px;
   display:flex;
   align-items:center;
   gap:15px;
-  margin:42px 0 18px;
 }
 
-.city-sticker{
-  width:62px;
-  height:62px;
+.chapter:first-child{
+  margin-top:5px;
+}
+
+.chapter-mark{
+  width:55px;
+  height:55px;
+  flex:none;
   border-radius:50%;
+  border:1.5px dashed currentColor;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:29px;
-  background:#fff;
-  border:2px dashed currentColor;
-  transform:rotate(-7deg);
-  flex:0 0 auto;
-}
 
-.city-title{
   font-family:'Fraunces',serif;
-  font-size:28px;
-  line-height:1;
-  margin:0 0 5px;
-}
-
-.city-meta{
-  color:var(--soft);
-  font-family:'IBM Plex Mono',monospace;
   font-size:10px;
+  font-weight:600;
+  text-align:center;
+
+  transform:rotate(-7deg);
 }
 
-.city-london .city-sticker{
-  background:var(--london-light);
+.chapter-copy h2{
+  margin:0 0 2px;
+  font-family:'Fraunces',serif;
+  font-size:25px;
+  font-weight:600;
+}
+
+.chapter-copy p{
+  margin:0;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  color:var(--soft);
+}
+
+.chapter.london{
   color:var(--london);
 }
 
-.city-cph .city-sticker{
-  background:var(--cph-light);
+.chapter.cph{
   color:var(--cph);
 }
 
-.city-tromso .city-sticker{
-  background:var(--tromso-light);
+.chapter.tromso{
   color:var(--tromso);
 }
 
-.city-paris .city-sticker{
-  background:var(--paris-light);
+.chapter.paris{
   color:var(--paris);
 }
 
 
 /* =====================================================
-   DAY GRID
+   DAY CARD — SHORT BAR
 ===================================================== */
 
-.day-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:13px;
-}
-
-.day-card{
-  position:relative;
-  display:flex;
-  min-height:155px;
-  background:var(--paper);
+.day{
+  scroll-margin-top:70px;
+  background:white;
   border:1px solid var(--line);
-  border-radius:17px;
+  border-radius:13px;
+  margin-bottom:9px;
   overflow:hidden;
-  box-shadow:0 5px 20px rgba(60,45,30,.035);
-  scroll-margin-top:75px;
   transition:.2s ease;
 }
 
-.day-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 12px 28px rgba(60,45,30,.08);
+.day.open{
+  box-shadow:0 7px 24px rgba(40,40,40,.055);
 }
 
 
-/* =====================================================
-   DAY NUMBER
-===================================================== */
+/* compact header */
 
-.day-number{
-  width:58px;
-  flex:0 0 58px;
+.day-header{
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+}
+
+.day-date{
+  width:76px;
+  min-height:74px;
+  flex:none;
+
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  color:#fff;
+
+  color:white;
 }
 
-.day-number strong{
+.day-date .number{
   font-family:'Fraunces',serif;
-  font-size:27px;
+  font-size:25px;
   line-height:1;
+  font-weight:600;
 }
 
-.day-number span{
+.day-date .month{
+  margin-top:4px;
   font-family:'IBM Plex Mono',monospace;
-  font-size:9px;
-  margin-top:5px;
+  font-size:8px;
+  letter-spacing:.08em;
+  opacity:.9;
 }
 
-.day-number.london{
+.day.london .day-date{
   background:var(--london);
 }
 
-.day-number.cph{
+.day.cph .day-date{
   background:var(--cph);
 }
 
-.day-number.tromso{
+.day.tromso .day-date{
   background:var(--tromso);
 }
 
-.day-number.paris{
+.day.paris .day-date{
   background:var(--paris);
 }
 
 
-/* =====================================================
-   DAY CONTENT
-===================================================== */
-
-.day-content{
-  padding:15px 14px 15px 16px;
+.day-summary{
   flex:1;
   min-width:0;
-}
-
-.day-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:8px;
+  padding:11px 15px;
 }
 
 .day-title{
+  margin:0 0 4px;
   font-family:'Fraunces',serif;
-  font-size:17px;
-  line-height:1.25;
-  margin:0;
+  font-size:16px;
+  font-weight:600;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-.day-date{
+.day-subtitle{
+  margin:0;
+  font-size:11px;
   color:var(--soft);
-  font-family:'IBM Plex Mono',monospace;
-  font-size:9px;
+
   white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.day-arrow{
+  width:48px;
+  flex:none;
+  text-align:center;
+  color:#999;
+  font-size:16px;
+  transition:.2s ease;
+}
+
+.day.open .day-arrow{
+  transform:rotate(180deg);
 }
 
 
 /* =====================================================
-   PHOTO
+   ILLUSTRATION AREA
 ===================================================== */
 
-.day-photo{
-  width:100%;
-  height:82px;
-  border-radius:11px;
-  margin:10px 0 10px;
-  overflow:hidden;
-  position:relative;
-  background:#E9E4DC;
+.day-content{
+  display:none;
+  padding:0 15px 16px 91px;
 }
 
-.day-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.day.open .day-content{
   display:block;
 }
 
-.day-photo .fallback{
-  display:none;
+.illustration{
   width:100%;
-  height:100%;
+  height:130px;
+  margin:0 0 16px;
+  border-radius:11px;
+  overflow:hidden;
+  position:relative;
+  display:flex;
   align-items:center;
   justify-content:center;
-  font-size:35px;
-}
-
-
-/* =====================================================
-   HIGHLIGHTS
-===================================================== */
-
-.highlights{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-  margin-top:9px;
-}
-
-.tag{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  background:#F0ECE5;
-  border:1px solid #E5DED4;
-  border-radius:999px;
-  padding:4px 8px;
-  font-size:10.5px;
-  color:#5E5A54;
-}
-
-.tag a{
-  text-decoration:none;
-}
-
-.tag:hover{
-  background:#E6E0D6;
-}
-
-
-/* =====================================================
-   SPECIAL DAY
-===================================================== */
-
-.special{
-  background:
-    linear-gradient(135deg,#fffdf9 0%,#f8f2e8 100%);
-}
-
-.special::after{
-  content:"✦";
-  position:absolute;
-  right:12px;
-  bottom:8px;
-  font-size:25px;
-  opacity:.12;
-}
-
-
-/* =====================================================
-   HOTEL
-===================================================== */
-
-.hotel-box{
-  margin-top:42px;
-  background:var(--paper);
   border:1px solid var(--line);
-  border-radius:18px;
-  padding:20px;
 }
 
-.hotel-title{
-  font-family:'Fraunces',serif;
-  font-size:20px;
-  margin:0 0 15px;
+.day.london .illustration{
+  background:var(--london-light);
 }
 
-.hotel-list{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
+.day.cph .illustration{
+  background:var(--cph-light);
 }
 
-.hotel{
-  border:1px dashed var(--line);
-  border-radius:12px;
-  padding:12px;
-  background:#fff;
+.day.tromso .illustration{
+  background:var(--tromso-light);
 }
 
-.hotel-city{
+.day.paris .illustration{
+  background:var(--paris-light);
+}
+
+
+/* hand drawn illustration */
+
+.illustration svg{
+  width:100%;
+  height:100%;
+}
+
+.illustration-label{
+  position:absolute;
+  bottom:9px;
+  left:11px;
+
+  font-family:'IBM Plex Mono',monospace;
+  font-size:8px;
+  letter-spacing:.13em;
+
+  color:rgba(37,42,45,.6);
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.section{
+  margin-top:11px;
+}
+
+.section-label{
+  margin-bottom:4px;
   font-family:'IBM Plex Mono',monospace;
   font-size:9px;
   color:var(--soft);
-  margin-bottom:5px;
+  letter-spacing:.08em;
 }
 
-.hotel-name{
-  font-family:'Fraunces',serif;
-  font-size:14px;
-  line-height:1.3;
+.section-items{
+  font-size:12.5px;
+  line-height:1.7;
 }
 
-.hotel a{
+.section-items a{
   text-decoration:none;
+  border-bottom:1px dotted #AEB2B0;
+}
+
+.section-items a:hover{
+  color:var(--gold);
+}
+
+.note{
+  margin-top:12px;
+  padding:9px 11px;
+  border-left:3px solid var(--gold);
+  background:var(--paper2);
+  border-radius:0 7px 7px 0;
+  color:var(--soft);
+  font-size:11px;
+  line-height:1.6;
 }
 
 
@@ -542,8 +611,8 @@ a{
 
 footer{
   text-align:center;
-  padding:30px 20px 50px;
-  color:#99938A;
+  padding:35px 15px 55px;
+  color:#969A98;
   font-family:'IBM Plex Mono',monospace;
   font-size:9px;
   letter-spacing:.05em;
@@ -554,60 +623,57 @@ footer{
    MOBILE
 ===================================================== */
 
-@media(max-width:700px){
+@media(max-width:600px){
 
   .hero{
-    padding:52px 16px 28px;
-  }
-
-  .hero::before,
-  .hero::after{
-    display:none;
+    padding:42px 15px 24px;
   }
 
   .route{
-    padding:14px 8px;
-  }
-
-  .route-line{
-    display:none;
-  }
-
-  .stop{
-    min-width:0;
-    flex:1;
+    padding:21px 8px 19px;
   }
 
   .stop-city{
-    font-size:14px;
+    font-size:12px;
   }
 
   .stop-date{
     font-size:8px;
   }
 
-  .day-grid{
-    grid-template-columns:1fr;
+  .stop-dot{
+    width:8px;
+    height:8px;
   }
 
-  .day-card{
-    min-height:125px;
+  .wrap{
+    padding:25px 12px 60px;
   }
 
-  .day-photo{
-    height:95px;
+  .hotel-city{
+    width:72px;
   }
 
-  .hotel-list{
-    grid-template-columns:1fr;
+  .hotel-name{
+    font-size:13px;
   }
 
-  .city-intro{
-    margin-top:32px;
+  .day-date{
+    width:62px;
   }
 
+  .day-title{
+    font-size:14px;
+  }
+
+  .day-content{
+    padding-left:76px;
+  }
+
+  .illustration{
+    height:115px;
+  }
 }
-
 </style>
 </head>
 
@@ -622,45 +688,41 @@ footer{
 <header class="hero">
 
   <div class="eyebrow">
-    HONEYMOON · 2026
+    HONEYMOON ITINERARY · 2026
   </div>
 
   <h1>歐洲蜜月</h1>
 
   <div class="hero-sub">
-    09.18 — 10.10 · 23 DAYS
+    23 DAYS · 09.18 — 10.10 · LUKA & GRACE
   </div>
 
   <div class="route">
 
-    <div class="stop london">
-      <div class="stop-icon">🇬🇧</div>
-      <div class="stop-city">倫敦</div>
-      <span class="stop-date">09.18 — 09.25</span>
-    </div>
-
     <div class="route-line"></div>
+
+    <div class="stop london">
+      <div class="stop-dot"></div>
+      <div class="stop-city">London</div>
+      <div class="stop-date">09.18 — 09.25</div>
+    </div>
 
     <div class="stop cph">
-      <div class="stop-icon">🇩🇰</div>
-      <div class="stop-city">哥本哈根</div>
-      <span class="stop-date">09.25 — 09.29</span>
+      <div class="stop-dot"></div>
+      <div class="stop-city">Copenhagen</div>
+      <div class="stop-date">09.25 — 09.29</div>
     </div>
-
-    <div class="route-line"></div>
 
     <div class="stop tromso">
-      <div class="stop-icon">❄️</div>
-      <div class="stop-city">特羅姆瑟</div>
-      <span class="stop-date">09.29 — 10.03</span>
+      <div class="stop-dot"></div>
+      <div class="stop-city">Tromsø</div>
+      <div class="stop-date">09.29 — 10.03</div>
     </div>
 
-    <div class="route-line"></div>
-
     <div class="stop paris">
-      <div class="stop-icon">🥐</div>
-      <div class="stop-city">巴黎</div>
-      <span class="stop-date">10.03 — 10.10</span>
+      <div class="stop-dot"></div>
+      <div class="stop-city">Paris</div>
+      <div class="stop-date">10.03 — 10.10</div>
     </div>
 
   </div>
@@ -679,545 +741,1814 @@ footer{
 
 <main class="wrap">
 
-  <!-- DAYS -->
-  <div id="days"></div>
+
+<!-- =====================================================
+     HOTELS
+===================================================== -->
+
+<section class="stay">
+
+  <div class="section-title">
+    <h2>Stay</h2>
+    <span>WHERE WE SLEEP</span>
+  </div>
+
+  <div id="hotels"></div>
+
+</section>
 
 
-  <!-- =====================================================
-       HOTELS
-  ===================================================== -->
+<!-- =====================================================
+     DAYS
+===================================================== -->
 
-  <section class="hotel-box">
+<div id="days"></div>
 
-    <h2 class="hotel-title">
-      🛏️ 住宿
-    </h2>
-
-    <div class="hotel-list">
-
-      <div class="hotel">
-        <div class="hotel-city">LONDON · 6 NIGHTS</div>
-        <div class="hotel-name">
-          <a href="https://maps.app.goo.gl/9wB2cRMoadMxrbPm9?g_st=ic"
-             target="_blank">
-            Best Western Buckingham Palace Rd
-          </a>
-        </div>
-      </div>
-
-      <div class="hotel">
-        <div class="hotel-city">COPENHAGEN · 4 NIGHTS</div>
-        <div class="hotel-name">
-          <a href="https://maps.app.goo.gl/ZC7BTKGTKX6QDVoF9"
-             target="_blank">
-            Wakeup Copenhagen
-          </a>
-        </div>
-      </div>
-
-      <div class="hotel">
-        <div class="hotel-city">TROMSØ · 4 NIGHTS</div>
-        <div class="hotel-name">
-          <a href="https://maps.app.goo.gl/1tZEGK4HGMUE1juK9"
-             target="_blank">
-            Skaret By Vander
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
 
 </main>
 
 
 <footer>
-  LUKA & GRACE · EUROPE HONEYMOON · 2026
+  LUKA & GRACE · EUROPEAN HONEYMOON · 2026
 </footer>
 
 
 <script>
 
-/* =====================================================
-   行程資料
-   這裡刻意只留下「每日重點」
-===================================================== */
-
-const DAYS = [
-
-  /* ---------------- LONDON ---------------- */
-
-  {
-    d:1,
-    date:"9/18",
-    wd:"五",
-    city:"london",
-    title:"✈️ 出發日",
-    image:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=85",
-    tags:["高雄","泰國轉機","倫敦"]
-  },
-
-  {
-    d:2,
-    date:"9/19",
-    wd:"六",
-    city:"london",
-    title:"倫敦初見 · 倫敦眼＆柯芬園",
-    image:"https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=85",
-    tags:["倫敦眼","大本鐘","國家美術館","柯芬園","SOHO"]
-  },
-
-  {
-    d:3,
-    date:"9/20",
-    wd:"日",
-    city:"london",
-    title:"塔橋＆波羅市場",
-    image:"https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=900&q=85",
-    tags:["倫敦塔橋","倫敦塔","波羅市場","Sky Garden","Shoreditch"]
-  },
-
-  {
-    d:4,
-    date:"9/21",
-    wd:"一",
-    city:"london",
-    title:"巨石陣 · 溫莎 · 牛津",
-    image:"https://images.unsplash.com/photo-1599833975787-5c143f373c30?auto=format&fit=crop&w=900&q=85",
-    tags:["巨石陣","溫莎城堡","牛津大學","一日遊"],
-    special:true
-  },
-
-  {
-    d:5,
-    date:"9/22",
-    wd:"二",
-    city:"london",
-    title:"大英博物館＆獅子王",
-    image:"https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=900&q=85",
-    tags:["大英博物館","9¾月台","肯頓市集","獅子王音樂劇"],
-    special:true
-  },
-
-  {
-    d:6,
-    date:"9/23",
-    wd:"三",
-    city:"london",
-    title:"七姊妹白崖＆布萊頓",
-    image:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=85",
-    tags:["Seven Sisters","白崖","布萊頓","中文一日遊"],
-    special:true
-  },
-
-  {
-    d:7,
-    date:"9/24",
-    wd:"四",
-    city:"london",
-    title:"騎兵交接＆南肯辛頓",
-    image:"https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=85",
-    tags:["騎兵交接","聖詹姆士公園","V&A","自然史博物館","海德公園"]
-  },
-
-
-  /* ---------------- COPENHAGEN ---------------- */
-
-  {
-    d:8,
-    date:"9/25",
-    wd:"五",
-    city:"cph",
-    title:"✈️ 倫敦 → 哥本哈根",
-    image:"https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=900&q=85",
-    tags:["移動日","哥本哈根","Check-in"]
-  },
-
-  {
-    d:9,
-    date:"9/26",
-    wd:"六",
-    city:"cph",
-    title:"新港＆小美人魚",
-    image:"https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=900&q=85",
-    tags:["小美人魚","腓特列教堂","阿美林宮","新港","歌劇院"]
-  },
-
-  {
-    d:10,
-    date:"9/27",
-    wd:"日",
-    city:"cph",
-    title:"鹿園＆海岸單車",
-    image:"https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=900&q=85",
-    tags:["鹿園","海灘","單車","海岸線"]
-  },
-
-  {
-    d:11,
-    date:"9/28",
-    wd:"一",
-    city:"cph",
-    title:"羅森堡宮＆Strøget",
-    image:"https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=900&q=85",
-    tags:["羅森堡宮","圓塔","市集","Strøget","ILLUM"]
-  },
-
-
-  /* ---------------- TROMSØ ---------------- */
-
-  {
-    d:12,
-    date:"9/29",
-    wd:"二",
-    city:"tromso",
-    title:"✈️ 哥本哈根 → 特羅姆瑟",
-    image:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=900&q=85",
-    tags:["移動日","北極圈","極光之旅"],
-    special:true
-  },
-
-  {
-    d:13,
-    date:"9/30",
-    wd:"三",
-    city:"tromso",
-    title:"峽灣探險＆極光",
-    image:"https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?auto=format&fit=crop&w=900&q=85",
-    tags:["峽灣","北極風景","極光"],
-    special:true
-  },
-
-  {
-    d:14,
-    date:"10/1",
-    wd:"四",
-    city:"tromso",
-    title:"馴鹿＆薩米文化",
-    image:"https://images.unsplash.com/photo-1543632943-34e80a06dfa0?auto=format&fit=crop&w=900&q=85",
-    tags:["馴鹿","薩米文化","北極光"],
-    special:true
-  },
-
-  {
-    d:15,
-    date:"10/2",
-    wd:"五",
-    city:"tromso",
-    title:"北極門＆自行追極光",
-    image:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=900&q=85",
-    tags:["北極門","纜車","觀景台","自行追極光"],
-    special:true
-  },
-
-
-  /* ---------------- PARIS ---------------- */
-
-  {
-    d:16,
-    date:"10/3",
-    wd:"六",
-    city:"paris",
-    title:"✈️ 特羅姆瑟 → 巴黎",
-    image:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85",
-    tags:["移動日","艾菲爾鐵塔","凱旋門","Pink Mamma"]
-  },
-
-  {
-    d:17,
-    date:"10/4",
-    wd:"日",
-    city:"paris",
-    title:"蒙馬特＆聖心堂",
-    image:"https://images.unsplash.com/photo-1509299349698-dd22323b5963?auto=format&fit=crop&w=900&q=85",
-    tags:["蒙馬特","愛牆","聖心堂","拉法葉百貨"]
-  },
-
-  {
-    d:18,
-    date:"10/5",
-    wd:"一",
-    city:"paris",
-    title:"羅浮宮＆橘園美術館",
-    image:"https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=85",
-    tags:["羅浮宮","橘園美術館","杜樂麗花園","香榭麗舍","凱旋門"]
-  },
-
-  {
-    d:19,
-    date:"10/6",
-    wd:"二",
-    city:"paris",
-    title:"聖母院＆瑪黑區",
-    image:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85",
-    tags:["巴黎聖母院","聖徒禮拜堂","瑪黑區","Merci","畢卡索美術館"]
-  },
-
-  {
-    d:20,
-    date:"10/7",
-    wd:"三",
-    city:"paris",
-    title:"先賢祠＆奧賽＆塞納河",
-    image:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85",
-    tags:["先賢祠","盧森堡公園","奧賽美術館","塞納河遊船","鐵塔點燈"]
-  },
-
-  {
-    d:21,
-    date:"10/8",
-    wd:"四",
-    city:"paris",
-    title:"巴黎街拍＆凡爾賽宮",
-    image:"https://images.unsplash.com/photo-1528659117300-843818e692a7?auto=format&fit=crop&w=900&q=85",
-    tags:["巴黎街拍","艾菲爾鐵塔","凡爾賽宮","腳踏車"],
-    special:true
-  },
-
-  {
-    d:22,
-    date:"10/9",
-    wd:"五",
-    city:"paris",
-    title:"聖米歇爾山一日遊",
-    image:"https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=900&q=85",
-    tags:["Mont Saint-Michel","修道院","中文一日遊"],
-    special:true
-  },
-
-  {
-    d:23,
-    date:"10/10",
-    wd:"六",
-    city:"paris",
-    title:"✈️ 賦歸",
-    image:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85",
-    tags:["巴黎","泰國轉機","高雄"]
-  }
-
-];
-
 
 /* =====================================================
-   CITY CONFIG
+   CITY DATA
 ===================================================== */
 
-const CITIES = {
+const CHAPTERS = {
 
   london:{
-    name:"London",
-    zh:"倫敦",
-    nights:"6 NIGHTS",
-    emoji:"🇬🇧"
+    name:"LONDON",
+    label:"倫敦",
+    nights:"09.18 — 09.25 · 6 NIGHTS"
   },
 
   cph:{
-    name:"Copenhagen",
-    zh:"哥本哈根",
-    nights:"4 NIGHTS",
-    emoji:"🇩🇰"
+    name:"COPENHAGEN",
+    label:"哥本哈根",
+    nights:"09.25 — 09.29 · 4 NIGHTS"
   },
 
   tromso:{
-    name:"Tromsø",
-    zh:"特羅姆瑟",
-    nights:"4 NIGHTS",
-    emoji:"❄️"
+    name:"TROMSØ",
+    label:"特羅姆瑟",
+    nights:"09.29 — 10.03 · 4 NIGHTS"
   },
 
   paris:{
-    name:"Paris",
-    zh:"巴黎",
-    nights:"7 NIGHTS",
-    emoji:"🥐"
+    name:"PARIS",
+    label:"巴黎",
+    nights:"10.03 — 10.10 · 7 NIGHTS"
   }
 
 };
 
 
 /* =====================================================
-   建立 NAV
+   LINK HELPER
+===================================================== */
+
+const L = (text,url) => ({
+  text,
+  url
+});
+
+
+/* =====================================================
+   DAY DATA
+===================================================== */
+
+const DAYS = [
+
+{
+d:1,
+date:"9/18",
+month:"SEP",
+city:"london",
+title:"出發日",
+subline:"高雄 → 泰國轉機 → 倫敦",
+art:"plane",
+sections:[
+  {
+    label:"FLIGHT",
+    items:["高雄 → 泰國轉機 → 倫敦"]
+  }
+]
+},
+
+
+{
+d:2,
+date:"9/19",
+month:"SEP",
+city:"london",
+title:"倫敦市中心",
+subline:"倫敦眼 · 大本鐘 · 國家美術館 · 柯芬園",
+art:"london",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("倫敦眼","https://maps.app.goo.gl/uW324wKSeT1j1fs19"),
+      L("大本鐘","https://maps.app.goo.gl/sFh3T6sPbKq4Muiv5"),
+      L("國家美術館","https://maps.app.goo.gl/VdnP8BYkcvXaAJdY6")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("柯芬園市集","https://maps.app.goo.gl/n2VQBJXGkgPE2AFF7"),
+      "SOHO 逛街",
+      L("咖啡","https://maps.app.goo.gl/tQnebqUaSAcSr4xR7")
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("PHO","https://maps.app.goo.gl/6WofFmc46uK39VDV8")
+    ]
+  }
+]
+},
+
+
+{
+d:3,
+date:"9/20",
+month:"SEP",
+city:"london",
+title:"倫敦塔橋＆波羅市場",
+subline:"Tower Bridge · Borough Market · Sky Garden",
+art:"bridge",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("倫敦塔橋","https://maps.app.goo.gl/v3JTdPefb6QkB6Vy8"),
+      L("倫敦塔","https://maps.app.goo.gl/qmFKV4rrs3HA7jHp8")
+    ]
+  },
+  {
+    label:"LUNCH",
+    items:[
+      L("波羅市場","https://maps.app.goo.gl/W9k3Xdvm1sWqutJ99")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("空中花園","https://maps.app.goo.gl/aMvDrXjzMMGmXanS8"),
+      L("聖保羅教堂","https://maps.app.goo.gl/XTNc94L5wFZqhHte7")
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("牛排","https://maps.app.goo.gl/bsWqodzpK6phttew7")
+    ]
+  }
+]
+},
+
+
+{
+d:4,
+date:"9/21",
+month:"SEP",
+city:"london",
+title:"巨石陣・溫莎・牛津",
+subline:"Stonehenge · Windsor Castle · Oxford",
+art:"stonehenge",
+sections:[
+  {
+    label:"DAY TRIP",
+    items:[
+      L(
+        "英國巨石陣＋溫莎城堡＋牛津大學一日遊",
+        "https://www.kkday.com/zh-tw/product/181304"
+      )
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("漢堡","https://maps.app.goo.gl/4tcD7XkydLbN29RNA")
+    ]
+  }
+],
+note:"跟團一日跑三個景點，行程較緊湊。"
+},
+
+
+{
+d:5,
+date:"9/22",
+month:"SEP",
+city:"london",
+title:"大英博物館＆獅子王",
+subline:"British Museum · Camden · The Lion King",
+art:"museum",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("大英博物館","https://maps.app.goo.gl/X7i2bTtPrSCkCXqz9")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("9¾ 月台","https://maps.app.goo.gl/3thqix5F1gjaT2k8A"),
+      L("肯頓市集","https://maps.app.goo.gl/LgCTroQ8M55Zqy2d9")
+    ]
+  },
+  {
+    label:"EVENING",
+    items:[
+      L("獅子王音樂劇","https://maps.app.goo.gl/og7R4JufNbQ6ZRXt7?g_st=ic")
+    ]
+  }
+]
+},
+
+
+{
+d:6,
+date:"9/23",
+month:"SEP",
+city:"london",
+title:"七姊妹白崖＆布萊頓",
+subline:"Seven Sisters · Brighton",
+art:"cliff",
+sections:[
+  {
+    label:"DAY TRIP",
+    items:[
+      L(
+        "七姊妹白崖＋布萊頓中文一日遊",
+        "https://hk.trip.com/things-to-do/detail/88974473?language=HK&locale=zh_hk"
+      )
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("壽司","https://maps.app.goo.gl/fm4KZSv5dV9ic4hS9")
+    ]
+  }
+]
+},
+
+
+{
+d:7,
+date:"9/24",
+month:"SEP",
+city:"london",
+title:"騎兵交接＆博物館",
+subline:"Horse Guards · V&A · Natural History Museum",
+art:"museum",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("騎兵交接","https://maps.app.goo.gl/GrK7Cz6qC1xiuAd67"),
+      L("聖詹姆士公園","https://maps.app.goo.gl/nY7HpdKX7ZTjU1gF6")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("V&A 博物館","https://maps.app.goo.gl/f7sSbU1uHXedgwiE6"),
+      L("自然史博物館","https://maps.app.goo.gl/ZA4P4R5s6asLKVgn8"),
+      L("海德公園","https://maps.app.goo.gl/mTGqFcChc4QDVdhj6")
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("牛排","https://maps.app.goo.gl/CQyxTfmoR5g5p2rk8")
+    ]
+  }
+]
+},
+
+
+/* ================= COPENHAGEN ================= */
+
+{
+d:8,
+date:"9/25",
+month:"SEP",
+city:"cph",
+title:"移動日｜倫敦 → 哥本哈根",
+subline:"Flight · Hotel check-in · Supermarket",
+art:"plane",
+sections:[
+  {
+    label:"TRANSFER",
+    items:[
+      "倫敦 → 哥本哈根"
+    ]
+  },
+  {
+    label:"EVENING",
+    items:[
+      "飯店 check-in",
+      L("超市採買","https://maps.app.goo.gl/o6ERi4KkkJuSGoHw5")
+    ]
+  }
+]
+},
+
+
+{
+d:9,
+date:"9/26",
+month:"SEP",
+city:"cph",
+title:"新港＆小美人魚",
+subline:"Nyhavn · Little Mermaid · Amalienborg",
+art:"copenhagen",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("小美人魚雕像","https://maps.app.goo.gl/rEx5orKNDMpQHJvd7?g_st=ipc"),
+      L("腓特列教堂","https://maps.app.goo.gl/GZ9GuoQ3iPfsXxjC8"),
+      L("阿美林宮堡","https://maps.app.goo.gl/QrHnwPS3S5B4XLg56?g_st=ipc")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("新港","https://maps.app.goo.gl/VC6V75485yDbKa9g6"),
+      L("哥本哈根歌劇院","https://maps.app.goo.gl/YYCkqxsRUDej5UMQ9"),
+      "逛街"
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("塔可","https://maps.app.goo.gl/7Ehnb92q9gEwJbVu8")
+    ]
+  }
+]
+},
+
+
+{
+d:10,
+date:"9/27",
+month:"SEP",
+city:"cph",
+title:"鹿園＆海岸單車",
+subline:"Dyrehaven · Beach · Cycling",
+art:"bike",
+sections:[
+  {
+    label:"DAY",
+    items:[
+      L("鹿園","https://maps.app.goo.gl/AcsGjfVJj8njRinu6"),
+      L("海灘","https://maps.app.goo.gl/KBy9mb2YW1Q1GhAg9")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("管風琴教堂","https://maps.app.goo.gl/GKb7VTUYFujd1mGT7"),
+      L("線形公園","https://maps.app.goo.gl/AmC6Ge5EaD1vikZD8")
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("炸雞堡","https://maps.app.goo.gl/zV2mkEJdkPMFV7vS7")
+    ]
+  }
+]
+},
+
+
+{
+d:11,
+date:"9/28",
+month:"SEP",
+city:"cph",
+title:"羅森堡宮＆市中心",
+subline:"Rosenborg · Round Tower · Strøget",
+art:"castle",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("羅森堡宮","https://maps.app.goo.gl/asgu98CN7u62XgYX7?g_st=ipc"),
+      L("圓塔","https://maps.app.goo.gl/8mz4ZdoVzYu4mu546?g_st=ipc")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("Strøget 逛街","https://maps.app.goo.gl/AxnBzKhT7DUwcJ2VA?g_st=ipc")
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("墨西哥捲","https://maps.app.goo.gl/4L9AMTUzJvziKSrT8")
+    ]
+  }
+]
+},
+
+
+/* ================= TROMSO ================= */
+
+{
+d:12,
+date:"9/29",
+month:"SEP",
+city:"tromso",
+title:"移動日｜哥本哈根 → 特羅姆瑟",
+subline:"Flight · Tromsø · Northern Lights",
+art:"aurora",
+sections:[
+  {
+    label:"ARRIVAL",
+    items:[
+      "抵達 → 公車 → 飯店 check-in",
+      L("租外套","https://maps.app.goo.gl/gcPtnVtz5ptWfFSS6")
+    ]
+  },
+  {
+    label:"NIGHT",
+    items:[
+      L("北極光之旅","https://gyg.me/AeKeCKbg")
+    ]
+  }
+],
+note:"抵達後直接接極光團，時間較緊。"
+},
+
+
+{
+d:13,
+date:"9/30",
+month:"SEP",
+city:"tromso",
+title:"峽灣探險＆極光",
+subline:"Fjord Adventure · Northern Lights",
+art:"fjord",
+sections:[
+  {
+    label:"DAY",
+    items:[
+      L("峽灣探險","https://gyg.me/iOykOMCU"),
+      L("集合地點","https://maps.app.goo.gl/BwUyZMR4eGqe4LYg6")
+    ]
+  },
+  {
+    label:"NIGHT",
+    items:[
+      L("北極光之旅","https://gyg.me/AeKeCKbg")
+    ]
+  }
+]
+},
+
+
+{
+d:14,
+date:"10/1",
+month:"OCT",
+city:"tromso",
+title:"馴鹿＆薩米文化",
+subline:"Reindeer · Sámi Culture · Aurora",
+art:"reindeer",
+sections:[
+  {
+    label:"DAY",
+    items:[
+      L("馴鹿餵養和薩米文化體驗","https://gyg.me/rglTpths"),
+      L("集合地點","https://maps.app.goo.gl/1AiZwP4xsdHWvFDL7")
+    ]
+  },
+  {
+    label:"NIGHT",
+    items:[
+      L("北極光探險","https://gyg.me/gBTvvKuF")
+    ]
+  }
+]
+},
+
+
+{
+d:15,
+date:"10/2",
+month:"OCT",
+city:"tromso",
+title:"北極門＆自行追極光",
+subline:"Arctic Cathedral · Cable Car · Aurora",
+art:"cable",
+sections:[
+  {
+    label:"DAY",
+    items:[
+      L("北極門","https://maps.app.goo.gl/Tnxb6JzxYiYC6KBs6"),
+      L("教堂","https://maps.app.goo.gl/A5DYeAqQSn3nQDcX7"),
+      L("纜車","https://maps.app.goo.gl/Yzz9KmR581iLC51q8"),
+      L("觀景台","https://maps.app.goo.gl/xJG9Fewic8hKD5F87")
+    ]
+  },
+  {
+    label:"NIGHT",
+    items:[
+      "自行追極光"
+    ]
+  }
+],
+note:"隔天凌晨出發前往巴黎，建議不要太晚回飯店。"
+},
+
+
+/* ================= PARIS ================= */
+
+{
+d:16,
+date:"10/3",
+month:"OCT",
+city:"paris",
+title:"移動日｜特羅姆瑟 → 巴黎",
+subline:"Flight · Eiffel Tower · Arc de Triomphe",
+art:"eiffel",
+sections:[
+  {
+    label:"ARRIVAL",
+    items:[
+      "抵達巴黎 → 飯店 check-in"
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      "艾菲爾鐵塔",
+      "凱旋門"
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("Pink Mamma","https://maps.app.goo.gl/L9sn6CSrXnRUoRUPA")
+    ]
+  }
+],
+note:"凌晨出發、飛行後行程較滿，可依體力彈性調整。"
+},
+
+
+{
+d:17,
+date:"10/4",
+month:"OCT",
+city:"paris",
+title:"蒙馬特＆聖心堂",
+subline:"Montmartre · Sacré-Cœur · Galeries Lafayette",
+art:"montmartre",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("愛牆","https://maps.app.goo.gl/DvnPdMu3C6gLma3m7"),
+      L("聖心堂","https://maps.app.goo.gl/DAWQdmDnHNUV8d7D8")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("拉法葉百貨","https://maps.app.goo.gl/vvGTYLnHBjP6Va4u8"),
+      L("巴黎歌劇院","https://maps.app.goo.gl/BhJnf2bdyL919fJn6"),
+      L("春天百貨","https://maps.app.goo.gl/H3j7o3dUmjJstT9X9")
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("法餐","https://maps.app.goo.gl/LmGhvbqc4jKAsSkL8")
+    ]
+  }
+]
+},
+
+
+{
+d:18,
+date:"10/5",
+month:"OCT",
+city:"paris",
+title:"羅浮宮＆橘園",
+subline:"Louvre · Tuileries · Champs-Élysées",
+art:"louvre",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("羅浮宮","https://maps.app.goo.gl/KyhwvDKb3YobUBw77")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("橘園美術館","https://maps.app.goo.gl/2XhzyQBi8xE9TZt99"),
+      L("杜樂麗花園","https://maps.app.goo.gl/BVbfuBQqinifSqw66"),
+      L("香榭麗舍大道","https://maps.app.goo.gl/CLWaPBBs17RtPnxU9"),
+      L("凱旋門","https://maps.app.goo.gl/hVAQUE6tbskRDM9T9")
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("法餐","https://maps.app.goo.gl/eyybp3wGAMUFyfbN7")
+    ]
+  }
+]
+},
+
+
+{
+d:19,
+date:"10/6",
+month:"OCT",
+city:"paris",
+title:"聖母院＆瑪黑區",
+subline:"Notre-Dame · Le Marais · Picasso Museum",
+art:"marais",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("聖母院","https://maps.app.goo.gl/srZEC8PhwCzW4DY79"),
+      L("聖徒禮拜堂","https://maps.app.goo.gl/LygMu7DinnMYWp1w9"),
+      L("巴黎古監獄","https://maps.app.goo.gl/gTo3y8nBcAhauePx8")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("Merci","https://maps.app.goo.gl/ifRZ9rdFWFTH71wB6"),
+      L("LEMAIRE","https://maps.app.goo.gl/46YCz1khRjxk26216"),
+      L("畢卡索美術館","https://maps.app.goo.gl/nH6L5SXGmRnp74FD9"),
+      L("孚日廣場","https://maps.app.goo.gl/iPixBatfteDyyLk18")
+    ]
+  }
+]
+},
+
+
+{
+d:20,
+date:"10/7",
+month:"OCT",
+city:"paris",
+title:"先賢祠＆奧賽＆塞納河",
+subline:"Panthéon · Luxembourg · Musée d'Orsay · Seine",
+art:"seine",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      L("先賢祠","https://maps.app.goo.gl/JFX4MJSuEZN9LH8E9"),
+      L("盧森堡公園","https://maps.app.goo.gl/5isXkcXFJcu1pAvP8")
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("奧賽博物館","https://maps.app.goo.gl/VoxYP9nSR76TVBP26"),
+      L("樂蓬馬歇百貨","https://maps.app.goo.gl/jjvxNVUEXAV7xHUY9?g_st=ic")
+    ]
+  },
+  {
+    label:"EVENING",
+    items:[
+      L("塞納河遊船","https://maps.app.goo.gl/rUDVNCVe68MStmeV6"),
+      "看鐵塔點燈"
+    ]
+  }
+]
+},
+
+
+{
+d:21,
+date:"10/8",
+month:"OCT",
+city:"paris",
+title:"街拍＆凡爾賽宮",
+subline:"Paris Photoshoot · Versailles",
+art:"versailles",
+sections:[
+  {
+    label:"MORNING",
+    items:[
+      "巴黎街拍"
+    ]
+  },
+  {
+    label:"AFTERNOON",
+    items:[
+      L("凡爾賽宮","https://maps.app.goo.gl/owkFgAVZcNbYptZm9"),
+      L("腳踏車","https://maps.app.goo.gl/RWtkHAFm6U2hYjkF7")
+    ]
+  },
+  {
+    label:"DINNER",
+    items:[
+      L("Perlouse","https://maps.app.goo.gl/VcPtSc4kXm5tHPF17")
+    ]
+  }
+]
+},
+
+
+{
+d:22,
+date:"10/9",
+month:"OCT",
+city:"paris",
+title:"聖米歇爾山一日遊",
+subline:"Mont Saint-Michel · Day Trip",
+art:"montsaint",
+sections:[
+  {
+    label:"DAY TRIP",
+    items:[
+      L(
+        "巴黎往返聖米歇爾山一日遊",
+        "https://www.kkday.com/zh-tw/product/181250"
+      )
+    ]
+  }
+]
+},
+
+
+{
+d:23,
+date:"10/10",
+month:"OCT",
+city:"paris",
+title:"賦歸",
+subline:"巴黎 → 泰國轉機 → 高雄",
+art:"plane",
+sections:[
+  {
+    label:"FLIGHT",
+    items:[
+      "巴黎 → 泰國轉機 → 高雄"
+    ]
+  }
+]
+
+}
+
+];
+
+
+/* =====================================================
+   HOTELS
+===================================================== */
+
+const HOTELS = [
+
+{
+city:"LONDON",
+name:"Best Western Buckingham Palace Rd",
+url:"https://maps.app.goo.gl/9wB2cRMoadMxrbPm9?g_st=ic"
+},
+
+{
+city:"COPENHAGEN",
+name:"Wakeup Copenhagen, Bernstorffsgade",
+url:"https://maps.app.goo.gl/ZC7BTKGTKX6QDVoF9"
+},
+
+{
+city:"TROMSØ",
+name:"Skaret By Vander",
+url:"https://maps.app.goo.gl/1tZEGK4HGMUE1juK9"
+}
+
+];
+
+
+/* =====================================================
+   RENDER LINK
+===================================================== */
+
+function renderItem(item){
+
+  if(typeof item === "string"){
+    return item;
+  }
+
+  return `
+    <a
+      href="${item.url}"
+      target="_blank"
+      rel="noopener"
+    >
+      ${item.text}
+    </a>
+  `;
+}
+
+
+/* =====================================================
+   HOTELS
+===================================================== */
+
+function buildHotels(){
+
+  document.getElementById("hotels").innerHTML =
+    HOTELS.map(h => `
+      <div class="hotel">
+
+        <div class="hotel-city">
+          ${h.city}
+        </div>
+
+        <div class="hotel-name">
+          ${h.name}
+        </div>
+
+        <a
+          class="hotel-link"
+          href="${h.url}"
+          target="_blank"
+          rel="noopener"
+        >
+          MAP
+        </a>
+
+      </div>
+    `).join("");
+}
+
+
+/* =====================================================
+   NAV
 ===================================================== */
 
 function buildNav(){
 
-  const nav=document.getElementById("nav");
+  document.getElementById("nav").innerHTML =
+    DAYS.map(d => `
+      <button
+        class="nav-btn"
+        data-day="${d.d}"
+      >
+        D${d.d}
+      </button>
+    `).join("");
 
-  nav.innerHTML=DAYS.map(day=>`
+  document.querySelectorAll(".nav-btn").forEach(btn => {
 
-    <button
-      class="nav-btn"
-      onclick="goDay(${day.d})">
+    btn.addEventListener("click", () => {
 
-      D${day.d}
+      const target =
+        document.getElementById("day-" + btn.dataset.day);
 
-    </button>
+      if(target){
 
-  `).join("");
+        target.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
 
-}
+        target.classList.add("open");
 
+      }
 
-function goDay(day){
-
-  const target=document.getElementById("day-"+day);
-
-  if(target){
-
-    target.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
     });
 
-  }
+  });
 
 }
 
 
 /* =====================================================
-   圖片失敗時的 FALLBACK
+   SVG ILLUSTRATIONS
 ===================================================== */
 
-function imageFallback(img){
+function illustration(type){
 
-  img.style.display="none";
+  const stroke = "#596064";
+  const accent = "#A8874D";
 
-  const fallback=img.parentElement.querySelector(".fallback");
+  let svg = "";
 
-  if(fallback){
+  if(type === "plane"){
 
-    fallback.style.display="flex";
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M55 105 C145 55 250 55 430 80"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="2"
+        stroke-dasharray="6 8"
+      />
+
+      <path
+        d="M170 70 L230 72 L280 45
+           L294 47 L266 76
+           L350 80 L368 94
+           L265 91
+           L235 116 L221 115
+           L235 89 L170 87 Z"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="2.5"
+      />
+
+      <circle
+        cx="430"
+        cy="80"
+        r="6"
+        fill="${accent}"
+      />
+
+    </svg>
+    `;
 
   }
 
+
+  else if(type === "london"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M85 115 L90 55 L115 42 L140 55 L145 115"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M90 57 L140 57
+           M100 70 L130 70
+           M98 84 L132 84
+           M96 98 L134 98"
+        stroke="${stroke}"
+        stroke-width="2"
+      />
+
+      <path
+        d="M250 35 L250 115
+           M250 55 L325 55
+           M325 55 L325 115
+           M250 85 L325 85"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <circle
+        cx="285"
+        cy="72"
+        r="23"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="2"
+      />
+
+      <path
+        d="M270 115 H300"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <text
+        x="375"
+        y="108"
+        font-family="serif"
+        font-size="22"
+        fill="${stroke}"
+      >
+        LONDON
+      </text>
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "bridge"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M80 115 V50
+           M160 115 V50
+           M340 115 V50
+           M420 115 V50"
+        stroke="${stroke}"
+        stroke-width="5"
+      />
+
+      <path
+        d="M80 50 H160
+           M340 50 H420
+           M160 50 C205 95 295 95 340 50"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M80 105 H420"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M210 95 L290 95"
+        stroke="${stroke}"
+        stroke-width="2"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "stonehenge"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M90 115 L90 65 L110 65 L110 115
+           M135 115 L135 50 L157 50 L157 115
+           M180 115 L180 70 L202 70 L202 115
+           M225 115 L225 58 L248 58 L248 115
+           M270 115 L270 72 L292 72 L292 115"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="5"
+      />
+
+      <path
+        d="M80 63
+           Q100 48 120 63
+           M125 48
+           Q145 35 165 48
+           M175 68
+           Q190 55 207 68
+           M220 56
+           Q238 43 255 56"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M40 120 Q250 90 460 120"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="2"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "museum"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M65 115 H435
+           M80 108 V62
+           M135 108 V62
+           M190 108 V62
+           M245 108 V62
+           M300 108 V62
+           M355 108 V62
+           M410 108 V62"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M55 60 L250 28 L445 60 Z"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <circle
+        cx="250"
+        cy="20"
+        r="5"
+        fill="${accent}"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "cliff"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M0 110
+           C70 100 95 55 160 63
+           C215 70 250 95 300 70
+           C360 38 400 80 500 52
+           L500 150
+           L0 150 Z"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M0 125
+           C100 110 190 120 290 100
+           C380 82 430 105 500 90"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="2"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "copenhagen"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M55 110 V55 H115 V110
+           M125 110 V45 H190 V110
+           M200 110 V60 H265 V110
+           M275 110 V50 H340 V110
+           M350 110 V65 H420 V110"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="4"
+      />
+
+      <path
+        d="M55 55 H115
+           M125 45 H190
+           M200 60 H265
+           M275 50 H340
+           M350 65 H420"
+        stroke="${accent}"
+        stroke-width="4"
+      />
+
+      <path
+        d="M40 120 H450"
+        stroke="${stroke}"
+        stroke-width="2"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "bike"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <circle
+        cx="170"
+        cy="105"
+        r="28"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <circle
+        cx="315"
+        cy="105"
+        r="28"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M170 105 L225 70 L270 105
+           L315 105 L250 105
+           L225 70
+           L210 105"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M225 70 L240 55"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "castle"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M90 115 V65 H120 V45 H145 V65
+           H180 V35 H205 V65
+           H250 V50 H275 V65
+           H320 V35 H345 V65
+           H380 V45 H405 V65
+           V115 Z"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M75 115 H425"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "aurora"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M45 85
+           C100 20 140 120 200 50
+           C255 -10 310 105 370 35
+           C410 0 440 55 470 70"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="4"
+      />
+
+      <path
+        d="M55 100
+           C120 45 155 130 220 70
+           C280 20 320 120 385 55
+           C420 30 445 65 470 80"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="2"
+      />
+
+      <path
+        d="M165 125 V95 L205 75 L245 95 V125"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "fjord"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M0 110
+           L100 35
+           L160 105
+           L245 25
+           L320 110
+           L395 48
+           L500 115"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M0 125 Q130 100 250 125 T500 125"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "reindeer"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M180 100
+           C160 65 190 45 230 65
+           C250 75 275 75 290 100
+           M205 62
+           L185 40
+           M215 62
+           L220 35
+           M230 67
+           L250 42
+           M290 100 L305 115
+           M205 100 L195 120"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="4"
+      />
+
+      <circle
+        cx="285"
+        cy="65"
+        r="3"
+        fill="${accent}"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "cable"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M115 120 L250 35 L385 120"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M115 120 H385"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <rect
+        x="225"
+        y="55"
+        width="50"
+        height="25"
+        rx="5"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "eiffel"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M180 125 L250 25 L320 125
+           M205 90 H295
+           M220 70 H280
+           M235 50 H265"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M150 125 H350"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <circle
+        cx="250"
+        cy="18"
+        r="4"
+        fill="${accent}"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "montmartre"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M120 120
+           C140 95 145 65 170 50
+           C195 35 220 45 240 65
+           L280 105
+           L320 65
+           C340 45 365 48 385 65
+           L410 120"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <circle
+        cx="170"
+        cy="35"
+        r="9"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="2"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "louvre"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M65 115 H435
+           M80 110 V75
+           M130 110 V75
+           M180 110 V75
+           M230 110 V75
+           M280 110 V75
+           M330 110 V75
+           M380 110 V75
+           M420 110 V75"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M55 73 L250 35 L445 73 Z"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M215 110 Q250 65 285 110"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "marais"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M90 120 V55
+           H180 V120
+           M210 120 V45
+           H300 V120
+           M330 120 V60
+           H410 V120"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M90 75 H180
+           M210 70 H300
+           M330 80 H410"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <circle
+        cx="250"
+        cy="30"
+        r="10"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="2"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "seine"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M30 95
+           C100 60 160 130 230 90
+           C300 50 370 120 470 75"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M150 80 L250 35 L350 80"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <circle
+        cx="250"
+        cy="30"
+        r="5"
+        fill="${accent}"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "versailles"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M70 115 H430
+           M90 110 V65
+           M145 110 V65
+           M200 110 V65
+           M255 110 V65
+           M310 110 V65
+           M365 110 V65
+           M410 110 V65"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M55 63
+           Q250 25 445 63"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <circle
+        cx="250"
+        cy="40"
+        r="9"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="2"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  else if(type === "montsaint"){
+
+    svg = `
+    <svg viewBox="0 0 500 150">
+
+      <path
+        d="M120 125
+           C160 95 170 65 190 45
+           L230 15
+           L270 55
+           L300 125 Z"
+        fill="none"
+        stroke="${stroke}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M225 15 V65
+           M205 45 H245"
+        stroke="${accent}"
+        stroke-width="3"
+      />
+
+      <path
+        d="M40 130 Q250 105 460 130"
+        fill="none"
+        stroke="${accent}"
+        stroke-width="2"
+      />
+
+    </svg>
+    `;
+
+  }
+
+
+  return svg;
 }
 
 
 /* =====================================================
-   建立每日行程
+   BUILD DAYS
 ===================================================== */
 
 function buildDays(){
 
-  const container=document.getElementById("days");
+  const container =
+    document.getElementById("days");
 
-  let html="";
+  let html = "";
 
-  let lastCity="";
+  let previousCity = null;
 
-  DAYS.forEach(day=>{
+  DAYS.forEach(day => {
 
-    /* ---------- CITY ---------- */
+    if(day.city !== previousCity){
 
-    if(day.city!==lastCity){
+      const chapter = CHAPTERS[day.city];
 
-      const city=CITIES[day.city];
+      html += `
+        <div class="chapter ${day.city}">
 
-      html+=`
-
-        <section class="city-intro city-${day.city}">
-
-          <div class="city-sticker">
-            ${city.emoji}
+          <div class="chapter-mark">
+            ${chapter.name}
           </div>
 
-          <div>
+          <div class="chapter-copy">
 
-            <h2 class="city-title">
-              ${city.zh}
-            </h2>
+            <h2>${chapter.label}</h2>
 
-            <div class="city-meta">
-              ${city.name.toUpperCase()} · ${city.nights}
-            </div>
+            <p>${chapter.nights}</p>
 
           </div>
 
-        </section>
-
+        </div>
       `;
 
-      lastCity=day.city;
+      previousCity = day.city;
 
     }
 
 
-    /* ---------- TAGS ---------- */
+    const sections =
+      day.sections.map(section => `
 
-    const tags=day.tags.map(tag=>`
+        <div class="section">
 
-      <span class="tag">
-        ${tag}
-      </span>
+          <div class="section-label">
+            ${section.label}
+          </div>
 
-    `).join("");
+          <div class="section-items">
+            ${section.items.map(renderItem).join(" · ")}
+          </div>
+
+        </div>
+
+      `).join("");
 
 
-    /* ---------- CARD ---------- */
-
-    html+=`
+    html += `
 
       <article
-        class="day-card ${day.special ? "special":""}"
-        id="day-${day.d}">
+        class="day ${day.city}"
+        id="day-${day.d}"
+      >
 
-        <div class="day-number ${day.city}">
+        <div
+          class="day-header"
+          onclick="toggleDay(${day.d})"
+        >
 
-          <strong>
-            ${day.d}
-          </strong>
+          <div class="day-date">
 
-          <span>
-            週${day.wd}
-          </span>
+            <div class="number">
+              ${day.d}
+            </div>
+
+            <div class="month">
+              ${day.month}
+            </div>
+
+          </div>
+
+
+          <div class="day-summary">
+
+            <p class="day-title">
+              ${day.title}
+            </p>
+
+            <p class="day-subtitle">
+              ${day.subline}
+            </p>
+
+          </div>
+
+
+          <div class="day-arrow">
+            ↓
+          </div>
 
         </div>
 
 
         <div class="day-content">
 
-          <div class="day-top">
+          <div class="illustration">
 
-            <h3 class="day-title">
-              ${day.title}
-            </h3>
+            ${illustration(day.art)}
 
-            <div class="day-date">
-              ${day.date}
+            <div class="illustration-label">
+              ${CHAPTERS[day.city].name}
             </div>
 
           </div>
 
 
-          <div class="day-photo">
-
-            <img
-              src="${day.image}"
-              alt="${day.title}"
-              loading="lazy"
-              onerror="imageFallback(this)"
-            >
-
-            <div class="fallback">
-
-              ${
-                day.city==="london" ? "🇬🇧" :
-                day.city==="cph" ? "🇩🇰" :
-                day.city==="tromso" ? "🌌" :
-                "🇫🇷"
-              }
-
-            </div>
-
-          </div>
+          ${sections}
 
 
-          <div class="highlights">
-
-            ${tags}
-
-          </div>
+          ${
+            day.note
+            ?
+            `<div class="note">
+              ${day.note}
+            </div>`
+            :
+            ""
+          }
 
         </div>
 
@@ -1228,7 +2559,22 @@ function buildDays(){
   });
 
 
-  container.innerHTML=html;
+  container.innerHTML = html;
+}
+
+
+/* =====================================================
+   TOGGLE
+===================================================== */
+
+function toggleDay(day){
+
+  const el =
+    document.getElementById("day-" + day);
+
+  if(!el) return;
+
+  el.classList.toggle("open");
 
 }
 
@@ -1237,8 +2583,26 @@ function buildDays(){
    INIT
 ===================================================== */
 
+buildHotels();
 buildNav();
 buildDays();
+
+
+/* =====================================================
+   OPEN FIRST DAY OF EACH CITY
+===================================================== */
+
+[1,8,12,16].forEach(day => {
+
+  const el =
+    document.getElementById("day-" + day);
+
+  if(el){
+    el.classList.add("open");
+  }
+
+});
+
 
 </script>
 
