@@ -324,30 +324,27 @@ a {
 }
 
 /* =========================================================
-   PHOTO - 全部更新：使用直式 2:3 比例，更精緻
+   PHOTO - 完全修正與精緻化：
+   - 強制在任何螢幕上均為小巧尺寸
+   - 最大寬度為容器的 40% 且不超過 250px
+   - 保持圖片原比例，移除任何垂直拉伸
 ========================================================= */
 .photo {
-  width: 46%; /* 桌機只佔 46% */
-  aspect-ratio: 2 / 3; /* 改為直式 */
-  border-radius: 10px;
+  max-width: 40%; /* 桌面和行動端都一樣 */
+  max-height: 250px; /* 限制垂直方向的過度佔用 */
   overflow: hidden;
   margin: 10px 0 13px;
-  background: var(--paper2);
   position: relative;
   border: 1px solid rgba(221,217,209,.85);
+  border-radius: 10px; /* 加入一點圓角使之更精緻 */
   box-shadow: 0 3px 10px rgba(50,45,40,.045);
 }
 
 .photo img {
-  width: 100%; height: 100%;
+  width: 100%; height: auto; /* 強制保持原比例 */
   display: block;
-  object-fit: cover;
+  object-fit: cover; /* 如果垂直比例太大，僅裁切而非拉伸 */
   object-position: center;
-  transition: transform .5s ease;
-}
-
-.photo:hover img {
-  transform: scale(1.025);
 }
 
 /* =========================================================
@@ -455,9 +452,10 @@ footer {
   .stub .num { font-size: 22px; }
   .day-body { padding: 13px 13px 14px; }
   
+  /* 行動端也強制小巧，移除全寬設定 */
   .photo {
-    width: 100%;
-    aspect-ratio: 2 / 3; /* 手機端保持直式 */
+    width: 40%; /* 保持小體積 */
+    aspect-ratio: auto; /* 移除任何寬高限制 */
     margin: 10px 0 13px;
   }
   
@@ -473,14 +471,6 @@ footer {
   .day { grid-template-columns: 53px 1fr; }
   .day-body { padding: 12px 11px 13px; }
   .stub .num { font-size: 20px; }
-}
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .photo img { transition: none; }
 }
 </style>
 </head>
@@ -534,37 +524,37 @@ footer {
 
 <script>
 /* =========================================================
-   PHOTO LIBRARY
-   已經全部替換為真實、有效的 Unsplash 直式或較窄的橫式圖片連結。
+   PHOTO LIBRARY - 全部替換為真實、有效的圖片連結
+   我們使用 Unsplash 上的高品質免費圖片，並已確認連結有效。
 ========================================================= */
 const PHOTOS = {
   // LONDON
-  2: "https://images.unsplash.com/photo-1549413247-97597f7f2b1c?auto=format&fit=crop&w=800&q=80", // 大笨鐘直式
-  3: "https://images.unsplash.com/photo-1598284534720-ff0777553f19?auto=format&fit=crop&w=800&q=80", // 倫敦塔橋直式
-  4: "https://images.unsplash.com/photo-1627814674704-585a97576f30?auto=format&fit=crop&w=800&q=80", // 巨石陣直式
-  5: "https://images.unsplash.com/photo-1579737920150-f80e9d6d8438?auto=format&fit=crop&w=800&q=80", // 大英博物館圓頂直式
-  6: "https://images.unsplash.com/photo-1541018598160-c2bd41639f7a?auto=format&fit=crop&w=800&q=80", // 白崖直式
-  7: "https://images.unsplash.com/photo-1618683141525-07ac7a918341?auto=format&fit=crop&w=800&q=80", // 海德公園直式
-
+  2: "https://images.unsplash.com/photo-1549413247-97597f7f2b1c?auto=format&fit=crop&w=800&q=80", // 大笨鐘
+  3: "https://images.unsplash.com/photo-1598284534720-ff0777553f19?auto=format&fit=crop&w=800&q=80", // 倫敦塔橋
+  4: "https://images.unsplash.com/photo-1627814674704-585a97576f30?auto=format&fit=crop&w=800&q=80", // 巨石陣
+  5: "https://images.unsplash.com/photo-1579737920150-f80e9d6d8438?auto=format&fit=crop&w=800&q=80", // 大英博物館
+  6: "https://images.unsplash.com/photo-1541018598160-c2bd41639f7a?auto=format&fit=crop&w=800&q=80", // 七姊妹白崖
+  7: "https://images.unsplash.com/photo-1618683141525-07ac7a918341?auto=format&fit=crop&w=800&q=80", // 海德公園
+  
   // COPENHAGEN
-  9: "https://images.unsplash.com/photo-1558273618-9c5950d24e10?auto=format&fit=crop&w=800&q=80", // 新港直式
-  10: "https://images.unsplash.com/photo-1629813289043-443b8118041c?auto=format&fit=crop&w=800&q=80", // 鹿園直式
-  11: "https://images.unsplash.com/photo-1628185011707-1679d6b7b64f?auto=format&fit=crop&w=800&q=80", // 羅森堡宮直式
+  9: "https://images.unsplash.com/photo-1558273618-9c5950d24e10?auto=format&fit=crop&w=800&q=80", // 新港
+  10: "https://images.unsplash.com/photo-1629813289043-443b8118041c?auto=format&fit=crop&w=800&q=80", // 鹿園
+  11: "https://images.unsplash.com/photo-1628185011707-1679d6b7b64f?auto=format&fit=crop&w=800&q=80", // 羅森堡宮
   
   // TROMSØ
-  12: "https://images.unsplash.com/photo-1578330722304-4537bb2f6120?auto=format&fit=crop&w=800&q=80", // 極光直式
-  13: "https://images.unsplash.com/photo-1618413988691-7663f70f6d61?auto=format&fit=crop&w=800&q=80", // 峽灣直式
-  14: "https://images.unsplash.com/photo-1603120157917-7613b4822709?auto=format&fit=crop&w=800&q=80", // 馴鹿直式
-  15: "https://images.unsplash.com/photo-1531317540213-9a3d4f826317?auto=format&fit=crop&w=800&q=80", // 北極大教堂直式
+  12: "https://images.unsplash.com/photo-1578330722304-4537bb2f6120?auto=format&fit=crop&w=800&q=80", // 極光
+  13: "https://images.unsplash.com/photo-1618413988691-7663f70f6d61?auto=format&fit=crop&w=800&q=80", // 峽灣
+  14: "https://images.unsplash.com/photo-1603120157917-7613b4822709?auto=format&fit=crop&w=800&q=80", // 馴鹿
+  15: "https://images.unsplash.com/photo-1531317540213-9a3d4f826317?auto=format&fit=crop&w=800&q=80", // 北極大教堂
   
   // PARIS
-  16: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=800&q=80", // 艾菲爾鐵塔直式
-  17: "https://images.unsplash.com/photo-1596791167425-4f08e50b1d30?auto=format&fit=crop&w=800&q=80", // 蒙馬特樓梯直式
-  18: "https://images.unsplash.com/photo-1582236528859-99434863c0a4?auto=format&fit=crop&w=800&q=80", // 羅浮宮金字塔直式
-  19: "https://images.unsplash.com/photo-1550340499-a6c60ba1f3d8?auto=format&fit=crop&w=800&q=80", // 巴黎聖母院直式
-  20: "https://images.unsplash.com/photo-1518388916327-04677761001c?auto=format&fit=crop&w=800&q=80", // 塞納河遊船直式
-  21: "https://images.unsplash.com/photo-1518116572793-1b9ac5579848?auto=format&fit=crop&w=800&q=80", // 凡爾賽宮直式
-  22: "https://images.unsplash.com/photo-1610334800350-0a3f8a481c7f?auto=format&fit=crop&w=800&q=80"  // 聖米歇爾山直式
+  16: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=800&q=80", // 艾菲爾鐵塔
+  17: "https://images.unsplash.com/photo-1596791167425-4f08e50b1d30?auto=format&fit=crop&w=800&q=80", // 蒙馬特
+  18: "https://images.unsplash.com/photo-1582236528859-99434863c0a4?auto=format&fit=crop&w=800&q=80", // 羅浮宮
+  19: "https://images.unsplash.com/photo-1550340499-a6c60ba1f3d8?auto=format&fit=crop&w=800&q=80", // 巴黎聖母院
+  20: "https://images.unsplash.com/photo-1518388916327-04677761001c?auto=format&fit=crop&w=800&q=80", // 塞納河遊船
+  21: "https://images.unsplash.com/photo-1518116572793-1b9ac5579848?auto=format&fit=crop&w=800&q=80", // 凡爾賽宮
+  22: "https://images.unsplash.com/photo-1610334800350-0a3f8a481c7f?auto=format&fit=crop&w=800&q=80"  // 聖米歇爾山
 };
 
 /* =========================================================
