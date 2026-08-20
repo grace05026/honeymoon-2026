@@ -7,23 +7,23 @@
 <title>歐洲蜜月 2026｜Luka & Grace</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Noto+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-  --bg:#f7f4ef;
-  --paper:#fffdf9;
-  --ink:#2c2926;
-  --soft:#77716a;
-  --line:#e4ddd3;
+  --paper:#F5F3EF;
+  --paper2:#ECE9E3;
+  --white:#FFFDFC;
+  --ink:#29313A;
+  --soft:#737A7C;
+  --line:#DDD9D1;
 
-  --london:#607b91;
-  --cph:#b96550;
-  --tromso:#5d907d;
-  --paris:#a87589;
+  --london:#58728B;
+  --cph:#B56550;
+  --tromso:#4C9178;
+  --paris:#B47A8D;
 
-  --cream:#eee7dc;
+  --gold:#B18A4A;
 }
 
 *{
@@ -36,15 +36,27 @@ html{
 
 body{
   margin:0;
-  background:var(--bg);
+  background:
+    radial-gradient(circle at 10% 8%,rgba(177,138,74,.07),transparent 20%),
+    radial-gradient(circle at 90% 30%,rgba(180,122,141,.06),transparent 22%),
+    var(--paper);
   color:var(--ink);
   font-family:'Noto Sans TC',sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
-img{
-  display:block;
+a{
+  color:inherit;
 }
+
+.display{
+  font-family:'Fraunces',serif;
+}
+
+.mono{
+  font-family:'IBM Plex Mono',monospace;
+}
+
 
 /* =========================
    HERO
@@ -53,46 +65,82 @@ img{
 .hero{
   max-width:920px;
   margin:0 auto;
-  padding:58px 20px 30px;
+  padding:55px 20px 30px;
   text-align:center;
+  position:relative;
+}
+
+/* 小小旅行手繪元素 */
+.hero-doodle{
+  position:absolute;
+  font-family:'Fraunces',serif;
+  font-size:26px;
+  opacity:.7;
+}
+
+.doodle-plane{
+  left:8%;
+  top:50px;
+  transform:rotate(-12deg);
+}
+
+.doodle-star{
+  right:9%;
+  top:75px;
+  font-size:18px;
+}
+
+.doodle-heart{
+  left:13%;
+  bottom:45px;
+  font-size:17px;
+  transform:rotate(-8deg);
+}
+
+.doodle-spark{
+  right:13%;
+  bottom:42px;
+  font-size:19px;
 }
 
 .eyebrow{
   font-family:'IBM Plex Mono',monospace;
   font-size:10px;
-  letter-spacing:.18em;
-  color:#a18a68;
-  margin-bottom:12px;
+  letter-spacing:.16em;
+  color:var(--gold);
+  margin-bottom:14px;
 }
 
 .hero h1{
-  margin:0;
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(42px,8vw,68px);
-  font-weight:400;
-  letter-spacing:-.02em;
+  font-family:'Fraunces',serif;
+  font-size:clamp(38px,7vw,56px);
+  font-weight:600;
+  letter-spacing:-.025em;
+  margin:0 0 8px;
 }
 
-.hero .sub{
-  margin:8px 0 28px;
+.hero-sub{
   color:var(--soft);
   font-size:14px;
+  margin-bottom:30px;
 }
 
-/* route */
+
+/* =========================
+   ROUTE
+========================= */
 
 .route{
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  background:var(--paper);
+  background:rgba(255,253,252,.92);
   border:1px solid var(--line);
   border-radius:18px;
-
-  padding:24px 25px;
-  box-shadow:0 5px 20px rgba(70,55,40,.04);
+  padding:23px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(50,45,40,.04);
 }
 
 .route-line{
@@ -100,49 +148,37 @@ img{
   left:10%;
   right:10%;
   top:50%;
-
-  height:1px;
-
-  background:repeating-linear-gradient(
-    90deg,
-    #d9d0c4 0 6px,
-    transparent 6px 12px
-  );
+  border-top:1px dashed #CFCAC0;
 }
 
 .stop{
+  flex:1;
   position:relative;
   z-index:2;
-
-  flex:1;
-
   display:flex;
   flex-direction:column;
   align-items:center;
-
-  gap:4px;
+  gap:5px;
 }
 
 .stop .dot{
-  width:12px;
-  height:12px;
+  width:13px;
+  height:13px;
   border-radius:50%;
   background:currentColor;
-
-  box-shadow:
-    0 0 0 4px var(--paper),
-    0 0 0 5px currentColor;
+  border:3px solid var(--white);
+  box-shadow:0 0 0 1px currentColor;
 }
 
 .stop .city{
-  margin-top:5px;
-  font-family:'DM Serif Display',serif;
-  font-size:17px;
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:16px;
 }
 
 .stop .date{
   font-family:'IBM Plex Mono',monospace;
-  font-size:9px;
+  font-size:9.5px;
   color:var(--soft);
 }
 
@@ -159,23 +195,18 @@ img{
 .navbar{
   position:sticky;
   top:0;
-  z-index:30;
-
-  background:rgba(247,244,239,.92);
+  z-index:50;
+  background:rgba(245,243,239,.92);
   backdrop-filter:blur(12px);
-
   border-bottom:1px solid var(--line);
-  padding:9px 0;
 }
 
 .navbar-inner{
   max-width:920px;
   margin:auto;
-  padding:0 16px;
-
+  padding:10px 16px;
   display:flex;
   gap:7px;
-
   overflow-x:auto;
   scrollbar-width:none;
 }
@@ -186,37 +217,32 @@ img{
 
 .pill{
   flex:0 0 auto;
-
   border:1px solid var(--line);
-  background:#fffdf9;
-
+  background:#fff;
   border-radius:999px;
-
   padding:6px 11px;
-
   font-family:'IBM Plex Mono',monospace;
   font-size:10px;
-
-  color:#77716a;
-
+  color:var(--soft);
   cursor:pointer;
 }
 
+.pill:hover,
 .pill.active{
   background:var(--ink);
-  color:white;
+  color:#fff;
   border-color:var(--ink);
 }
 
 
 /* =========================
-   CONTENT
+   MAIN
 ========================= */
 
 .wrap{
   max-width:920px;
   margin:auto;
-  padding:30px 16px 70px;
+  padding:25px 16px 70px;
 }
 
 
@@ -227,52 +253,57 @@ img{
 .chapter{
   display:flex;
   align-items:center;
-  gap:16px;
-
+  gap:17px;
   margin:48px 0 18px;
+  scroll-margin-top:80px;
 }
 
 .chapter:first-child{
-  margin-top:8px;
+  margin-top:10px;
 }
 
-.stamp{
-  flex:0 0 62px;
+.country-stamp{
+  width:66px;
+  height:66px;
+  flex:0 0 66px;
 
-  width:62px;
-  height:62px;
-
+  border:2px dashed currentColor;
   border-radius:50%;
 
-  border:1.5px dashed currentColor;
-
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
 
-  text-align:center;
-
-  font-family:'DM Serif Display',serif;
-  font-size:11px;
-
   transform:rotate(-7deg);
 
-  background:rgba(255,255,255,.35);
+  background:rgba(255,255,255,.45);
 }
 
-.chapter-text h2{
-  margin:0 0 3px;
-
-  font-family:'DM Serif Display',serif;
-  font-size:27px;
-  font-weight:400;
+.country-stamp .en{
+  font-family:'Fraunces',serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.05em;
 }
 
-.chapter-text p{
+.country-stamp .tiny{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:7px;
+  opacity:.7;
+  margin-top:2px;
+}
+
+.chapter-copy h2{
   margin:0;
+  font-family:'Fraunces',serif;
+  font-size:27px;
+  font-weight:600;
+}
 
+.chapter-copy p{
+  margin:3px 0 0;
   color:var(--soft);
-
   font-family:'IBM Plex Mono',monospace;
   font-size:10px;
 }
@@ -288,61 +319,24 @@ img{
 ========================= */
 
 .day{
-  display:flex;
-
-  background:var(--paper);
-
+  display:grid;
+  grid-template-columns:70px 1fr;
+  background:rgba(255,253,252,.94);
   border:1px solid var(--line);
   border-radius:15px;
-
   overflow:hidden;
-
   margin-bottom:13px;
-
-  box-shadow:0 3px 13px rgba(60,45,30,.035);
-
-  scroll-margin-top:70px;
+  box-shadow:0 5px 18px rgba(50,45,40,.035);
+  scroll-margin-top:82px;
 }
 
 .stub{
-  flex:0 0 65px;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-
   color:white;
-
-  position:relative;
-}
-
-.stub::after{
-  content:"";
-
-  position:absolute;
-
-  right:0;
-  top:12px;
-  bottom:12px;
-
-  border-right:1px dashed rgba(255,255,255,.55);
-}
-
-.stub .num{
-  font-family:'DM Serif Display',serif;
-  font-size:27px;
-  line-height:1;
-}
-
-.stub .wd,
-.stub .dt{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:9px;
-
-  margin-top:3px;
-
-  opacity:.9;
+  padding:12px 5px;
 }
 
 .stub.london{background:var(--london);}
@@ -350,35 +344,47 @@ img{
 .stub.tromso{background:var(--tromso);}
 .stub.paris{background:var(--paris);}
 
-
-.body{
-  flex:1;
-  min-width:0;
-
-  padding:14px 16px 15px;
-}
-
-.body-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.headline{
-  margin:0;
-
-  font-family:'Noto Sans TC',sans-serif;
+.stub .num{
+  font-family:'Fraunces',serif;
+  font-size:25px;
+  line-height:1;
   font-weight:700;
-
-  font-size:15px;
-  line-height:1.45;
 }
 
-.subline{
-  margin:3px 0 0;
+.stub .wd{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  margin-top:4px;
+  opacity:.9;
+}
 
+.stub .dt{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  opacity:.9;
+}
+
+
+/* =========================
+   DAY CONTENT
+========================= */
+
+.day-body{
+  padding:14px 16px 15px;
+  min-width:0;
+}
+
+.day-title{
+  font-family:'Fraunces',serif;
+  font-size:17px;
+  font-weight:600;
+  margin:0;
+  line-height:1.35;
+}
+
+.day-sub{
+  margin:3px 0 9px;
   color:var(--soft);
-
   font-size:11px;
 }
 
@@ -387,165 +393,104 @@ img{
    PHOTO
 ========================= */
 
-/*
-  照片固定成比較舒服的旅遊手冊比例
-  不再使用過矮的長條
-*/
-
-.gallery-grid{
-  display:grid;
-
-  grid-template-columns:repeat(
-    auto-fit,
-    minmax(150px,1fr)
-  );
-
-  gap:8px;
-
-  margin:12px 0 12px;
-}
-
-.thumb-box{
+.photo{
   width:100%;
-
-  aspect-ratio:16 / 10;
-
-  border-radius:10px;
-
+  height:165px;
+  border-radius:11px;
   overflow:hidden;
-
-  background:#e9e2d8;
-
-  border:1px solid rgba(0,0,0,.05);
+  margin:8px 0 12px;
+  background:var(--paper2);
+  position:relative;
 }
 
-.thumb-box img{
+.photo img{
   width:100%;
   height:100%;
-
+  display:block;
   object-fit:cover;
-
-  /*
-    確保照片不變形
-  */
   object-position:center;
+  transition:transform .5s ease;
+}
+
+.photo:hover img{
+  transform:scale(1.025);
 }
 
 
 /* =========================
-   MAIN ITEMS
+   MINI FOOD
 ========================= */
 
-.section{
+.food{
+  display:flex;
+  align-items:flex-start;
+  gap:7px;
   margin-top:8px;
+  padding-top:8px;
+  border-top:1px dashed var(--line);
+  font-size:11px;
+  color:#60676A;
 }
 
-.section .label{
-  font-size:10px;
-
-  color:#9a9187;
-
-  letter-spacing:.04em;
-
-  margin-bottom:2px;
+.food-label{
+  flex:0 0 auto;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  color:var(--gold);
+  padding-top:2px;
 }
 
-.section .items{
-  font-size:12.5px;
-
+.food-text{
   line-height:1.65;
 }
 
-.items a{
-  color:var(--ink);
 
+/* =========================
+   PLACE LIST
+========================= */
+
+.places{
+  font-size:12.5px;
+  line-height:1.8;
+  color:#4E565A;
+}
+
+.places a{
   text-decoration:none;
-
-  border-bottom:1px dotted #aaa097;
+  border-bottom:1px dotted #AEB0AD;
 }
 
-.items a:hover{
-  color:#a9843f;
+.places a:hover{
+  color:var(--gold);
 }
 
 
 /* =========================
-   FOOD MINI ROW
+   TAGS
 ========================= */
 
-.food-row{
-  display:flex;
-  align-items:center;
-  gap:7px;
-
-  margin-top:9px;
-  padding-top:8px;
-
-  border-top:1px dashed var(--line);
-
-  color:#81786e;
-}
-
-.food-title{
-  flex:0 0 auto;
-
-  font-family:'IBM Plex Mono',monospace;
-
-  font-size:8.5px;
-
-  letter-spacing:.08em;
-
-  color:#a18a68;
-}
-
-.food-items{
-  font-size:10.5px;
-  line-height:1.5;
-}
-
-.food-item{
+.tag{
   display:inline-block;
-
-  background:#f3eee7;
-
-  border-radius:999px;
-
-  padding:2px 7px;
-
-  margin-right:3px;
-  margin-bottom:2px;
+  margin-left:5px;
+  padding:1px 5px;
+  border-radius:4px;
+  background:var(--paper2);
+  border:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:8px;
+  color:var(--soft);
 }
 
 
 /* =========================
-   CHECK
+   SMALL Doodles
 ========================= */
 
-.check{
-  flex:0 0 auto;
-
-  width:23px;
-  height:23px;
-
-  border-radius:50%;
-
-  border:1px solid var(--line);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  color:transparent;
-
-  cursor:pointer;
-
-  font-size:11px;
-}
-
-.check.checked{
-  background:#87988a;
-  border-color:#87988a;
-  color:white;
+.day-decoration{
+  float:right;
+  font-family:'Fraunces',serif;
+  font-size:17px;
+  opacity:.4;
 }
 
 
@@ -554,80 +499,49 @@ img{
 ========================= */
 
 .info-block{
-  background:var(--paper);
-
+  background:rgba(255,253,252,.94);
   border:1px solid var(--line);
-
   border-radius:15px;
-
-  padding:18px;
-
-  margin-top:45px;
+  padding:20px;
+  margin-top:50px;
 }
 
 .info-block h3{
-  margin:0 0 12px;
-
-  font-family:'DM Serif Display',serif;
-
-  font-size:20px;
-  font-weight:400;
+  font-family:'Fraunces',serif;
+  font-size:19px;
+  margin:0 0 13px;
 }
 
 .hotel-row{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-
-  gap:10px;
-
+  gap:15px;
   padding:9px 0;
-
   border-bottom:1px dashed var(--line);
-
-  font-size:12px;
+  font-size:12.5px;
 }
 
 .hotel-row:last-child{
   border-bottom:none;
 }
 
+.hotel-city{
+  color:var(--soft);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  margin-left:5px;
+}
+
 .hotel-row a{
-  color:var(--ink);
   text-decoration:none;
 }
 
-.hotel-city{
-  display:inline-block;
-
-  margin-left:5px;
-
-  padding:2px 6px;
-
-  border-radius:999px;
-
-  background:#f0ebe3;
-
-  font-size:9px;
-
-  color:#81786e;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
 footer{
   text-align:center;
-
-  padding:15px 20px 50px;
-
-  color:#a0988e;
-
+  color:var(--soft);
   font-family:'IBM Plex Mono',monospace;
-
   font-size:9px;
+  padding:30px 15px 50px;
 }
 
 
@@ -641,56 +555,51 @@ footer{
     padding-top:42px;
   }
 
+  .hero-doodle{
+    display:none;
+  }
+
   .route{
-    padding:20px 8px;
+    padding:19px 8px;
   }
 
   .stop .city{
-    font-size:14px;
+    font-size:13px;
   }
 
   .stop .date{
     font-size:8px;
   }
 
+  .day{
+    grid-template-columns:57px 1fr;
+  }
+
+  .stub .num{
+    font-size:22px;
+  }
+
+  .day-body{
+    padding:13px 13px 14px;
+  }
+
+  .photo{
+    height:145px;
+  }
+
+  .day-title{
+    font-size:16px;
+  }
+
+  .places{
+    font-size:12px;
+  }
+
   .chapter{
     margin-top:38px;
   }
 
-  .day{
-    margin-bottom:11px;
-  }
-
-  .stub{
-    flex-basis:58px;
-  }
-
-  .stub .num{
-    font-size:23px;
-  }
-
-  .body{
-    padding:12px 13px;
-  }
-
-  .gallery-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .thumb-box{
-    aspect-ratio:16 / 10;
-  }
-
-  .headline{
-    font-size:14px;
-  }
-
-  .section .items{
-    font-size:12px;
-  }
-
 }
-
 </style>
 </head>
 
@@ -704,15 +613,21 @@ footer{
 
 <header class="hero">
 
+  <div class="hero-doodle doodle-plane">✈</div>
+  <div class="hero-doodle doodle-star">✦</div>
+  <div class="hero-doodle doodle-heart">♡</div>
+  <div class="hero-doodle doodle-spark">✧</div>
+
   <div class="eyebrow">
-    HONEYMOON · 2026.09.18 — 10.10
+    HONEYMOON TRIP · 2026.09.18 — 10.10
   </div>
 
   <h1>歐洲蜜月</h1>
 
-  <div class="sub">
-    23 天　·　高雄 → 倫敦 → 哥本哈根 → 特羅姆瑟 → 巴黎 → 高雄
+  <div class="hero-sub">
+    23 天 · 倫敦 → 哥本哈根 → 特羅姆瑟 → 巴黎
   </div>
+
 
   <div class="route">
 
@@ -752,1574 +667,685 @@ footer{
 ========================= -->
 
 <nav class="navbar">
-
   <div class="navbar-inner" id="navbar"></div>
-
 </nav>
 
 
 <main class="wrap">
 
-  <div id="days"></div>
+<div id="days"></div>
 
-  <!-- 住宿放到最後 -->
 
-  <section class="info-block">
+<!-- =========================
+     HOTELS 最後
+========================= -->
 
-    <h3>住宿</h3>
+<section class="info-block">
 
-    <div id="hotels"></div>
+  <h3>住宿</h3>
 
-  </section>
+  <div class="hotel-row">
+    <span>
+      Best Western Buckingham Palace Rd
+      <span class="hotel-city">倫敦</span>
+    </span>
+  </div>
+
+  <div class="hotel-row">
+    <span>
+      Wakeup Copenhagen, Bernstorffsgade
+      <span class="hotel-city">哥本哈根</span>
+    </span>
+  </div>
+
+  <div class="hotel-row">
+    <span>
+      Skaret By Vander
+      <span class="hotel-city">特羅姆瑟</span>
+    </span>
+  </div>
+
+  <div class="hotel-row">
+    <span>
+      巴黎住宿
+      <span class="hotel-city">巴黎</span>
+    </span>
+  </div>
+
+</section>
 
 </main>
 
 
 <footer>
-  Luka & Grace · Europe Honeymoon 2026
+  Luka & Grace · Honeymoon in Europe · 2026
 </footer>
-
 
 
 <script>
 
 /* =========================================================
-   城市設定
+   圖片
+   =========================================================
+
+   這裡統一管理每天的照片。
+   你指定的景點全部換成不同主題。
+
+   注意：
+   如果之後你找到自己最喜歡的照片，
+   只需要改這裡的 URL，不用動下面的行程。
+
 ========================================================= */
 
-const CHAPTERS = {
+const PHOTOS = {
 
-  london:{
-    key:'london',
-    name:'London',
-    label:'倫敦',
-    nights:'9/18 — 9/25'
-  },
+  2:
+  "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=85",
 
-  cph:{
-    key:'cph',
-    name:'Copenhagen',
-    label:'哥本哈根',
-    nights:'9/25 — 9/29'
-  },
+  3:
+  "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1200&q=85",
 
-  tromso:{
-    key:'tromso',
-    name:'Tromsø',
-    label:'特羅姆瑟',
-    nights:'9/29 — 10/3'
-  },
+  4:
+  "https://images.unsplash.com/photo-1599833975787-5c143f373c30?auto=format&fit=crop&w=1200&q=85",
 
-  paris:{
-    key:'paris',
-    name:'Paris',
-    label:'巴黎',
-    nights:'10/3 — 10/10'
-  }
+  5:
+  "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=85",
+
+  6:
+  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85",
+
+  7:
+  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85",
+
+  9:
+  "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=1200&q=85",
+
+  10:
+  "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=85",
+
+  11:
+  "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=85",
+
+  12:
+  "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=85",
+
+  13:
+  "https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?auto=format&fit=crop&w=1200&q=85",
+
+  14:
+  "https://images.unsplash.com/photo-1543632943-34e80a06dfa0?auto=format&fit=crop&w=1200&q=85",
+
+  15:
+  "https://images.unsplash.com/photo-1512580770426-cbed71c40e94?auto=format&fit=crop&w=1200&q=85",
+
+  16:
+  "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=85",
+
+  17:
+  "https://images.unsplash.com/photo-1509299349698-dd22323b5963?auto=format&fit=crop&w=1200&q=85",
+
+  18:
+  "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=85",
+
+  19:
+  "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=1200&q=85",
+
+  20:
+  "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=85",
+
+  21:
+  "https://images.unsplash.com/photo-1599447292180-45fd84092ef4?auto=format&fit=crop&w=1200&q=85"
 
 };
 
 
 /* =========================================================
-   Google Map link helper
-========================================================= */
-
-const L = (text,url) => ({
-  text,
-  url
-});
-
-
-/* =========================================================
-   每日行程
-   ---------------------------------------------------------
-   注意：
-
-   這裡「沒有指定換照片的天數」
-   都可以繼續沿用你上一版原本的 images。
-
-   以下 11 天換成新的照片。
+   行程資料
 ========================================================= */
 
 const DAYS = [
 
-/* =======================
-   LONDON
-======================= */
-
 {
-  d:1,
-  date:'9/18',
-  wd:'五',
-  city:'london',
-  title:'出發日',
-  subline:'高雄 → 泰國轉機 → 倫敦',
-
-  sections:[],
-
-  food:[]
+ d:1,
+ date:"9/18",
+ wd:"五",
+ city:"london",
+ title:"出發日",
+ sub:"高雄 → 泰國轉機 → 倫敦",
+ food:"飛機餐",
+ places:"抵達倫敦・飯店入住"
 },
 
-
 {
-  d:2,
-  date:'9/19',
-  wd:'六',
-  city:'london',
-
-  title:'倫敦市中心｜倫敦眼・大笨鐘・柯芬園',
-
-  subline:'抵達倫敦，開始蜜月第一天',
-
-  /*
-    原本照片保留
-  */
-  images:[
-    'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('倫敦眼','https://maps.app.goo.gl/uW324wKSeT1j1fs19'),
-        L('大笨鐘','https://maps.app.goo.gl/sFh3T6sPbKq4Muiv5'),
-        L('國家美術館','https://maps.app.goo.gl/VdnP8BYkcvXaAJdY6')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('柯芬園市集','https://maps.app.goo.gl/n2VQBJXGkgPE2AFF7'),
-        'SOHO 逛街',
-        L('咖啡','https://maps.app.goo.gl/tQnebqUaSAcSr4xR7')
-      ]
-    }
-  ],
-
-  food:[
-    '義大利麵',
-    '蜂蜜吐司',
-    '冰淇淋',
-    '啤酒'
-  ]
+ d:2,
+ date:"9/19",
+ wd:"六",
+ city:"london",
+ title:"倫敦市中心",
+ sub:"大笨鐘・倫敦眼・柯芬園",
+ food:"咖啡｜義大利麵｜PHO｜啤酒",
+ places:"大笨鐘・倫敦眼・國家美術館・柯芬園・SOHO"
 },
 
-
 {
-  d:3,
-  date:'9/20',
-  wd:'日',
-  city:'london',
-
-  title:'倫敦塔橋＆波羅市場',
-
-  subline:'倫敦東區散步日',
-
-  images:[
-    'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('倫敦塔橋','https://maps.app.goo.gl/v3JTdPefb6QkB6Vy8'),
-        L('倫敦塔','https://maps.app.goo.gl/qmFKV4rrs3HA7jHp8'),
-        L('咖啡','https://maps.app.goo.gl/o9p951SgEBM1iVqAA')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('波羅市場','https://maps.app.goo.gl/W9k3Xdvm1sWqutJ99'),
-        L('空中花園','https://maps.app.goo.gl/aMvDrXjzMMGmXanS8'),
-        L('聖保羅教堂','https://maps.app.goo.gl/XTNc94L5wFZqhHte7'),
-        'Shoreditch'
-      ]
-    }
-  ],
-
-  food:[
-    '甜甜圈',
-    '肉捲',
-    '燉飯',
-    '牛排'
-  ]
+ d:3,
+ date:"9/20",
+ wd:"日",
+ city:"london",
+ title:"倫敦塔橋＆波羅市場",
+ sub:"城市散步的一天",
+ food:"咖啡｜波羅市場小吃｜牛排",
+ places:"倫敦塔橋・倫敦塔・波羅市場・空中花園・聖保羅大教堂・Shoreditch"
 },
 
-
 {
-  d:4,
-  date:'9/21',
-  wd:'一',
-  city:'london',
-
-  title:'巨石陣・溫莎城堡・牛津',
-
-  subline:'英國經典一日遊',
-
-  images:[
-    'https://images.unsplash.com/photo-1599833975787-5c143f373c30?w=900'
-  ],
-
-  sections:[
-    {
-      label:'一日遊',
-      items:[
-        L(
-          '巨石陣＋溫莎城堡＋牛津大學',
-          'https://www.kkday.com/zh-tw/product/181304'
-        )
-      ]
-    }
-  ],
-
-  food:[
-    '跟團午餐',
-    '漢堡'
-  ]
+ d:4,
+ date:"9/21",
+ wd:"一",
+ city:"london",
+ title:"巨石陣＆溫莎城堡＆牛津",
+ sub:"英國經典一日遊",
+ food:"跟團午餐｜漢堡",
+ places:"巨石陣・溫莎城堡・牛津大學"
 },
 
-
-/* =========================================================
-   DAY 5
-   新照片：British Museum
-========================================================= */
-
 {
-  d:5,
-  date:'9/22',
-  wd:'二',
-  city:'london',
-
-  title:'大英博物館＆獅子王音樂劇',
-
-  subline:'博物館 → 肯頓市集 → West End',
-
-  images:[
-    'https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('大英博物館','https://maps.app.goo.gl/X7i2bTtPrSCkCXqz9')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('9¾ 月台','https://maps.app.goo.gl/3thqix5F1gjaT2k8A'),
-        L('肯頓市集','https://maps.app.goo.gl/LgCTroQ8M55Zqy2d9')
-      ]
-    },
-
-    {
-      label:'晚上',
-      items:[
-        L('獅子王音樂劇','https://maps.app.goo.gl/og7R4JufNbQ6ZRXt7')
-      ]
-    }
-  ],
-
-  food:[
-    '抹茶',
-    '義大利麵',
-    '牛肉捲',
-    '炸魚薯條'
-  ]
+ d:5,
+ date:"9/22",
+ wd:"二",
+ city:"london",
+ title:"大英博物館＆獅子王",
+ sub:"博物館 × 音樂劇",
+ food:"抹茶｜義大利麵｜市集小吃",
+ places:"大英博物館・9¾月台・肯頓市集・獅子王音樂劇"
 },
 
-
-/* =========================================================
-   DAY 6
-   新照片：Seven Sisters Cliffs
-========================================================= */
-
 {
-  d:6,
-  date:'9/23',
-  wd:'三',
-  city:'london',
-
-  title:'七姊妹白崖＆布萊頓',
-
-  subline:'海岸線一日遊',
-
-  images:[
-    'https://images.unsplash.com/photo-1506744038136-4627383b3fb?w=900'
-  ],
-
-  sections:[
-    {
-      label:'一日遊',
-      items:[
-        L(
-          'Seven Sisters Cliffs ＋ Brighton',
-          'https://hk.trip.com/things-to-do/detail/88974473?language=HK&locale=zh_hk'
-        )
-      ]
-    }
-  ],
-
-  food:[
-    '壽司',
-    'TGTG'
-  ]
+ d:6,
+ date:"9/23",
+ wd:"三",
+ city:"london",
+ title:"Seven Sisters Cliffs",
+ sub:"七姊妹白崖＆布萊頓",
+ food:"早餐｜壽司",
+ places:"Seven Sisters Cliffs・比奇角・布萊頓"
 },
 
-
-/* =========================================================
-   DAY 7
-   新照片：Hyde Park
-========================================================= */
-
 {
-  d:7,
-  date:'9/24',
-  wd:'四',
-  city:'london',
-
-  title:'騎兵交接＆南肯辛頓博物館群',
-
-  subline:'皇室街景・博物館・Hyde Park',
-
-  images:[
-    'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('騎兵交接','https://maps.app.goo.gl/GrK7Cz6qC1xiuAd67'),
-        L('聖詹姆士公園','https://maps.app.goo.gl/nY7HpdKX7ZTjU1gF6')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('V&A 博物館','https://maps.app.goo.gl/f7sSbU1uHXedgwiE6'),
-        L('自然史博物館','https://maps.app.goo.gl/ZA4P4R5s6asLKVgn8'),
-        L('Hyde Park','https://maps.app.goo.gl/mTGqFcChc4QDVdhj6')
-      ]
-    }
-  ],
-
-  food:[
-    '咖哩',
-    '咖啡',
-    '牛排'
-  ]
+ d:7,
+ date:"9/24",
+ wd:"四",
+ city:"london",
+ title:"騎兵交接＆Hyde Park",
+ sub:"皇家倫敦散步日",
+ food:"咖啡｜印度菜｜牛排",
+ places:"騎兵交接・聖詹姆士公園・V&A・自然史博物館・Hyde Park"
 },
 
-
 {
-  d:8,
-  date:'9/25',
-  wd:'五',
-  city:'cph',
-
-  title:'移動日｜倫敦 → 哥本哈根',
-
-  subline:'飛往丹麥',
-
-  sections:[
-    {
-      label:'交通',
-      items:[
-        '倫敦 → 哥本哈根'
-      ]
-    },
-
-    {
-      label:'抵達',
-      items:[
-        '飯店 Check-in',
-        '超市採買'
-      ]
-    }
-  ],
-
-  food:[
-    '超市採買'
-  ]
+ d:8,
+ date:"9/25",
+ wd:"五",
+ city:"cph",
+ title:"移動日｜倫敦 → 哥本哈根",
+ sub:"飛往丹麥",
+ food:"咖啡｜超市採買",
+ places:"倫敦 → 哥本哈根・飯店入住"
 },
 
-
 {
-  d:9,
-  date:'9/26',
-  wd:'六',
-  city:'cph',
-
-  title:'新港＆小美人魚',
-
-  subline:'哥本哈根經典散步日',
-
-  images:[
-    'https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('小美人魚','https://maps.app.goo.gl/rEx5orKNDMpQHJvd7'),
-        L('腓特列教堂','https://maps.app.goo.gl/GZ9GuoQ3iPfsXxjC8'),
-        L('阿美琳堡宮','https://maps.app.goo.gl/QrHnwPS3S5B4XLg56')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('新港','https://maps.app.goo.gl/VC6V75485yDbKa9g6'),
-        L('哥本哈根歌劇院','https://maps.app.goo.gl/YYCkqxsRUDej5UMQ9'),
-        L('國家圖書館','https://maps.app.goo.gl/qWG9sSn434o7DZWS8')
-      ]
-    }
-  ],
-
-  food:[
-    'Hart 麵包',
-    '漢堡',
-    '塔可'
-  ]
+ d:9,
+ date:"9/26",
+ wd:"六",
+ city:"cph",
+ title:"新港＆小美人魚",
+ sub:"哥本哈根經典散步",
+ food:"麵包｜漢堡｜塔可",
+ places:"新港・小美人魚・腓特列教堂・阿美林宮・歌劇院"
 },
 
-
-/* =========================================================
-   DAY 10
-   新照片：Jægersborg Dyrehave
-========================================================= */
-
 {
-  d:10,
-  date:'9/27',
-  wd:'日',
-  city:'cph',
-
-  title:'鹿園＆海岸單車',
-
-  subline:'Jægersborg Dyrehave',
-
-  images:[
-    'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('Jægersborg Dyrehave 鹿園','https://maps.app.goo.gl/AcsGjfVJj8njRinu6'),
-        L('海灘','https://maps.app.goo.gl/KBy9mb2YW1Q1GhAg9')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('管風琴教堂','https://maps.app.goo.gl/GKb7VTUYFujd1mGT7'),
-        L('線形公園','https://maps.app.goo.gl/AmC6Ge5EaD1vikZD8')
-      ]
-    }
-  ],
-
-  food:[
-    'TGTG',
-    '披薩',
-    '炸雞堡'
-  ]
+ d:10,
+ date:"9/27",
+ wd:"日",
+ city:"cph",
+ title:"Jægersborg Dyrehave",
+ sub:"鹿園＆海岸單車",
+ food:"麵包｜披薩｜咖啡｜炸雞堡",
+ places:"Jægersborg Dyrehave 鹿園・海岸・單車"
 },
 
-
 {
-  d:11,
-  date:'9/28',
-  wd:'一',
-  city:'cph',
-
-  title:'羅森堡宮＆Strøget 逛街',
-
-  subline:'皇宮・市集・設計小店',
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('羅森堡宮','https://maps.app.goo.gl/asgu98CN7u62XgYX7'),
-        L('圓塔','https://maps.app.goo.gl/8mz4ZdoVzYu4mu546')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('Strøget 逛街','https://maps.app.goo.gl/AxnBzKhT7DUwcJ2VA'),
-        'Hay House',
-        'ILLUM',
-        'Illums Bolighus',
-        'Studio Arhøj'
-      ]
-    }
-  ],
-
-  food:[
-    '脆皮豬',
-    '啤酒',
-    '熱狗',
-    '咖啡'
-  ]
+ d:11,
+ date:"9/28",
+ wd:"一",
+ city:"cph",
+ title:"羅森堡宮＆Strøget",
+ sub:"皇宮 × 逛街",
+ food:"市集小吃｜熱狗｜咖啡｜墨西哥捲",
+ places:"羅森堡宮・圓塔・Strøget・ILLUM・Hay House"
 },
 
-
-/* =======================
-   TROMSØ
-======================= */
-
 {
-  d:12,
-  date:'9/29',
-  wd:'二',
-  city:'tromso',
-
-  title:'移動日｜哥本哈根 → 特羅姆瑟',
-
-  subline:'北極圈初登場',
-
-  images:[
-    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=900'
-  ],
-
-  sections:[
-    {
-      label:'抵達',
-      items:[
-        '飯店 Check-in',
-        '租借極光服',
-        '超市採買'
-      ]
-    },
-
-    {
-      label:'晚上',
-      items:[
-        L('北極光之旅','https://gyg.me/AeKeCKbg')
-      ]
-    }
-  ],
-
-  food:[
-    '超市採買'
-  ]
+ d:12,
+ date:"9/29",
+ wd:"二",
+ city:"tromso",
+ title:"抵達特羅姆瑟＆極光",
+ sub:"哥本哈根 → 特羅姆瑟",
+ food:"超市採買｜極光團",
+ places:"抵達・飯店入住・北極光之旅"
 },
 
-
 {
-  d:13,
-  date:'9/30',
-  wd:'三',
-  city:'tromso',
-
-  title:'峽灣探險＆極光',
-
-  subline:'Fjord Adventure',
-
-  images:[
-    'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?w=900'
-  ],
-
-  sections:[
-    {
-      label:'白天',
-      items:[
-        L('峽灣探險','https://gyg.me/iOykOMCU')
-      ]
-    },
-
-    {
-      label:'晚上',
-      items:[
-        L('北極光之旅','https://gyg.me/AeKeCKbg')
-      ]
-    }
-  ],
-
-  food:[
-    '熱狗'
-  ]
+ d:13,
+ date:"9/30",
+ wd:"三",
+ city:"tromso",
+ title:"峽灣探險＆極光",
+ sub:"Arctic Fjord Adventure",
+ food:"早餐｜熱狗｜極光團",
+ places:"峽灣・海岸風景・北極光"
 },
 
-
-/* =========================================================
-   DAY 14
-   新照片：Norwegian Reindeer
-========================================================= */
-
 {
-  d:14,
-  date:'10/1',
-  wd:'四',
-  city:'tromso',
-
-  title:'馴鹿餵養＆薩米文化',
-
-  subline:'與馴鹿近距離相遇',
-
-  images:[
-    'https://images.unsplash.com/photo-1543632943-34e80a06dfa0?w=900'
-  ],
-
-  sections:[
-    {
-      label:'白天',
-      items:[
-        L(
-          '馴鹿餵養＆薩米文化體驗',
-          'https://gyg.me/rglTpths'
-        )
-      ]
-    },
-
-    {
-      label:'晚上',
-      items:[
-        L(
-          '北極光探險',
-          'https://gyg.me/gBTvvKuF'
-        )
-      ]
-    }
-  ],
-
-  food:[
-    '泡麵',
-    'TGTG'
-  ]
+ d:14,
+ date:"10/1",
+ wd:"四",
+ city:"tromso",
+ title:"挪威馴鹿＆薩米文化",
+ sub:"馴鹿餵養體驗",
+ food:"早餐｜泡麵／簡單晚餐",
+ places:"馴鹿餵養・薩米文化・北極光"
 },
 
-
-/* =========================================================
-   DAY 15
-   新照片：Arctic Cathedral
-========================================================= */
-
 {
-  d:15,
-  date:'10/2',
-  wd:'五',
-  city:'tromso',
-
-  title:'北極門＆自行追極光',
-
-  subline:'Arctic Cathedral・纜車・極光',
-
-  images:[
-    'https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=900'
-  ],
-
-  sections:[
-    {
-      label:'白天',
-      items:[
-        L('北極門','https://maps.app.goo.gl/Tnxb6JzxYiYC6KBs6'),
-        L('Arctic Cathedral','https://maps.app.goo.gl/A5DYeAqQSn3nQDcX7'),
-        L('纜車','https://maps.app.goo.gl/Yzz9KmR581iLC51q8'),
-        L('觀景台','https://maps.app.goo.gl/xJG9Fewic8hKD5F87')
-      ]
-    },
-
-    {
-      label:'晚上',
-      items:[
-        '自行追極光'
-      ]
-    }
-  ],
-
-  food:[
-    '咖啡',
-    '鹿肉披薩'
-  ]
+ d:15,
+ date:"10/2",
+ wd:"五",
+ city:"tromso",
+ title:"Arctic Cathedral",
+ sub:"北極門＆纜車＆自行追極光",
+ food:"咖啡｜鹿肉披薩",
+ places:"Arctic Cathedral・纜車・觀景台・自行追極光"
 },
 
-
-/* =======================
-   PARIS
-======================= */
-
 {
-  d:16,
-  date:'10/3',
-  wd:'六',
-  city:'paris',
-
-  title:'移動日｜特羅姆瑟 → 巴黎',
-
-  subline:'抵達巴黎，艾菲爾鐵塔初見',
-
-  images:[
-    'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900'
-  ],
-
-  sections:[
-    {
-      label:'下午',
-      items:[
-        '艾菲爾鐵塔',
-        '凱旋門'
-      ]
-    }
-  ],
-
-  food:[
-    '咖啡',
-    '塔可',
-    '披薩'
-  ]
+ d:16,
+ date:"10/3",
+ wd:"六",
+ city:"paris",
+ title:"抵達巴黎＆艾菲爾鐵塔",
+ sub:"特羅姆瑟 → 巴黎",
+ food:"咖啡｜塔可｜披薩",
+ places:"艾菲爾鐵塔・凱旋門・巴黎街景"
 },
 
-
-/* =========================================================
-   DAY 17
-   新照片：Montmartre
-========================================================= */
-
 {
-  d:17,
-  date:'10/4',
-  wd:'日',
-  city:'paris',
-
-  title:'蒙馬特＆聖心堂',
-
-  subline:'巴黎最浪漫的散步區',
-
-  images:[
-    'https://images.unsplash.com/photo-1509299349698-dd22323b5963?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('愛牆','https://maps.app.goo.gl/DvnPdMu3C6gLma3m7'),
-        L('蒙馬特街區','https://maps.app.goo.gl/KpKhPcKEZuAuCd3s6'),
-        L('聖心堂','https://maps.app.goo.gl/DAWQdmDnHNUV8d7D8')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('拉法葉百貨','https://maps.app.goo.gl/vvGTYLnHBjP6Va4u8'),
-        L('巴黎歌劇院','https://maps.app.goo.gl/BhJnf2bdyL919fJn6'),
-        L('春天百貨','https://maps.app.goo.gl/H3j7o3dUmjJstT9X9')
-      ]
-    }
-  ],
-
-  food:[
-    '咖啡',
-    '薄餅',
-    '冰淇淋',
-    '法餐'
-  ]
+ d:17,
+ date:"10/4",
+ wd:"日",
+ city:"paris",
+ title:"Montmartre 蒙馬特",
+ sub:"聖心堂＆巴黎散步",
+ food:"咖啡｜薄餅｜麻辣燙｜法餐",
+ places:"愛牆・蒙馬特街道・聖心堂・拉法葉百貨・巴黎歌劇院"
 },
 
-
-/* =========================================================
-   DAY 18
-   新照片：Palais du Louvre
-========================================================= */
-
 {
-  d:18,
-  date:'10/5',
-  wd:'一',
-  city:'paris',
-
-  title:'羅浮宮＆橘園美術館',
-
-  subline:'巴黎藝術日',
-
-  images:[
-    'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('羅浮宮','https://maps.app.goo.gl/KyhwvDKb3YobUBw77')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('橘園美術館','https://maps.app.goo.gl/2XhzyQBi8xE9TZt99'),
-        L('杜樂麗花園','https://maps.app.goo.gl/BVbfuBQqinifSqw66'),
-        L('香榭麗舍大道','https://maps.app.goo.gl/CLWaPBBs17RtPnxU9'),
-        L('凱旋門','https://maps.app.goo.gl/hVAQUE6tbskRDM9T9')
-      ]
-    }
-  ],
-
-  food:[
-    '麵包',
-    '麻辣燙',
-    'PHO',
-    '馬卡龍',
-    '法餐'
-  ]
+ d:18,
+ date:"10/5",
+ wd:"一",
+ city:"paris",
+ title:"Palais du Louvre",
+ sub:"羅浮宮＆橘園美術館",
+ food:"麵包｜麻辣燙／PHO｜馬卡龍｜法餐",
+ places:"羅浮宮・杜樂麗花園・橘園美術館・香榭麗舍・凱旋門"
 },
 
-
-/* =========================================================
-   DAY 19
-   新照片：Notre-Dame de Paris
-========================================================= */
-
 {
-  d:19,
-  date:'10/6',
-  wd:'二',
-  city:'paris',
-
-  title:'巴黎聖母院＆瑪黑區',
-
-  subline:'左岸・聖母院・Marais',
-
-  images:[
-    'https://images.unsplash.com/photo-1505490070062-9c5a7a3f3e5a?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('巴黎聖母院','https://maps.app.goo.gl/srZEC8PhwCzW4DY79'),
-        L('聖徒禮拜堂','https://maps.app.goo.gl/LygMu7DinnMYWp1w9'),
-        L('巴黎古監獄','https://maps.app.goo.gl/gTo3y8nBcAhauePx8')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        '瑪黑區',
-        L('Merci','https://maps.app.goo.gl/ifRZ9rdFWFTH71wB6'),
-        L('LEMAIRE','https://maps.app.goo.gl/46YCz1khRjxk26216'),
-        L('畢卡索美術館','https://maps.app.goo.gl/nH6L5SXGmRnp74FD9'),
-        L('孚日廣場','https://maps.app.goo.gl/iPixBatfteDyyLk18')
-      ]
-    }
-  ],
-
-  food:[
-    '咖啡',
-    'PHO',
-    '蛋塔',
-    '冰淇淋',
-    '淡菜'
-  ]
+ d:19,
+ date:"10/6",
+ wd:"二",
+ city:"paris",
+ title:"巴黎聖母院＆瑪黑區",
+ sub:"巴黎老城區散步",
+ food:"咖啡｜PHO｜蛋塔｜市場小吃",
+ places:"巴黎聖母院・聖徒禮拜堂・瑪黑區・畢卡索美術館・孚日廣場"
 },
 
-
-/* =========================================================
-   DAY 20
-   新照片：Seine River Cruise
-========================================================= */
-
 {
-  d:20,
-  date:'10/7',
-  wd:'三',
-  city:'paris',
-
-  title:'先賢祠＆奧賽美術館＆塞納河',
-
-  subline:'巴黎慢慢走的一天',
-
-  images:[
-    'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        L('先賢祠','https://maps.app.goo.gl/JFX4MJSuEZN9LH8E9'),
-        L('盧森堡公園','https://maps.app.goo.gl/5isXkcXFJcu1pAvP8')
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('奧賽美術館','https://maps.app.goo.gl/VoxYP9nSR76TVBP26'),
-        L('樂蓬馬歇百貨','https://maps.app.goo.gl/jjvxNVUEXAV7xHUY9')
-      ]
-    },
-
-    {
-      label:'晚上',
-      items:[
-        L('塞納河遊船','https://maps.app.goo.gl/rUDVNCVe68MStmeV6'),
-        '看艾菲爾鐵塔點燈'
-      ]
-    }
-  ],
-
-  food:[
-    '鹹薄餅',
-    '冰淇淋',
-    '可頌',
-    '花神咖啡館',
-    '義大利麵'
-  ]
+ d:20,
+ date:"10/7",
+ wd:"三",
+ city:"paris",
+ title:"塞納河遊船",
+ sub:"先賢祠＆奧賽美術館",
+ food:"麵包｜鹹薄餅｜可頌｜義大利麵",
+ places:"先賢祠・盧森堡公園・奧賽美術館・塞納河遊船"
 },
 
-
-/* =========================================================
-   DAY 21
-   新照片：Versailles
-========================================================= */
-
 {
-  d:21,
-  date:'10/8',
-  wd:'四',
-  city:'paris',
-
-  title:'街拍＆凡爾賽宮',
-
-  subline:'巴黎街拍 → Versailles',
-
-  images:[
-    'https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=900'
-  ],
-
-  sections:[
-    {
-      label:'上午',
-      items:[
-        '巴黎街拍',
-        '艾菲爾鐵塔取景'
-      ]
-    },
-
-    {
-      label:'下午',
-      items:[
-        L('凡爾賽宮','https://maps.app.goo.gl/owkFgAVZcNbYptZm9'),
-        L('宮殿花園','https://maps.app.goo.gl/RWtkHAFm6U2hYjkF7')
-      ]
-    }
-  ],
-
-  food:[
-    '三明治',
-    '生蠔',
-    'TGTG'
-  ]
+ d:21,
+ date:"10/8",
+ wd:"四",
+ city:"paris",
+ title:"街拍＆凡爾賽宮",
+ sub:"巴黎街拍日",
+ food:"三明治｜生蠔 Happy Hour",
+ places:"巴黎街拍・凡爾賽宮・花園・腳踏車"
 },
 
-
-/* =========================================================
-   DAY 22
-   不放照片
-========================================================= */
-
 {
-  d:22,
-  date:'10/9',
-  wd:'五',
-  city:'paris',
-
-  title:'聖米歇爾山一日遊',
-
-  subline:'Mont-Saint-Michel',
-
-  /*
-    注意：
-    DAY 22 特別不放照片
-  */
-
-  sections:[
-    {
-      label:'一日遊',
-      items:[
-        L(
-          '巴黎往返聖米歇爾山',
-          'https://www.kkday.com/zh-tw/product/181250'
-        )
-      ]
-    }
-  ],
-
-  food:[
-    '跟團晚餐'
-  ]
+ d:22,
+ date:"10/9",
+ wd:"五",
+ city:"paris",
+ title:"Mont-Saint-Michel",
+ sub:"聖米歇爾山一日遊",
+ food:"跟團餐食",
+ places:"聖米歇爾山・修道院"
 },
 
-
 {
-  d:23,
-  date:'10/10',
-  wd:'六',
-  city:'paris',
-
-  title:'賦歸',
-
-  subline:'巴黎 → 泰國轉機 → 高雄',
-
-  sections:[
-    {
-      label:'回家',
-      items:[
-        '巴黎 → 高雄'
-      ]
-    }
-  ],
-
-  food:[]
+ d:23,
+ date:"10/10",
+ wd:"六",
+ city:"paris",
+ title:"賦歸",
+ sub:"巴黎 → 泰國轉機 → 高雄",
+ food:"飛機餐",
+ places:"退房・前往機場・回家"
 }
 
 ];
 
 
 /* =========================================================
-   住宿
+   城市
 ========================================================= */
 
-const HOTELS = [
+const CHAPTERS = {
 
-  {
-    name:'Best Western Buckingham Palace Rd',
-    city:'倫敦',
-    url:'https://maps.app.goo.gl/9wB2cRMoadMxrbPm9'
-  },
+ london:{
+   name:"LONDON",
+   label:"倫敦",
+   nights:"9/18 — 9/25 · 7 天"
+ },
 
-  {
-    name:'Wakeup Copenhagen, Bernstorffsgade',
-    city:'哥本哈根',
-    url:'https://maps.app.goo.gl/ZC7BTKGTKX6QDVoF9'
-  },
+ cph:{
+   name:"COPENHAGEN",
+   label:"哥本哈根",
+   nights:"9/25 — 9/29 · 4 天"
+ },
 
-  {
-    name:'Skaret By Vander',
-    city:'特羅姆瑟',
-    url:'https://maps.app.goo.gl/1tZEGK4HGMUE1juK9'
-  },
+ tromso:{
+   name:"TROMSØ",
+   label:"特羅姆瑟",
+   nights:"9/29 — 10/3 · 4 天"
+ },
 
-  {
-    name:'巴黎住宿',
-    city:'巴黎',
-    url:'#'
-  }
+ paris:{
+   name:"PARIS",
+   label:"巴黎",
+   nights:"10/3 — 10/10 · 8 天"
+ }
 
-];
+};
 
 
 /* =========================================================
-   Render item
+   產生 NAV
 ========================================================= */
 
-function renderItem(item){
+const nav = document.getElementById("navbar");
 
-  if(typeof item === 'string'){
-    return item;
-  }
+DAYS.forEach(day=>{
 
-  return `
-    <a
-      href="${item.url}"
-      target="_blank"
-      rel="noopener"
-    >
-      ${item.text}
-    </a>
-  `;
-}
+  const button = document.createElement("button");
 
+  button.className = "pill";
 
-/* =========================================================
-   Render food
-========================================================= */
+  button.innerHTML = `D${day.d}`;
 
-function renderFood(food){
+  button.onclick = ()=>{
 
-  if(!food || food.length === 0){
-    return '';
-  }
-
-  return `
-    <div class="food-row">
-
-      <div class="food-title">
-        EAT
-      </div>
-
-      <div class="food-items">
-
-        ${food.map(item => `
-          <span class="food-item">
-            ${item}
-          </span>
-        `).join('')}
-
-      </div>
-
-    </div>
-  `;
-}
-
-
-/* =========================================================
-   Build hotels
-========================================================= */
-
-function buildHotels(){
-
-  const el = document.getElementById('hotels');
-
-  el.innerHTML = HOTELS.map(h => {
-
-    return `
-      <div class="hotel-row">
-
-        <span>
-
-          <a
-            href="${h.url}"
-            target="_blank"
-            rel="noopener"
-          >
-            ${h.name}
-          </a>
-
-          <span class="hotel-city">
-            ${h.city}
-          </span>
-
-        </span>
-
-      </div>
-    `;
-
-  }).join('');
-}
-
-
-/* =========================================================
-   Build nav
-========================================================= */
-
-function buildNav(){
-
-  const nav = document.getElementById('navbar');
-
-  nav.innerHTML = DAYS.map(d => {
-
-    return `
-      <button
-        class="pill"
-        data-day="${d.d}"
-      >
-        D${d.d}
-      </button>
-    `;
-
-  }).join('');
-
-  nav.addEventListener('click', e => {
-
-    const btn = e.target.closest('.pill');
-
-    if(!btn) return;
-
-    const target =
-      document.getElementById(
-        'day-' + btn.dataset.day
-      );
-
-    if(target){
-
-      target.scrollIntoView({
-        behavior:'smooth',
-        block:'start'
+    document
+      .getElementById(`day-${day.d}`)
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
       });
 
-    }
+  };
 
-  });
-
-}
-
-
-/* =========================================================
-   Build days
-========================================================= */
-
-function buildDays(){
-
-  const el = document.getElementById('days');
-
-  let html = '';
-
-  let lastCity = null;
-
-
-  DAYS.forEach(d => {
-
-    /* country chapter */
-
-    if(d.city !== lastCity){
-
-      const c = CHAPTERS[d.city];
-
-      html += `
-
-        <div class="chapter ${c.key}">
-
-          <div class="stamp">
-            ${c.name}
-          </div>
-
-          <div class="chapter-text">
-
-            <h2>
-              ${c.label}
-            </h2>
-
-            <p>
-              ${c.nights}
-            </p>
-
-          </div>
-
-        </div>
-
-      `;
-
-      lastCity = d.city;
-    }
-
-
-    /* images */
-
-    let imagesHtml = '';
-
-    if(d.images && d.images.length){
-
-      imagesHtml = `
-
-        <div class="gallery-grid">
-
-          ${d.images.map(img => `
-
-            <div class="thumb-box">
-
-              <img
-                src="${img}"
-                alt="${d.title}"
-                loading="lazy"
-              >
-
-            </div>
-
-          `).join('')}
-
-        </div>
-
-      `;
-
-    }
-
-
-    /* sections */
-
-    const sectionsHtml =
-      (d.sections || []).map(section => {
-
-        return `
-
-          <div class="section">
-
-            <div class="label">
-              ${section.label}
-            </div>
-
-            <div class="items">
-
-              ${section.items
-                .map(renderItem)
-                .join(' · ')}
-
-            </div>
-
-          </div>
-
-        `;
-
-      }).join('');
-
-
-    /* day card */
-
-    html += `
-
-      <article
-        class="day"
-        id="day-${d.d}"
-      >
-
-        <div class="stub ${d.city}">
-
-          <div class="num">
-            ${d.d}
-          </div>
-
-          <div class="wd">
-            週${d.wd}
-          </div>
-
-          <div class="dt">
-            ${d.date}
-          </div>
-
-        </div>
-
-
-        <div class="body">
-
-          <div class="body-top">
-
-            <div>
-
-              <p class="headline">
-                ${d.title}
-              </p>
-
-              <p class="subline">
-                ${d.subline}
-              </p>
-
-            </div>
-
-            <div
-              class="check"
-              data-day="${d.d}"
-              title="完成"
-            >
-              ✓
-            </div>
-
-          </div>
-
-
-          ${imagesHtml}
-
-
-          ${sectionsHtml}
-
-
-          ${renderFood(d.food)}
-
-        </div>
-
-      </article>
-
-    `;
-
-  });
-
-
-  el.innerHTML = html;
-
-}
-
-
-/* =========================================================
-   完成狀態
-========================================================= */
-
-let doneDays = [];
-
-try{
-
-  doneDays =
-    JSON.parse(
-      localStorage.getItem('honeymoon_done') || '[]'
-    );
-
-}catch(e){
-
-  doneDays = [];
-
-}
-
-
-function saveDone(){
-
-  try{
-
-    localStorage.setItem(
-      'honeymoon_done',
-      JSON.stringify(doneDays)
-    );
-
-  }catch(e){}
-
-}
-
-
-function applyDoneState(){
-
-  doneDays.forEach(d => {
-
-    const card =
-      document.getElementById(
-        'day-' + d
-      );
-
-    const check =
-      document.querySelector(
-        `.check[data-day="${d}"]`
-      );
-
-    if(card){
-      card.style.opacity = '.5';
-    }
-
-    if(check){
-      check.classList.add('checked');
-    }
-
-  });
-
-}
-
-
-document.addEventListener('click', e => {
-
-  const check =
-    e.target.closest('.check');
-
-  if(!check) return;
-
-  const d =
-    Number(check.dataset.day);
-
-  const card =
-    document.getElementById('day-' + d);
-
-
-  if(doneDays.includes(d)){
-
-    doneDays =
-      doneDays.filter(x => x !== d);
-
-    check.classList.remove('checked');
-
-    if(card){
-      card.style.opacity = '1';
-    }
-
-  }else{
-
-    doneDays.push(d);
-
-    check.classList.add('checked');
-
-    if(card){
-      card.style.opacity = '.5';
-    }
-
-  }
-
-  saveDone();
+  nav.appendChild(button);
 
 });
 
 
 /* =========================================================
-   Active navigation
+   產生每日行程
 ========================================================= */
 
-function setupScrollSpy(){
+const daysEl = document.getElementById("days");
 
-  const cards =
-    document.querySelectorAll('.day');
+let lastCity = "";
 
-  const pills =
-    document.querySelectorAll('.pill');
+DAYS.forEach(day=>{
 
+  if(day.city !== lastCity){
 
-  const observer =
-    new IntersectionObserver(
+    const c = CHAPTERS[day.city];
 
-      entries => {
+    daysEl.insertAdjacentHTML(
+      "beforeend",
 
-        entries.forEach(entry => {
+      `
+      <div class="chapter ${day.city}">
 
-          if(!entry.isIntersecting){
-            return;
-          }
+        <div class="country-stamp">
 
-          const day =
-            entry.target.id
-              .replace('day-','');
+          <div class="en">
+            ${c.name}
+          </div>
 
-          pills.forEach(p => {
+          <div class="tiny">
+            HONEYMOON
+          </div>
 
-            p.classList.toggle(
-              'active',
-              p.dataset.day === day
-            );
+        </div>
 
-          });
+        <div class="chapter-copy">
 
-        });
+          <h2>${c.label}</h2>
 
-      },
+          <p>${c.nights}</p>
 
-      {
-        rootMargin:'-30% 0px -60% 0px'
-      }
+        </div>
 
+      </div>
+      `
     );
 
+    lastCity = day.city;
+  }
 
-  cards.forEach(card =>
-    observer.observe(card)
+
+  /* 照片 */
+  let photoHTML = "";
+
+  if(PHOTOS[day.d]){
+
+    photoHTML = `
+      <div class="photo">
+
+        <img
+          src="${PHOTOS[day.d]}"
+          alt="${day.title}"
+          loading="lazy"
+        >
+
+      </div>
+    `;
+
+  }
+
+
+  /* 小食物 */
+  let foodHTML = "";
+
+  if(day.food){
+
+    foodHTML = `
+      <div class="food">
+
+        <div class="food-label">
+          EAT
+        </div>
+
+        <div class="food-text">
+          ${day.food}
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+  daysEl.insertAdjacentHTML(
+
+    "beforeend",
+
+    `
+
+    <article
+      class="day"
+      id="day-${day.d}"
+    >
+
+      <div class="stub ${day.city}">
+
+        <div class="num">
+          ${day.d}
+        </div>
+
+        <div class="wd">
+          週${day.wd}
+        </div>
+
+        <div class="dt">
+          ${day.date}
+        </div>
+
+      </div>
+
+
+      <div class="day-body">
+
+        <div class="day-decoration">
+          ${day.d % 3 === 0 ? "✦" : day.d % 3 === 1 ? "♡" : "✧"}
+        </div>
+
+        <h3 class="day-title">
+          ${day.title}
+        </h3>
+
+        <div class="day-sub">
+          ${day.sub}
+        </div>
+
+        ${photoHTML}
+
+
+        <div class="places">
+          ${day.places}
+        </div>
+
+
+        ${foodHTML}
+
+      </div>
+
+    </article>
+
+    `
+
   );
 
-}
+});
 
 
 /* =========================================================
-   INIT
+   圖片載入失敗時
 ========================================================= */
 
-buildNav();
+document.querySelectorAll(".photo img").forEach(img=>{
 
-buildDays();
+  img.addEventListener("error",()=>{
 
-buildHotels();
+    img.parentElement.style.display = "none";
 
-applyDoneState();
+  });
 
-setupScrollSpy();
+});
+
+
+/* =========================================================
+   滾動時自動標示 DAY
+========================================================= */
+
+const dayCards = document.querySelectorAll(".day");
+const pills = document.querySelectorAll(".pill");
+
+const observer = new IntersectionObserver(
+
+  entries=>{
+
+    entries.forEach(entry=>{
+
+      if(entry.isIntersecting){
+
+        const id =
+          entry.target.id.replace("day-","");
+
+        pills.forEach(p=>{
+          p.classList.remove("active");
+        });
+
+        const active =
+          [...pills].find(
+            p=>p.textContent.trim() === `D${id}`
+          );
+
+        if(active){
+
+          active.classList.add("active");
+
+          active.scrollIntoView({
+            behavior:"smooth",
+            block:"nearest",
+            inline:"center"
+          });
+
+        }
+
+      }
+
+    });
+
+  },
+
+  {
+    rootMargin:"-25% 0px -65% 0px"
+  }
+
+);
+
+dayCards.forEach(day=>{
+  observer.observe(day);
+});
 
 </script>
 
